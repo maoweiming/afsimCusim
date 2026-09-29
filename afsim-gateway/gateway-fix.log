@@ -1,0 +1,268 @@
+{"time":"2026-06-14T19:29:15.710964+08:00","level":"INFO","msg":"AFSIM gateway starting"}
+{"time":"2026-06-14T19:29:15.7156151+08:00","level":"INFO","msg":"configuration loaded","mission_path":"../AFSim/afsim-2.9.0-win64/bin/mission.exe","scenario_dir":"./scenarios","output_dir":"./output","port":8080,"event_pipe":"\\\\.\\pipe\\afsim_events","control_pipe":"\\\\.\\pipe\\afsim_control","data_platform_url":""}
+{"time":"2026-06-14T19:29:15.7161296+08:00","level":"INFO","msg":"HTTP server listening","addr":":8080"}
+2026/06/14 19:29:17 [DESKTOP-2269V6M/yx59koZs5T-000001] "GET http://localhost:8080/health HTTP/1.1" from [::1]:56036 - 200 84B in 0s
+{"time":"2026-06-14T19:29:30.0701198+08:00","level":"INFO","msg":"starting mission.exe","component":"api","simulation_id":1,"path":"../AFSim/afsim-2.9.0-win64/bin/mission.exe","scenario":"scenarios\\scn-1781433311711.scenario","mode":"realtime","args":["-rt","scn-1781433311711.scenario"]}
+2026/06/14 19:29:30 [DESKTOP-2269V6M/yx59koZs5T-000002] "POST http://localhost:8080/api/simulations HTTP/1.1" from [::1]:56051 - 201 147B in 3.11ms
+{"time":"2026-06-14T19:29:30.0732459+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":1,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"mission:\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"    WSF Version: 2.9.0 02-25-2022\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"    Built: Feb 25 2022 08:12:40\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"Plugin API version info:\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"    Version: 2.9\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"    Compiler: win_1916_64bit_release-hwe\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"Plugins Loaded:\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"    wsf_alternate_locations.dll, wsf_coverage.dll, wsf_iads_c2.dll, wsf_prompt.dll, wsf_scenario_analyzer.dll, wsf_scenario_analyzer_iads_c2.dll, wsf_air_combat.dll, wsf_annotation.dll, wsf_argo8.dll, wsf_brawler.dll, wsf_event_gateway.dll, wsf_fires.dll, wsf_multiresolution.dll, wsf_oms_uci.dll, wsf_p6dof.dll, wsf_six_dof.dll, wsf_sosm.dll\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"Extensions Included: \r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"    sensor_plot_lib, wsf_cyber, wsf_grammar_check, wsf_l16, wsf_mil, wsf_mil_parser, wsf_mtt, wsf_nx, wsf_parser, wsf_ripr, wsf_space, wsf_weapon_server, wsf_simdis\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"Loading simulation input.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"Loading simulation input complete.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0034267\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2140366+08:00","level":"INFO","msg":"Initializing simulation.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2192041+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: Created pipe \\\\.\\pipe\\afsim_events successfully\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2197205+08:00","level":"INFO","msg":"Initializing simulation complete.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2197205+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0060088\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2197205+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0.015625\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2197205+08:00","level":"INFO","msg":"Starting simulation.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:30.2197205+08:00","level":"INFO","msg":"T = 0\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:29:32.0734823+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":1,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","access":"read-only"}
+{"time":"2026-06-14T19:29:32.0734823+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":1,"pipe":"control","path":"\\\\.\\pipe\\afsim_control","access":"write-only"}
+{"time":"2026-06-14T19:29:32.0734823+08:00","level":"INFO","msg":"connected to both AFSIM pipes, starting event loop","component":"api","simulation_id":1}
+{"time":"2026-06-14T19:29:40.2228876+08:00","level":"INFO","msg":"T = 10.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:29:49 [DESKTOP-2269V6M/yx59koZs5T-000003] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56071 - 200 147B in 0s
+{"time":"2026-06-14T19:29:50.2264625+08:00","level":"INFO","msg":"T = 20.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:29:59 [DESKTOP-2269V6M/yx59koZs5T-000004] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56080 - 200 147B in 0s
+{"time":"2026-06-14T19:30:00.2258511+08:00","level":"INFO","msg":"T = 30.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:30:09 [DESKTOP-2269V6M/yx59koZs5T-000005] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56090 - 200 147B in 0s
+{"time":"2026-06-14T19:30:10.2217495+08:00","level":"INFO","msg":"T = 40.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:30:19 [DESKTOP-2269V6M/yx59koZs5T-000006] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56096 - 200 147B in 0s
+{"time":"2026-06-14T19:30:20.2289871+08:00","level":"INFO","msg":"T = 50.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:30:29 [DESKTOP-2269V6M/yx59koZs5T-000007] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56102 - 200 147B in 0s
+{"time":"2026-06-14T19:30:30.2301898+08:00","level":"INFO","msg":"T = 60.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:30:39 [DESKTOP-2269V6M/yx59koZs5T-000008] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56108 - 200 147B in 0s
+{"time":"2026-06-14T19:30:40.2254735+08:00","level":"INFO","msg":"T = 70.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:30:49 [DESKTOP-2269V6M/yx59koZs5T-000009] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56118 - 200 147B in 0s
+{"time":"2026-06-14T19:30:50.2202365+08:00","level":"INFO","msg":"T = 80.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:30:59 [DESKTOP-2269V6M/yx59koZs5T-000010] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56122 - 200 147B in 0s
+{"time":"2026-06-14T19:31:00.2200014+08:00","level":"INFO","msg":"T = 90.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:31:10 [DESKTOP-2269V6M/yx59koZs5T-000011] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56131 - 200 147B in 0s
+{"time":"2026-06-14T19:31:10.2250394+08:00","level":"INFO","msg":"T = 100.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.5832093+08:00","level":"INFO","msg":"starting mission.exe","component":"api","simulation_id":2,"path":"../AFSim/afsim-2.9.0-win64/bin/mission.exe","scenario":"scenarios\\scn-coastal-campaign.scenario","mode":"realtime","args":["-rt","scn-coastal-campaign.scenario"]}
+2026/06/14 19:31:17 [DESKTOP-2269V6M/yx59koZs5T-000012] "POST http://localhost:8080/api/simulations HTTP/1.1" from [::1]:56137 - 201 150B in 12.2406ms
+{"time":"2026-06-14T19:31:17.5954499+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:17.6027666+08:00","level":"INFO","msg":"WebSocket connection request","component":"api","simulation_id":"2"}
+2026/06/14 19:31:17 [DESKTOP-2269V6M/yx59koZs5T-000013] "GET http://localhost:8080/api/simulations/2/ws HTTP/1.1" from [::1]:56138 - 000 0B in 543.7µs
+2026/06/14 19:31:17 [DESKTOP-2269V6M/yx59koZs5T-000014] "GET http://localhost:8080/api/scenarios/scn-coastal-campaign HTTP/1.1" from [::1]:56140 - 200 14049B in 0s
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"mission:\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"    WSF Version: 2.9.0 02-25-2022\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"    Built: Feb 25 2022 08:12:40\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"Plugin API version info:\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"    Version: 2.9\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"    Compiler: win_1916_64bit_release-hwe\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"Plugins Loaded:\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"    wsf_alternate_locations.dll, wsf_coverage.dll, wsf_iads_c2.dll, wsf_prompt.dll, wsf_scenario_analyzer.dll, wsf_scenario_analyzer_iads_c2.dll, wsf_air_combat.dll, wsf_annotation.dll, wsf_argo8.dll, wsf_brawler.dll, wsf_event_gateway.dll, wsf_fires.dll, wsf_multiresolution.dll, wsf_oms_uci.dll, wsf_p6dof.dll, wsf_six_dof.dll, wsf_sosm.dll\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"Extensions Included: \r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"    sensor_plot_lib, wsf_cyber, wsf_grammar_check, wsf_l16, wsf_mil, wsf_mil_parser, wsf_mtt, wsf_nx, wsf_parser, wsf_ripr, wsf_space, wsf_weapon_server, wsf_simdis\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"Loading simulation input.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"Loading simulation input complete.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0056854\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7275319+08:00","level":"INFO","msg":"Initializing simulation.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: Failed to create pipe \\\\.\\pipe\\afsim_events (error 231)\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: failed to open event pipe, plugin disabled\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"Initializing simulation complete.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0079318\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0.015625\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"Starting simulation.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"T = 0\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"\"蓝鹰01\" task assigned: cap\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"\"蓝鹰02\" task assigned: cap\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"\"红剑01\" task assigned: strike\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:17.7379757+08:00","level":"INFO","msg":"\"红剑02\" task assigned: strike\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:19.5962192+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:31:20 [DESKTOP-2269V6M/yx59koZs5T-000015] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56154 - 200 147B in 0s
+{"time":"2026-06-14T19:31:20.2277373+08:00","level":"INFO","msg":"T = 110.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:31:21.5962243+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:23.5969944+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:25.5976788+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:27.5978544+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:27.7356274+08:00","level":"INFO","msg":"T = 10.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:29.5981665+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:31:30 [DESKTOP-2269V6M/yx59koZs5T-000016] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56162 - 200 147B in 0s
+{"time":"2026-06-14T19:31:30.2197484+08:00","level":"INFO","msg":"T = 120.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-14T19:31:31.5988761+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:33.599826+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:35.6000816+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:37.6002412+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:37.7447002+08:00","level":"INFO","msg":"T = 20.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:39.6007244+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:40.2246103+08:00","level":"INFO","msg":"T = 130.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:31:40 [DESKTOP-2269V6M/yx59koZs5T-000017] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56171 - 200 147B in 0s
+{"time":"2026-06-14T19:31:41.6013135+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:43.6015628+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:45.6024385+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:47.6028803+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:47.739818+08:00","level":"INFO","msg":"T = 30.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:49.6029788+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:50.2281643+08:00","level":"INFO","msg":"T = 140.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:31:50 [DESKTOP-2269V6M/yx59koZs5T-000018] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56181 - 200 147B in 0s
+{"time":"2026-06-14T19:31:51.6030664+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:53.6038003+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:55.6048541+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:57.6051229+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:31:57.7434624+08:00","level":"INFO","msg":"T = 40.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:31:59.6053544+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:00.2225326+08:00","level":"INFO","msg":"T = 150.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:32:00 [DESKTOP-2269V6M/yx59koZs5T-000019] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56191 - 200 147B in 0s
+{"time":"2026-06-14T19:32:01.606071+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:03.6063098+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:05.6067845+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:07.6069256+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:07.7420361+08:00","level":"INFO","msg":"T = 50.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:32:09.6078727+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:10.2247881+08:00","level":"INFO","msg":"T = 160.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:32:10 [DESKTOP-2269V6M/yx59koZs5T-000020] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56198 - 200 147B in 0s
+{"time":"2026-06-14T19:32:11.6085714+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:32:12 [DESKTOP-2269V6M/yx59koZs5T-000021] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56205 - 500 73B in 0s
+2026/06/14 19:32:13 [DESKTOP-2269V6M/yx59koZs5T-000022] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56207 - 500 73B in 0s
+{"time":"2026-06-14T19:32:13.6092917+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:32:14 [DESKTOP-2269V6M/yx59koZs5T-000023] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56210 - 500 73B in 0s
+2026/06/14 19:32:15 [DESKTOP-2269V6M/yx59koZs5T-000024] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56212 - 500 73B in 0s
+2026/06/14 19:32:15 [DESKTOP-2269V6M/yx59koZs5T-000025] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56214 - 500 73B in 0s
+{"time":"2026-06-14T19:32:15.6093654+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:32:17 [DESKTOP-2269V6M/yx59koZs5T-000026] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56216 - 500 73B in 0s
+{"time":"2026-06-14T19:32:17.6102506+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:17.7431467+08:00","level":"INFO","msg":"T = 60.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+2026/06/14 19:32:19 [DESKTOP-2269V6M/yx59koZs5T-000027] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56219 - 500 73B in 0s
+{"time":"2026-06-14T19:32:19.6107628+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:20.2299826+08:00","level":"INFO","msg":"T = 170.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:32:20 [DESKTOP-2269V6M/yx59koZs5T-000028] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56220 - 200 147B in 0s
+2026/06/14 19:32:21 [DESKTOP-2269V6M/yx59koZs5T-000029] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56222 - 500 73B in 0s
+{"time":"2026-06-14T19:32:21.6108287+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:23.6118071+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:25.612766+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:27.6129135+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:27.735459+08:00","level":"INFO","msg":"T = 70.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:32:29.6137983+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:30.2224506+08:00","level":"INFO","msg":"T = 180.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:32:30 [DESKTOP-2269V6M/yx59koZs5T-000030] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56228 - 200 147B in 0s
+{"time":"2026-06-14T19:32:31.6138616+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:33.6146738+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:35.6148984+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:37.6154411+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:37.7428904+08:00","level":"INFO","msg":"T = 80.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:32:39.6162717+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:40.229419+08:00","level":"INFO","msg":"T = 190.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:32:40 [DESKTOP-2269V6M/yx59koZs5T-000031] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56236 - 200 147B in 0s
+{"time":"2026-06-14T19:32:41.616341+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:32:41 [DESKTOP-2269V6M/yx59koZs5T-000032] "OPTIONS http://localhost:8080/api/v1/timeseries/replays HTTP/1.1" from [::1]:56237 - 204 0B in 0s
+2026/06/14 19:32:41 [DESKTOP-2269V6M/yx59koZs5T-000033] "OPTIONS http://localhost:8080/api/v1/timeseries/replays HTTP/1.1" from [::1]:56237 - 204 0B in 0s
+2026/06/14 19:32:41 [DESKTOP-2269V6M/yx59koZs5T-000034] "GET http://localhost:8080/api/v1/timeseries/replays HTTP/1.1" from [::1]:56238 - 404 19B in 0s
+2026/06/14 19:32:41 [DESKTOP-2269V6M/yx59koZs5T-000035] "GET http://localhost:8080/api/v1/timeseries/replays HTTP/1.1" from [::1]:56238 - 404 19B in 16.7µs
+{"time":"2026-06-14T19:32:43.6163785+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:45.6165262+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:47.616754+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:47.739794+08:00","level":"INFO","msg":"T = 90.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:32:49.6175888+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:50.228638+08:00","level":"INFO","msg":"T = 200.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:32:50 [DESKTOP-2269V6M/yx59koZs5T-000036] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56257 - 200 147B in 0s
+{"time":"2026-06-14T19:32:51.6183002+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:53.6185047+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:55.6194393+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:32:55 [DESKTOP-2269V6M/yx59koZs5T-000037] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56260 - 500 73B in 0s
+2026/06/14 19:32:56 [DESKTOP-2269V6M/yx59koZs5T-000038] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56262 - 500 73B in 0s
+2026/06/14 19:32:56 [DESKTOP-2269V6M/yx59koZs5T-000039] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56264 - 500 73B in 0s
+2026/06/14 19:32:57 [DESKTOP-2269V6M/yx59koZs5T-000040] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56269 - 500 73B in 0s
+2026/06/14 19:32:57 [DESKTOP-2269V6M/yx59koZs5T-000041] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56271 - 500 73B in 0s
+{"time":"2026-06-14T19:32:57.6198597+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:32:57.743615+08:00","level":"INFO","msg":"T = 100.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+2026/06/14 19:32:58 [DESKTOP-2269V6M/yx59koZs5T-000042] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56273 - 500 73B in 0s
+2026/06/14 19:32:58 [DESKTOP-2269V6M/yx59koZs5T-000043] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56275 - 500 73B in 0s
+2026/06/14 19:32:59 [DESKTOP-2269V6M/yx59koZs5T-000044] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56278 - 500 73B in 0s
+{"time":"2026-06-14T19:32:59.6209137+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:00.2294315+08:00","level":"INFO","msg":"T = 210.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:33:00 [DESKTOP-2269V6M/yx59koZs5T-000045] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56280 - 500 73B in 0s
+2026/06/14 19:33:00 [DESKTOP-2269V6M/yx59koZs5T-000046] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56281 - 200 147B in 0s
+{"time":"2026-06-14T19:33:01.6218152+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:33:02 [DESKTOP-2269V6M/yx59koZs5T-000047] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56283 - 500 73B in 0s
+2026/06/14 19:33:03 [DESKTOP-2269V6M/yx59koZs5T-000048] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56285 - 500 73B in 0s
+{"time":"2026-06-14T19:33:03.6228109+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:33:04 [DESKTOP-2269V6M/yx59koZs5T-000049] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56287 - 500 73B in 0s
+{"time":"2026-06-14T19:33:05.6232834+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:07.6236277+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:07.7423892+08:00","level":"INFO","msg":"T = 110.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:33:09.6240764+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:10.2294987+08:00","level":"INFO","msg":"T = 220.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:33:10 [DESKTOP-2269V6M/yx59koZs5T-000050] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56293 - 200 147B in 0s
+{"time":"2026-06-14T19:33:11.6248558+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:13.6255996+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:15.6257537+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:17.6264357+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:17.7430276+08:00","level":"INFO","msg":"T = 120.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:33:19.626805+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:20.2199356+08:00","level":"INFO","msg":"T = 230.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:33:21 [DESKTOP-2269V6M/yx59koZs5T-000051] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56299 - 200 147B in 0s
+{"time":"2026-06-14T19:33:21.6269134+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:23.6274536+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:25.6285591+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:27.6291042+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:27.7372365+08:00","level":"INFO","msg":"T = 130.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:33:29.6291263+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:30.2243553+08:00","level":"INFO","msg":"T = 240.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:33:31 [DESKTOP-2269V6M/yx59koZs5T-000052] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56305 - 200 147B in 0s
+{"time":"2026-06-14T19:33:31.6297276+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:33.630035+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:35.6307803+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:37.6308329+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:37.7355454+08:00","level":"INFO","msg":"T = 140.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:33:39.6313658+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:40.2259652+08:00","level":"INFO","msg":"T = 250.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:33:41 [DESKTOP-2269V6M/yx59koZs5T-000053] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56308 - 200 147B in 0s
+{"time":"2026-06-14T19:33:41.6313883+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:43.6314694+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:45.6322498+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:47.6323332+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:33:47 [DESKTOP-2269V6M/yx59koZs5T-000054] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56325 - 500 73B in 84.2µs
+{"time":"2026-06-14T19:33:47.7362039+08:00","level":"INFO","msg":"T = 150.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+2026/06/14 19:33:48 [DESKTOP-2269V6M/yx59koZs5T-000055] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56327 - 500 73B in 0s
+2026/06/14 19:33:48 [DESKTOP-2269V6M/yx59koZs5T-000056] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56329 - 500 73B in 0s
+2026/06/14 19:33:49 [DESKTOP-2269V6M/yx59koZs5T-000057] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56331 - 500 73B in 0s
+{"time":"2026-06-14T19:33:49.632391+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:50.2300757+08:00","level":"INFO","msg":"T = 260.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:33:50 [DESKTOP-2269V6M/yx59koZs5T-000058] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56334 - 500 73B in 0s
+2026/06/14 19:33:51 [DESKTOP-2269V6M/yx59koZs5T-000059] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56336 - 500 73B in 0s
+{"time":"2026-06-14T19:33:51.6328917+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:53.6340028+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:33:54 [DESKTOP-2269V6M/yx59koZs5T-000060] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56341 - 500 73B in 0s
+2026/06/14 19:33:55 [DESKTOP-2269V6M/yx59koZs5T-000061] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56346 - 500 73B in 0s
+{"time":"2026-06-14T19:33:55.6341995+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:57.6342354+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:33:57.7357153+08:00","level":"INFO","msg":"T = 160.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-14T19:33:59.6348356+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:34:00.2202536+08:00","level":"INFO","msg":"T = 270.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/14 19:34:01 [DESKTOP-2269V6M/yx59koZs5T-000062] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56355 - 500 73B in 0s
+{"time":"2026-06-14T19:34:01.6358088+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+2026/06/14 19:34:02 [DESKTOP-2269V6M/yx59koZs5T-000063] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56357 - 500 73B in 0s
+{"time":"2026-06-14T19:34:03.6368282+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: All pipe instances are busy.","retry_in":2000000000}
+{"time":"2026-06-14T19:34:03.6570382+08:00","level":"INFO","msg":"terminating mission.exe","component":"api","simulation_id":1}
+{"time":"2026-06-14T19:34:03.6631205+08:00","level":"ERROR","msg":"failed to read from event pipe","component":"api","simulation_id":1,"error":"reading length prefix: The pipe has been ended."}
+{"time":"2026-06-14T19:34:03.6716045+08:00","level":"INFO","msg":"mission.exe exited","component":"api","simulation_id":1,"error":"exit status 1"}
+2026/06/14 19:34:03 [DESKTOP-2269V6M/yx59koZs5T-000064] "POST http://localhost:8080/api/simulations/1/terminate HTTP/1.1" from [::1]:56358 - 200 23B in 14.5663ms
+2026/06/14 19:34:04 [DESKTOP-2269V6M/yx59koZs5T-000065] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56360 - 500 73B in 0s
+2026/06/14 19:34:04 [DESKTOP-2269V6M/yx59koZs5T-000066] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:56362 - 404 32B in 0s
+{"time":"2026-06-14T19:34:05.6379932+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-14T19:34:07.6381306+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-14T19:34:07.7378153+08:00","level":"INFO","msg":"T = 170.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+2026/06/14 19:34:08 [DESKTOP-2269V6M/yx59koZs5T-000067] "POST http://localhost:8080/api/simulations/2/clock-rate HTTP/1.1" from [::1]:56364 - 500 73B in 0s
+{"time":"2026-06-14T19:34:09.5653997+08:00","level":"INFO","msg":"terminating mission.exe","component":"api","simulation_id":2}
+{"time":"2026-06-14T19:34:09.5806599+08:00","level":"INFO","msg":"mission.exe exited","component":"api","simulation_id":2,"error":"exit status 1"}
+2026/06/14 19:34:09 [DESKTOP-2269V6M/yx59koZs5T-000068] "POST http://localhost:8080/api/simulations/2/terminate HTTP/1.1" from [::1]:56366 - 200 23B in 15.2602ms
+{"time":"2026-06-14T19:34:09.5850804+08:00","level":"ERROR","msg":"websocket read error","component":"api","component":"ws-client","error":"websocket: close 1005 (no status)"}
+2026/06/14 19:34:36 [DESKTOP-2269V6M/yx59koZs5T-000069] "GET http://localhost:8080/api/simulations/2 HTTP/1.1" from [::1]:57189 - 404 32B in 0s
+2026/06/14 19:34:48 [DESKTOP-2269V6M/yx59koZs5T-000070] "GET http://localhost:8080/api/simulations/3 HTTP/1.1" from [::1]:57221 - 404 32B in 0s
+2026/06/14 19:35:09 [DESKTOP-2269V6M/yx59koZs5T-000071] "GET http://localhost:8080/api/simulations/2 HTTP/1.1" from [::1]:57237 - 404 32B in 0s
+{"time":"2026-06-14T19:37:14.9171692+08:00","level":"INFO","msg":"received shutdown signal"}
+{"time":"2026-06-14T19:37:14.9171692+08:00","level":"INFO","msg":"AFSIM gateway stopped"}

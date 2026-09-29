@@ -1,0 +1,956 @@
+[
+  {
+    "code": "AC-F16C",
+    "name": "F-16C/D Fighting Falcon",
+    "category": "aircraft",
+    "platformType": "fighter",
+    "description": "第四代轻型多用途战斗机，全球产量最大的现役战斗机之一。采用单发设计，翼身融合体布局。",
+    "version": 1,
+    "status": "approved",
+    "platformParams": {
+      "maxSpeed": 2124,
+      "minSpeed": 200,
+      "cruiseSpeed": 850,
+      "maxAltitude": 15240,
+      "minAltitude": 0,
+      "ceiling": 15240,
+      "range": 3200,
+      "endurance": 3.5,
+      "maxG": 9,
+      "length": 15.06,
+      "width": 9.96,
+      "height": 4.88,
+      "weight": 8570,
+      "maxTakeoffWeight": 21800,
+      "fuelCapacity": 3200,
+      "motionModel": "six_dof"
+    },
+    "sensors": [
+      {
+        "id": "s-f16-1",
+        "name": "AN/APG-68(V)9",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 160,
+        "minRange": 0.5,
+        "fovAzimuth": 120,
+        "fovElevation": 60,
+        "scanRate": 40,
+        "accuracy": 5,
+        "frequency": 10,
+        "power": 6,
+        "antennaGain": 38,
+        "pulseWidth": 1,
+        "prf": 10000,
+        "sensitivity": -85,
+        "description": "机械扫描脉冲多普勒雷达"
+      },
+      {
+        "id": "s-f16-2",
+        "name": "AN/AAQ-33 Sniper",
+        "type": "eo",
+        "enabled": false,
+        "maxRange": 40,
+        "minRange": 0.5,
+        "fovAzimuth": 60,
+        "fovElevation": 45,
+        "scanRate": 20,
+        "accuracy": 1,
+        "frequency": 0.5,
+        "power": 0.05,
+        "antennaGain": 0,
+        "pulseWidth": 0,
+        "prf": 0,
+        "sensitivity": -70,
+        "description": "先进瞄准吊舱"
+      }
+    ],
+    "weapons": [
+      {
+        "id": "w-f16-1",
+        "name": "AIM-120C AMRAAM",
+        "type": "missile",
+        "quantity": 6,
+        "maxRange": 120,
+        "minRange": 1,
+        "noEscapeRange": 45,
+        "noManeuverRange": 80,
+        "maxSpeed": 5760,
+        "maxAltitude": 25000,
+        "maxG": 40,
+        "flightTime": 85,
+        "warheadType": "fragmentation",
+        "guidanceType": "active_radar",
+        "weight": 152,
+        "warheadWeight": 22,
+        "blastRadius": 15,
+        "penetration": 0,
+        "seekerRange": 20,
+        "description": "中程主动雷达制导空空导弹"
+      },
+      {
+        "id": "w-f16-2",
+        "name": "AIM-9M Sidewinder",
+        "type": "missile",
+        "quantity": 2,
+        "maxRange": 35,
+        "minRange": 0.5,
+        "noEscapeRange": 10,
+        "noManeuverRange": 20,
+        "maxSpeed": 2520,
+        "maxAltitude": 18000,
+        "maxG": 30,
+        "flightTime": 40,
+        "warheadType": "fragmentation",
+        "guidanceType": "ir",
+        "weight": 85,
+        "warheadWeight": 9.4,
+        "blastRadius": 5,
+        "penetration": 0,
+        "seekerRange": 15,
+        "description": "近程红外格斗导弹"
+      },
+      {
+        "id": "w-f16-3",
+        "name": "M61A1 Vulcan",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 2,
+        "minRange": 0.3,
+        "noEscapeRange": 1,
+        "noManeuverRange": 1.5,
+        "maxSpeed": 1050,
+        "maxAltitude": 0,
+        "maxG": 0,
+        "flightTime": 0,
+        "warheadType": "kinetic",
+        "guidanceType": "inertial",
+        "weight": 112,
+        "warheadWeight": 0,
+        "blastRadius": 0,
+        "penetration": 12,
+        "seekerRange": 0,
+        "description": "20mm六管旋转机炮"
+      }
+    ],
+    "communications": [
+      {
+        "id": "c-f16-1",
+        "name": "MIDS-LVT",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 1000,
+        "maxRange": 400,
+        "dataRate": 238,
+        "bandwidth": 3,
+        "latency": 2,
+        "hopRate": 77000,
+        "encryption": "COMSEC",
+        "description": "Link-16 数据链终端"
+      },
+      {
+        "id": "c-f16-2",
+        "name": "AN/ARC-164",
+        "type": "uhf",
+        "enabled": true,
+        "frequency": 300,
+        "maxRange": 370,
+        "dataRate": 16,
+        "bandwidth": 0.025,
+        "latency": 1,
+        "hopRate": 0,
+        "encryption": "HAVE QUICK II",
+        "description": "UHF 无线电台"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 1,
+        "side": 3,
+        "rear": 2,
+        "average": 2
+      },
+      "ir": {
+        "frontal": 300,
+        "side": 500,
+        "rear": 800
+      },
+      "acoustic": {
+        "noise_level": 120,
+        "frequency": 2000
+      },
+      "visual": {
+        "visibility": 0.8
+      }
+    },
+    "tags": [
+      "第四代",
+      "多用途",
+      "轻型",
+      "北约"
+    ],
+    "id": "aircraft-001"
+  },
+  {
+    "code": "AC-FA18E",
+    "name": "F/A-18E/F Super Hornet",
+    "category": "aircraft",
+    "platformType": "fighter",
+    "description": "第四代重型舰载多用途战斗机，美国海军主力。双发设计，具备优秀的低速操控性和大载弹量。",
+    "version": 1,
+    "status": "approved",
+    "platformParams": {
+      "maxSpeed": 1915,
+      "minSpeed": 180,
+      "cruiseSpeed": 900,
+      "maxAltitude": 15240,
+      "minAltitude": 0,
+      "ceiling": 15240,
+      "range": 2346,
+      "endurance": 2.5,
+      "maxG": 7.5,
+      "length": 18.31,
+      "width": 13.62,
+      "height": 4.88,
+      "weight": 14552,
+      "maxTakeoffWeight": 29937,
+      "fuelCapacity": 6531,
+      "motionModel": "six_dof"
+    },
+    "sensors": [
+      {
+        "id": "s-fa18-1",
+        "name": "AN/APG-79 AESA",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 200,
+        "minRange": 0.5,
+        "fovAzimuth": 120,
+        "fovElevation": 60,
+        "scanRate": 50,
+        "accuracy": 3,
+        "frequency": 10,
+        "power": 12,
+        "antennaGain": 40,
+        "pulseWidth": 0.5,
+        "prf": 15000,
+        "sensitivity": -90,
+        "description": "有源相控阵雷达"
+      },
+      {
+        "id": "s-fa18-2",
+        "name": "AN/ASQ-228 ATFLIR",
+        "type": "eo",
+        "enabled": false,
+        "maxRange": 50,
+        "minRange": 0.5,
+        "fovAzimuth": 60,
+        "fovElevation": 45,
+        "scanRate": 20,
+        "accuracy": 1,
+        "frequency": 0.5,
+        "power": 0.08,
+        "antennaGain": 0,
+        "pulseWidth": 0,
+        "prf": 0,
+        "sensitivity": -72,
+        "description": "先进前视红外瞄准吊舱"
+      }
+    ],
+    "weapons": [
+      {
+        "id": "w-fa18-1",
+        "name": "AIM-120D AMRAAM",
+        "type": "missile",
+        "quantity": 6,
+        "maxRange": 180,
+        "minRange": 1,
+        "noEscapeRange": 60,
+        "noManeuverRange": 120,
+        "maxSpeed": 5760,
+        "maxAltitude": 25000,
+        "maxG": 40,
+        "flightTime": 100,
+        "warheadType": "fragmentation",
+        "guidanceType": "active_radar",
+        "weight": 152,
+        "warheadWeight": 22,
+        "blastRadius": 15,
+        "penetration": 0,
+        "seekerRange": 25,
+        "description": "增程型中程空空导弹"
+      },
+      {
+        "id": "w-fa18-2",
+        "name": "AGM-84 Harpoon",
+        "type": "missile",
+        "quantity": 2,
+        "maxRange": 280,
+        "minRange": 5,
+        "noEscapeRange": 100,
+        "noManeuverRange": 200,
+        "maxSpeed": 1020,
+        "maxAltitude": 1000,
+        "maxG": 6,
+        "flightTime": 600,
+        "warheadType": "he",
+        "guidanceType": "active_radar",
+        "weight": 691,
+        "warheadWeight": 221,
+        "blastRadius": 20,
+        "penetration": 50,
+        "seekerRange": 25,
+        "description": "远程反舰导弹"
+      }
+    ],
+    "communications": [
+      {
+        "id": "c-fa18-1",
+        "name": "MIDS-JTRS",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 1000,
+        "maxRange": 400,
+        "dataRate": 238,
+        "bandwidth": 3,
+        "latency": 2,
+        "hopRate": 77000,
+        "encryption": "COMSEC",
+        "description": "Link-16 数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 1.5,
+        "side": 5,
+        "rear": 3,
+        "average": 3.2
+      },
+      "ir": {
+        "frontal": 350,
+        "side": 600,
+        "rear": 950
+      },
+      "acoustic": {
+        "noise_level": 125,
+        "frequency": 2200
+      },
+      "visual": {
+        "visibility": 0.8
+      }
+    },
+    "tags": [
+      "第四代",
+      "舰载",
+      "多用途",
+      "北约"
+    ],
+    "id": "aircraft-002"
+  },
+  {
+    "code": "AC-F22",
+    "name": "F-22A Raptor",
+    "category": "aircraft",
+    "platformType": "fighter",
+    "description": "第五代重型隐身空优战斗机，具备超音速巡航、超机动性和先进航电。双发设计，内置弹舱。",
+    "version": 1,
+    "status": "approved",
+    "platformParams": {
+      "maxSpeed": 2414,
+      "minSpeed": 200,
+      "cruiseSpeed": 1800,
+      "maxAltitude": 20000,
+      "minAltitude": 0,
+      "ceiling": 20000,
+      "range": 2960,
+      "endurance": 3,
+      "maxG": 9,
+      "length": 18.9,
+      "width": 13.56,
+      "height": 5.08,
+      "weight": 19700,
+      "maxTakeoffWeight": 38000,
+      "fuelCapacity": 8200,
+      "motionModel": "six_dof"
+    },
+    "sensors": [
+      {
+        "id": "s-f22-1",
+        "name": "AN/APG-77 AESA",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 250,
+        "minRange": 0.5,
+        "fovAzimuth": 120,
+        "fovElevation": 60,
+        "scanRate": 60,
+        "accuracy": 2,
+        "frequency": 10,
+        "power": 15,
+        "antennaGain": 42,
+        "pulseWidth": 0.3,
+        "prf": 20000,
+        "sensitivity": -95,
+        "description": "低截获概率有源相控阵雷达"
+      },
+      {
+        "id": "s-f22-2",
+        "name": "AN/AAR-56 DAS",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 100,
+        "minRange": 0.1,
+        "fovAzimuth": 360,
+        "fovElevation": 360,
+        "scanRate": 30,
+        "accuracy": 2,
+        "frequency": 4,
+        "power": 0.1,
+        "antennaGain": 0,
+        "pulseWidth": 0,
+        "prf": 0,
+        "sensitivity": -80,
+        "description": "分布式孔径系统"
+      }
+    ],
+    "weapons": [
+      {
+        "id": "w-f22-1",
+        "name": "AIM-120D AMRAAM",
+        "type": "missile",
+        "quantity": 6,
+        "maxRange": 180,
+        "minRange": 1,
+        "noEscapeRange": 60,
+        "noManeuverRange": 120,
+        "maxSpeed": 5760,
+        "maxAltitude": 25000,
+        "maxG": 40,
+        "flightTime": 100,
+        "warheadType": "fragmentation",
+        "guidanceType": "active_radar",
+        "weight": 152,
+        "warheadWeight": 22,
+        "blastRadius": 15,
+        "penetration": 0,
+        "seekerRange": 25,
+        "description": "增程型中程空空导弹"
+      },
+      {
+        "id": "w-f22-2",
+        "name": "AIM-9X Sidewinder",
+        "type": "missile",
+        "quantity": 2,
+        "maxRange": 35,
+        "minRange": 0.5,
+        "noEscapeRange": 15,
+        "noManeuverRange": 25,
+        "maxSpeed": 3060,
+        "maxAltitude": 18000,
+        "maxG": 50,
+        "flightTime": 40,
+        "warheadType": "fragmentation",
+        "guidanceType": "ir",
+        "weight": 85,
+        "warheadWeight": 9.4,
+        "blastRadius": 5,
+        "penetration": 0,
+        "seekerRange": 15,
+        "description": "近程红外格斗导弹"
+      }
+    ],
+    "communications": [
+      {
+        "id": "c-f22-1",
+        "name": "IFDL",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 5000,
+        "maxRange": 200,
+        "dataRate": 500,
+        "bandwidth": 10,
+        "latency": 1,
+        "hopRate": 0,
+        "encryption": "Type 1",
+        "description": "机间飞行数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.0001,
+        "side": 0.01,
+        "rear": 0.05,
+        "average": 0.02
+      },
+      "ir": {
+        "frontal": 100,
+        "side": 200,
+        "rear": 400
+      },
+      "acoustic": {
+        "noise_level": 110,
+        "frequency": 1800
+      },
+      "visual": {
+        "visibility": 0.3
+      }
+    },
+    "tags": [
+      "第五代",
+      "隐身",
+      "空优",
+      "超巡",
+      "北约"
+    ],
+    "id": "aircraft-003"
+  },
+  {
+    "code": "AC-SU35",
+    "name": "Su-35S Flanker-E",
+    "category": "aircraft",
+    "platformType": "fighter",
+    "description": "第四代半重型多用途战斗机，采用推力矢量发动机，具备超机动性。双发设计，雪豹-E无源相控阵雷达。",
+    "version": 1,
+    "status": "approved",
+    "platformParams": {
+      "maxSpeed": 2500,
+      "minSpeed": 180,
+      "cruiseSpeed": 1100,
+      "maxAltitude": 18000,
+      "minAltitude": 0,
+      "ceiling": 18000,
+      "range": 3600,
+      "endurance": 3.5,
+      "maxG": 9,
+      "length": 21.9,
+      "width": 15.3,
+      "height": 5.9,
+      "weight": 18400,
+      "maxTakeoffWeight": 34500,
+      "fuelCapacity": 11500,
+      "motionModel": "six_dof"
+    },
+    "sensors": [
+      {
+        "id": "s-su35-1",
+        "name": "Irbis-E PESA",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 350,
+        "minRange": 1,
+        "fovAzimuth": 120,
+        "fovElevation": 60,
+        "scanRate": 30,
+        "accuracy": 5,
+        "frequency": 10,
+        "power": 20,
+        "antennaGain": 42,
+        "pulseWidth": 2,
+        "prf": 8000,
+        "sensitivity": -88,
+        "description": "雪豹-E 无源相控阵雷达"
+      },
+      {
+        "id": "s-su35-2",
+        "name": "OLS-35 IRST",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 90,
+        "minRange": 0.5,
+        "fovAzimuth": 60,
+        "fovElevation": 45,
+        "scanRate": 20,
+        "accuracy": 3,
+        "frequency": 4,
+        "power": 0.05,
+        "antennaGain": 0,
+        "pulseWidth": 0,
+        "prf": 0,
+        "sensitivity": -75,
+        "description": "红外搜索与跟踪系统"
+      }
+    ],
+    "weapons": [
+      {
+        "id": "w-su35-1",
+        "name": "R-77-1",
+        "type": "missile",
+        "quantity": 6,
+        "maxRange": 175,
+        "minRange": 1,
+        "noEscapeRange": 50,
+        "noManeuverRange": 100,
+        "maxSpeed": 5400,
+        "maxAltitude": 25000,
+        "maxG": 40,
+        "flightTime": 80,
+        "warheadType": "fragmentation",
+        "guidanceType": "active_radar",
+        "weight": 175,
+        "warheadWeight": 22,
+        "blastRadius": 15,
+        "penetration": 0,
+        "seekerRange": 20,
+        "description": "中程主动雷达制导空空导弹"
+      },
+      {
+        "id": "w-su35-2",
+        "name": "R-73M2",
+        "type": "missile",
+        "quantity": 2,
+        "maxRange": 40,
+        "minRange": 0.3,
+        "noEscapeRange": 15,
+        "noManeuverRange": 25,
+        "maxSpeed": 2520,
+        "maxAltitude": 18000,
+        "maxG": 60,
+        "flightTime": 30,
+        "warheadType": "fragmentation",
+        "guidanceType": "ir",
+        "weight": 105,
+        "warheadWeight": 7.4,
+        "blastRadius": 5,
+        "penetration": 0,
+        "seekerRange": 12,
+        "description": "近程高机动红外格斗导弹"
+      }
+    ],
+    "communications": [
+      {
+        "id": "c-su35-1",
+        "name": "S-108",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 1200,
+        "maxRange": 500,
+        "dataRate": 256,
+        "bandwidth": 5,
+        "latency": 3,
+        "hopRate": 0,
+        "encryption": "俄罗斯标准",
+        "description": "加密数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 3,
+        "side": 8,
+        "rear": 5,
+        "average": 5.3
+      },
+      "ir": {
+        "frontal": 400,
+        "side": 700,
+        "rear": 1100
+      },
+      "acoustic": {
+        "noise_level": 130,
+        "frequency": 2500
+      },
+      "visual": {
+        "visibility": 0.9
+      }
+    },
+    "tags": [
+      "4.5代",
+      "重型",
+      "超机动",
+      "俄罗斯"
+    ],
+    "id": "aircraft-004"
+  },
+  {
+    "code": "AC-Rafale",
+    "name": "Rafale C/M",
+    "category": "aircraft",
+    "platformType": "fighter",
+    "description": "第四代半多用途战斗机，法国达索公司研发。采用三角翼+鸭式布局，RBE2 AESA雷达。",
+    "version": 1,
+    "status": "approved",
+    "platformParams": {
+      "maxSpeed": 1912,
+      "minSpeed": 170,
+      "cruiseSpeed": 950,
+      "maxAltitude": 15235,
+      "minAltitude": 0,
+      "ceiling": 15235,
+      "range": 3700,
+      "endurance": 3,
+      "maxG": 9,
+      "length": 15.27,
+      "width": 10.8,
+      "height": 5.34,
+      "weight": 10300,
+      "maxTakeoffWeight": 24500,
+      "fuelCapacity": 4700,
+      "motionModel": "six_dof"
+    },
+    "sensors": [
+      {
+        "id": "s-raf-1",
+        "name": "RBE2 AESA",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 200,
+        "minRange": 0.5,
+        "fovAzimuth": 120,
+        "fovElevation": 60,
+        "scanRate": 50,
+        "accuracy": 3,
+        "frequency": 10,
+        "power": 10,
+        "antennaGain": 39,
+        "pulseWidth": 0.5,
+        "prf": 15000,
+        "sensitivity": -90,
+        "description": "有源相控阵雷达"
+      },
+      {
+        "id": "s-raf-2",
+        "name": "OSF IRST",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 100,
+        "minRange": 0.5,
+        "fovAzimuth": 60,
+        "fovElevation": 45,
+        "scanRate": 20,
+        "accuracy": 2,
+        "frequency": 4,
+        "power": 0.05,
+        "antennaGain": 0,
+        "pulseWidth": 0,
+        "prf": 0,
+        "sensitivity": -78,
+        "description": "前扇区光电系统"
+      }
+    ],
+    "weapons": [
+      {
+        "id": "w-raf-1",
+        "name": "METEOR",
+        "type": "missile",
+        "quantity": 6,
+        "maxRange": 200,
+        "minRange": 1,
+        "noEscapeRange": 80,
+        "noManeuverRange": 150,
+        "maxSpeed": 5040,
+        "maxAltitude": 25000,
+        "maxG": 40,
+        "flightTime": 120,
+        "warheadType": "fragmentation",
+        "guidanceType": "active_radar",
+        "weight": 185,
+        "warheadWeight": 25,
+        "blastRadius": 15,
+        "penetration": 0,
+        "seekerRange": 30,
+        "description": "冲压动力超视距空空导弹"
+      },
+      {
+        "id": "w-raf-2",
+        "name": "MICA-IR",
+        "type": "missile",
+        "quantity": 2,
+        "maxRange": 60,
+        "minRange": 0.5,
+        "noEscapeRange": 20,
+        "noManeuverRange": 40,
+        "maxSpeed": 3060,
+        "maxAltitude": 18000,
+        "maxG": 50,
+        "flightTime": 50,
+        "warheadType": "fragmentation",
+        "guidanceType": "ir",
+        "weight": 112,
+        "warheadWeight": 12,
+        "blastRadius": 5,
+        "penetration": 0,
+        "seekerRange": 15,
+        "description": "红外制导中近程导弹"
+      }
+    ],
+    "communications": [
+      {
+        "id": "c-raf-1",
+        "name": "MIDS-LVT",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 1000,
+        "maxRange": 400,
+        "dataRate": 238,
+        "bandwidth": 3,
+        "latency": 2,
+        "hopRate": 77000,
+        "encryption": "NATO标准",
+        "description": "Link-16 数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.5,
+        "side": 2,
+        "rear": 1.5,
+        "average": 1.3
+      },
+      "ir": {
+        "frontal": 250,
+        "side": 450,
+        "rear": 700
+      },
+      "acoustic": {
+        "noise_level": 118,
+        "frequency": 2000
+      },
+      "visual": {
+        "visibility": 0.7
+      }
+    },
+    "tags": [
+      "4.5代",
+      "多用途",
+      "三角翼",
+      "法国"
+    ],
+    "id": "aircraft-005"
+  },
+  {
+    "code": "AC-J10C",
+    "name": "歼-10C 猛龙",
+    "category": "aircraft",
+    "platformType": "fighter",
+    "description": "第四代半中型多用途战斗机，采用鸭式布局，装备有源相控阵雷达。单发设计。",
+    "version": 1,
+    "status": "approved",
+    "platformParams": {
+      "maxSpeed": 2200,
+      "minSpeed": 180,
+      "cruiseSpeed": 950,
+      "maxAltitude": 17000,
+      "minAltitude": 0,
+      "ceiling": 17000,
+      "range": 2500,
+      "endurance": 2.8,
+      "maxG": 9,
+      "length": 16.43,
+      "width": 9.75,
+      "height": 5.43,
+      "weight": 9750,
+      "maxTakeoffWeight": 19300,
+      "fuelCapacity": 3800,
+      "motionModel": "six_dof"
+    },
+    "sensors": [
+      {
+        "id": "s-j10-1",
+        "name": "某型 AESA",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 180,
+        "minRange": 0.5,
+        "fovAzimuth": 120,
+        "fovElevation": 60,
+        "scanRate": 45,
+        "accuracy": 3,
+        "frequency": 10,
+        "power": 8,
+        "antennaGain": 38,
+        "pulseWidth": 0.5,
+        "prf": 12000,
+        "sensitivity": -88,
+        "description": "机载有源相控阵雷达"
+      }
+    ],
+    "weapons": [
+      {
+        "id": "w-j10-1",
+        "name": "PL-15",
+        "type": "missile",
+        "quantity": 4,
+        "maxRange": 200,
+        "minRange": 1,
+        "noEscapeRange": 80,
+        "noManeuverRange": 150,
+        "maxSpeed": 5400,
+        "maxAltitude": 25000,
+        "maxG": 40,
+        "flightTime": 90,
+        "warheadType": "fragmentation",
+        "guidanceType": "active_radar",
+        "weight": 180,
+        "warheadWeight": 25,
+        "blastRadius": 15,
+        "penetration": 0,
+        "seekerRange": 25,
+        "description": "超远程空空导弹"
+      },
+      {
+        "id": "w-j10-2",
+        "name": "PL-10",
+        "type": "missile",
+        "quantity": 2,
+        "maxRange": 30,
+        "minRange": 0.3,
+        "noEscapeRange": 12,
+        "noManeuverRange": 20,
+        "maxSpeed": 3240,
+        "maxAltitude": 18000,
+        "maxG": 60,
+        "flightTime": 30,
+        "warheadType": "fragmentation",
+        "guidanceType": "ir",
+        "weight": 89,
+        "warheadWeight": 8,
+        "blastRadius": 5,
+        "penetration": 0,
+        "seekerRange": 12,
+        "description": "近程红外格斗导弹"
+      }
+    ],
+    "communications": [
+      {
+        "id": "c-j10-1",
+        "name": "综合数据链",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 1200,
+        "maxRange": 500,
+        "dataRate": 256,
+        "bandwidth": 5,
+        "latency": 3,
+        "hopRate": 0,
+        "encryption": "国产标准",
+        "description": "联合战术数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.8,
+        "side": 3,
+        "rear": 2,
+        "average": 1.9
+      },
+      "ir": {
+        "frontal": 280,
+        "side": 500,
+        "rear": 800
+      },
+      "acoustic": {
+        "noise_level": 122,
+        "frequency": 2100
+      },
+      "visual": {
+        "visibility": 0.7
+      }
+    },
+    "tags": [
+      "4.5代",
+      "中型",
+      "鸭式",
+      "国产"
+    ],
+    "id": "aircraft-006"
+  }
+]

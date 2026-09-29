@@ -1,0 +1,367 @@
+{"time":"2026-06-09T22:13:25.9005266+08:00","level":"INFO","msg":"AFSIM gateway starting"}
+{"time":"2026-06-09T22:13:26.8383334+08:00","level":"INFO","msg":"configuration loaded","mission_path":"e:\\AFsim\\afsimweb-master\\AFSim\\afsim-2.9.0-win64\\bin\\mission.exe","scenario_dir":"e:\\AFsim\\afsimweb-master\\afsim-gateway\\scenarios","output_dir":"e:\\AFsim\\afsimweb-master\\afsim-gateway\\output","port":8080,"event_pipe":"\\\\.\\pipe\\afsim_events","control_pipe":"\\\\.\\pipe\\afsim_control","data_platform_url":""}
+{"time":"2026-06-09T22:13:26.8495166+08:00","level":"INFO","msg":"HTTP server listening","addr":":8080"}
+2026/06/09 22:13:27 [DESKTOP-2269V6M/HtJ2boSy8A-000001] "GET http://localhost:8080/api/scenarios HTTP/1.1" from [::1]:64855 - 200 579B in 528µs
+{"time":"2026-06-09T22:13:51.6416415+08:00","level":"INFO","msg":"starting mission.exe","component":"api","simulation_id":1,"path":"e:\\AFsim\\afsimweb-master\\AFSim\\afsim-2.9.0-win64\\bin\\mission.exe","scenario":"e:\\AFsim\\afsimweb-master\\afsim-gateway\\scenarios\\coastal_campaign.scenario","mode":"realtime","args":["-rt","coastal_campaign.scenario"]}
+2026/06/09 22:13:51 [DESKTOP-2269V6M/HtJ2boSy8A-000002] "POST http://localhost:8080/api/simulations HTTP/1.1" from [::1]:64889 - 201 146B in 3.6988ms
+{"time":"2026-06-09T22:13:51.6458959+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":1,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-09T22:13:51.7693791+08:00","level":"INFO","msg":"mission:\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.769909+08:00","level":"INFO","msg":"    WSF Version: 2.9.0 02-25-2022\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7704272+08:00","level":"INFO","msg":"    Built: Feb 25 2022 08:12:40\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7709527+08:00","level":"INFO","msg":"Plugin API version info:\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7714693+08:00","level":"INFO","msg":"    Version: 2.9\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7720001+08:00","level":"INFO","msg":"    Compiler: win_1916_64bit_release-hwe\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7720001+08:00","level":"INFO","msg":"Plugins Loaded:\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7725178+08:00","level":"INFO","msg":"    wsf_alternate_locations.dll, wsf_coverage.dll, wsf_iads_c2.dll, wsf_prompt.dll, wsf_scenario_analyzer.dll, wsf_scenario_analyzer_iads_c2.dll, wsf_air_combat.dll, wsf_annotation.dll, wsf_argo8.dll, wsf_brawler.dll, wsf_event_gateway.dll, wsf_fires.dll, wsf_multiresolution.dll, wsf_oms_uci.dll, wsf_p6dof.dll, wsf_six_dof.dll, wsf_sosm.dll\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7730368+08:00","level":"INFO","msg":"Extensions Included: \r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7735777+08:00","level":"INFO","msg":"    sensor_plot_lib, wsf_cyber, wsf_grammar_check, wsf_l16, wsf_mil, wsf_mil_parser, wsf_mtt, wsf_nx, wsf_parser, wsf_ripr, wsf_space, wsf_weapon_server, wsf_simdis\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7740941+08:00","level":"INFO","msg":"\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7746135+08:00","level":"INFO","msg":"Loading simulation input.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7751285+08:00","level":"INFO","msg":"Loading simulation input complete.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.775651+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0044498\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7766879+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7772136+08:00","level":"INFO","msg":"Initializing simulation.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7777391+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: Created pipe \\\\.\\pipe\\afsim_events successfully\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7782607+08:00","level":"INFO","msg":"Initializing simulation complete.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7793227+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0064891\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7798433+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0.015625\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7803474+08:00","level":"INFO","msg":"Starting simulation.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7808787+08:00","level":"INFO","msg":"T = 0\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7814173+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7819596+08:00","level":"INFO","msg":"    Platform: BluePatrol01\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7824891+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:51.7830082+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:52.536036+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:52.5365592+08:00","level":"INFO","msg":"    Platform: BlueIntercept01\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:52.5371016+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:52.5376197+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:53.2751095+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:53.2771551+08:00","level":"INFO","msg":"    Platform: BluePatrol02\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:53.2771829+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:53.2777115+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:13:53.6467251+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":1,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","access":"read-only"}
+{"time":"2026-06-09T22:13:53.6479159+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":1,"pipe":"control","path":"\\\\.\\pipe\\afsim_control","access":"write-only"}
+{"time":"2026-06-09T22:13:53.6479159+08:00","level":"INFO","msg":"connected to both AFSIM pipes, starting event loop","component":"api","simulation_id":1}
+{"time":"2026-06-09T22:14:01.7759809+08:00","level":"INFO","msg":"T = 10.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/09 22:14:04 [DESKTOP-2269V6M/HtJ2boSy8A-000003] "GET http://localhost:8080/api/state HTTP/1.1" from [::1]:64898 - 404 19B in 0s
+{"time":"2026-06-09T22:14:11.7761288+08:00","level":"INFO","msg":"T = 20.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/09 22:14:12 [DESKTOP-2269V6M/HtJ2boSy8A-000004] "GET http://localhost:8080/api/simulations/1 HTTP/1.1" from [::1]:64911 - 200 146B in 0s
+{"time":"2026-06-09T22:14:21.7761514+08:00","level":"INFO","msg":"T = 30.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+2026/06/09 22:14:31 [DESKTOP-2269V6M/HtJ2boSy8A-000005] "GET http://localhost:8080/api/simulations/1/snapshot HTTP/1.1" from [::1]:64935 - 404 19B in 0s
+2026/06/09 22:14:31 [DESKTOP-2269V6M/HtJ2boSy8A-000006] "GET http://localhost:8080/api/simulations/1/state HTTP/1.1" from [::1]:64935 - 404 19B in 0s
+2026/06/09 22:14:31 [DESKTOP-2269V6M/HtJ2boSy8A-000007] "GET http://localhost:8080/api/snapshot HTTP/1.1" from [::1]:64935 - 404 19B in 0s
+{"time":"2026-06-09T22:14:31.7830473+08:00","level":"INFO","msg":"T = 40.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:14:41.7829558+08:00","level":"INFO","msg":"T = 50.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:14:51.7754674+08:00","level":"INFO","msg":"T = 60.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:15:01.7821668+08:00","level":"INFO","msg":"T = 70.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:15:11.7756349+08:00","level":"INFO","msg":"T = 80.000\r","component":"api","simulation_id":1,"stream":"stdout"}
+{"time":"2026-06-09T22:15:12.8343583+08:00","level":"INFO","msg":"terminating mission.exe","component":"api","simulation_id":1}
+{"time":"2026-06-09T22:15:12.8459182+08:00","level":"ERROR","msg":"failed to read from event pipe","component":"api","simulation_id":1,"error":"reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:15:12.8459182+08:00","level":"ERROR","msg":"connector error","component":"api","simulation_id":1,"error":"event pipe read error: reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:15:12.8507092+08:00","level":"INFO","msg":"mission.exe exited","component":"api","simulation_id":1,"error":"exit status 1"}
+2026/06/09 22:15:12 [DESKTOP-2269V6M/HtJ2boSy8A-000008] "POST http://localhost:8080/api/simulations/1/terminate HTTP/1.1" from [::1]:64975 - 200 23B in 16.3509ms
+{"time":"2026-06-09T22:15:14.8744982+08:00","level":"INFO","msg":"starting mission.exe","component":"api","simulation_id":2,"path":"e:\\AFsim\\afsimweb-master\\AFSim\\afsim-2.9.0-win64\\bin\\mission.exe","scenario":"e:\\AFsim\\afsimweb-master\\afsim-gateway\\scenarios\\coastal_campaign.scenario","mode":"realtime","args":["-rt","coastal_campaign.scenario"]}
+2026/06/09 22:15:14 [DESKTOP-2269V6M/HtJ2boSy8A-000009] "POST http://localhost:8080/api/simulations HTTP/1.1" from [::1]:64975 - 201 146B in 3.1928ms
+{"time":"2026-06-09T22:15:14.877691+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-09T22:15:15.1028745+08:00","level":"INFO","msg":"mission:\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1039369+08:00","level":"INFO","msg":"    WSF Version: 2.9.0 02-25-2022\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1039369+08:00","level":"INFO","msg":"    Built: Feb 25 2022 08:12:40\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1044617+08:00","level":"INFO","msg":"Plugin API version info:\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.105013+08:00","level":"INFO","msg":"    Version: 2.9\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1055296+08:00","level":"INFO","msg":"    Compiler: win_1916_64bit_release-hwe\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1060703+08:00","level":"INFO","msg":"Plugins Loaded:\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1065848+08:00","level":"INFO","msg":"    wsf_alternate_locations.dll, wsf_coverage.dll, wsf_iads_c2.dll, wsf_prompt.dll, wsf_scenario_analyzer.dll, wsf_scenario_analyzer_iads_c2.dll, wsf_air_combat.dll, wsf_annotation.dll, wsf_argo8.dll, wsf_brawler.dll, wsf_event_gateway.dll, wsf_fires.dll, wsf_multiresolution.dll, wsf_oms_uci.dll, wsf_p6dof.dll, wsf_six_dof.dll, wsf_sosm.dll\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1076229+08:00","level":"INFO","msg":"Extensions Included: \r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1081836+08:00","level":"INFO","msg":"    sensor_plot_lib, wsf_cyber, wsf_grammar_check, wsf_l16, wsf_mil, wsf_mil_parser, wsf_mtt, wsf_nx, wsf_parser, wsf_ripr, wsf_space, wsf_weapon_server, wsf_simdis\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.108705+08:00","level":"INFO","msg":"\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1092277+08:00","level":"INFO","msg":"Loading simulation input.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1097544+08:00","level":"INFO","msg":"Loading simulation input complete.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1108187+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0044738\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1113547+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0.015625\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1118696+08:00","level":"INFO","msg":"Initializing simulation.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1123887+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: Created pipe \\\\.\\pipe\\afsim_events successfully\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1129174+08:00","level":"INFO","msg":"Initializing simulation complete.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1134353+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0065901\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1139613+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.114482+08:00","level":"INFO","msg":"Starting simulation.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1150099+08:00","level":"INFO","msg":"T = 0\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1155547+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.116077+08:00","level":"INFO","msg":"    Platform: BluePatrol01\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1166011+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.1171199+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.8596947+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.8602281+08:00","level":"INFO","msg":"    Platform: BlueIntercept01\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.8607546+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:15.8613007+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:16.6142199+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:16.6152195+08:00","level":"INFO","msg":"    Platform: BluePatrol02\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:16.6152195+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:16.6162197+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:16.8796904+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":2,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","access":"read-only"}
+{"time":"2026-06-09T22:15:16.8809054+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":2,"pipe":"control","path":"\\\\.\\pipe\\afsim_control","access":"write-only"}
+{"time":"2026-06-09T22:15:16.8809054+08:00","level":"INFO","msg":"connected to both AFSIM pipes, starting event loop","component":"api","simulation_id":2}
+{"time":"2026-06-09T22:15:25.1091958+08:00","level":"INFO","msg":"T = 10.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:35.1169401+08:00","level":"INFO","msg":"T = 20.000\r","component":"api","simulation_id":2,"stream":"stdout"}
+{"time":"2026-06-09T22:15:42.1149046+08:00","level":"INFO","msg":"terminating mission.exe","component":"api","simulation_id":2}
+{"time":"2026-06-09T22:15:42.1254802+08:00","level":"ERROR","msg":"failed to read from event pipe","component":"api","simulation_id":2,"error":"reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:15:42.1254802+08:00","level":"ERROR","msg":"connector error","component":"api","simulation_id":2,"error":"event pipe read error: reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:15:42.1308696+08:00","level":"INFO","msg":"mission.exe exited","component":"api","simulation_id":2,"error":"exit status 1"}
+2026/06/09 22:15:42 [DESKTOP-2269V6M/HtJ2boSy8A-000010] "POST http://localhost:8080/api/simulations/2/terminate HTTP/1.1" from [::1]:65006 - 200 23B in 15.965ms
+{"time":"2026-06-09T22:15:44.1567533+08:00","level":"INFO","msg":"starting mission.exe","component":"api","simulation_id":3,"path":"e:\\AFsim\\afsimweb-master\\AFSim\\afsim-2.9.0-win64\\bin\\mission.exe","scenario":"e:\\AFsim\\afsimweb-master\\afsim-gateway\\scenarios\\coastal_campaign.scenario","mode":"realtime","args":["-rt","coastal_campaign.scenario"]}
+2026/06/09 22:15:44 [DESKTOP-2269V6M/HtJ2boSy8A-000011] "POST http://localhost:8080/api/simulations HTTP/1.1" from [::1]:65006 - 201 145B in 3.1602ms
+{"time":"2026-06-09T22:15:44.1599135+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":3,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-09T22:15:44.2856901+08:00","level":"INFO","msg":"mission:\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2856901+08:00","level":"INFO","msg":"    WSF Version: 2.9.0 02-25-2022\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2862115+08:00","level":"INFO","msg":"    Built: Feb 25 2022 08:12:40\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.28673+08:00","level":"INFO","msg":"Plugin API version info:\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2872505+08:00","level":"INFO","msg":"    Version: 2.9\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2877663+08:00","level":"INFO","msg":"    Compiler: win_1916_64bit_release-hwe\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2882859+08:00","level":"INFO","msg":"Plugins Loaded:\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.288814+08:00","level":"INFO","msg":"    wsf_alternate_locations.dll, wsf_coverage.dll, wsf_iads_c2.dll, wsf_prompt.dll, wsf_scenario_analyzer.dll, wsf_scenario_analyzer_iads_c2.dll, wsf_air_combat.dll, wsf_annotation.dll, wsf_argo8.dll, wsf_brawler.dll, wsf_event_gateway.dll, wsf_fires.dll, wsf_multiresolution.dll, wsf_oms_uci.dll, wsf_p6dof.dll, wsf_six_dof.dll, wsf_sosm.dll\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2893369+08:00","level":"INFO","msg":"Extensions Included: \r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2898617+08:00","level":"INFO","msg":"    sensor_plot_lib, wsf_cyber, wsf_grammar_check, wsf_l16, wsf_mil, wsf_mil_parser, wsf_mtt, wsf_nx, wsf_parser, wsf_ripr, wsf_space, wsf_weapon_server, wsf_simdis\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2903851+08:00","level":"INFO","msg":"\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.290938+08:00","level":"INFO","msg":"Loading simulation input.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2914624+08:00","level":"INFO","msg":"Loading simulation input complete.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2919869+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.004416\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2925018+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2935306+08:00","level":"INFO","msg":"Initializing simulation.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2940494+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: Created pipe \\\\.\\pipe\\afsim_events successfully\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2945953+08:00","level":"INFO","msg":"Initializing simulation complete.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2951147+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0066226\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2956345+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0.015625\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2961769+08:00","level":"INFO","msg":"Starting simulation.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.296696+08:00","level":"INFO","msg":"T = 0\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2972147+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2977318+08:00","level":"INFO","msg":"    Platform: BluePatrol01\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2982487+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:44.2992822+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:45.0479707+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:45.0479707+08:00","level":"INFO","msg":"    Platform: BlueIntercept01\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:45.048517+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:45.0490201+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:45.7915173+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:45.7930523+08:00","level":"INFO","msg":"    Platform: BluePatrol02\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:45.7940887+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:45.7945968+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:15:46.161469+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":3,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","access":"read-only"}
+{"time":"2026-06-09T22:15:46.1626664+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":3,"pipe":"control","path":"\\\\.\\pipe\\afsim_control","access":"write-only"}
+{"time":"2026-06-09T22:15:46.1626664+08:00","level":"INFO","msg":"connected to both AFSIM pipes, starting event loop","component":"api","simulation_id":3}
+{"time":"2026-06-09T22:15:54.2917526+08:00","level":"INFO","msg":"T = 10.000\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:16:04.2952637+08:00","level":"INFO","msg":"T = 20.000\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:16:08.8295281+08:00","level":"INFO","msg":"WebSocket connection request","component":"api","simulation_id":"3"}
+2026/06/09 22:16:08 [DESKTOP-2269V6M/HtJ2boSy8A-000012] "GET http://localhost:8080/api/simulations/3/ws HTTP/1.1" from [::1]:65048 - 000 0B in 1.0529ms
+{"time":"2026-06-09T22:16:14.2926202+08:00","level":"INFO","msg":"T = 30.000\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:16:17.8283789+08:00","level":"ERROR","msg":"websocket read error","component":"api","component":"ws-client","error":"websocket: close 1005 (no status)"}
+{"time":"2026-06-09T22:16:24.2996306+08:00","level":"INFO","msg":"T = 40.000\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:16:34.2922369+08:00","level":"INFO","msg":"T = 50.000\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:16:44.3024917+08:00","level":"INFO","msg":"T = 60.000\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:16:54.292548+08:00","level":"INFO","msg":"T = 70.000\r","component":"api","simulation_id":3,"stream":"stdout"}
+{"time":"2026-06-09T22:17:04.2992127+08:00","level":"INFO","msg":"T = 80.000\r","component":"api","simulation_id":3,"stream":"stdout"}
+2026/06/09 22:17:08 [DESKTOP-2269V6M/HtJ2boSy8A-000013] "POST http://localhost:8080/api/simulations/1/terminate HTTP/1.1" from [::1]:65104 - 200 23B in 0s
+2026/06/09 22:17:08 [DESKTOP-2269V6M/HtJ2boSy8A-000014] "POST http://localhost:8080/api/simulations/2/terminate HTTP/1.1" from [::1]:65104 - 200 23B in 0s
+{"time":"2026-06-09T22:17:08.7141527+08:00","level":"INFO","msg":"terminating mission.exe","component":"api","simulation_id":3}
+{"time":"2026-06-09T22:17:08.7146659+08:00","level":"ERROR","msg":"failed to read from event pipe","component":"api","simulation_id":3,"error":"reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:17:08.7160548+08:00","level":"ERROR","msg":"connector error","component":"api","simulation_id":3,"error":"event pipe read error: reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:17:08.7301687+08:00","level":"INFO","msg":"mission.exe exited","component":"api","simulation_id":3,"error":"exit status 1"}
+2026/06/09 22:17:08 [DESKTOP-2269V6M/HtJ2boSy8A-000015] "POST http://localhost:8080/api/simulations/3/terminate HTTP/1.1" from [::1]:65104 - 200 23B in 16.016ms
+2026/06/09 22:17:08 [DESKTOP-2269V6M/HtJ2boSy8A-000016] "POST http://localhost:8080/api/simulations/4/terminate HTTP/1.1" from [::1]:65104 - 200 23B in 0s
+{"time":"2026-06-09T22:17:10.2358634+08:00","level":"INFO","msg":"starting mission.exe","component":"api","simulation_id":4,"path":"e:\\AFsim\\afsimweb-master\\AFSim\\afsim-2.9.0-win64\\bin\\mission.exe","scenario":"e:\\AFsim\\afsimweb-master\\afsim-gateway\\scenarios\\coastal_campaign.scenario","mode":"realtime","args":["-rt","coastal_campaign.scenario"]}
+2026/06/09 22:17:10 [DESKTOP-2269V6M/HtJ2boSy8A-000017] "POST http://localhost:8080/api/simulations HTTP/1.1" from [::1]:65104 - 201 146B in 3.673ms
+{"time":"2026-06-09T22:17:10.2395927+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":4,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-09T22:17:10.243166+08:00","level":"INFO","msg":"WebSocket connection request","component":"api","simulation_id":"4"}
+2026/06/09 22:17:10 [DESKTOP-2269V6M/HtJ2boSy8A-000018] "GET http://localhost:8080/api/simulations/4/ws HTTP/1.1" from [::1]:65107 - 000 0B in 1.4317ms
+{"time":"2026-06-09T22:17:10.3663484+08:00","level":"INFO","msg":"mission:\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3663484+08:00","level":"INFO","msg":"    WSF Version: 2.9.0 02-25-2022\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3668696+08:00","level":"INFO","msg":"    Built: Feb 25 2022 08:12:40\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3674177+08:00","level":"INFO","msg":"Plugin API version info:\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3679407+08:00","level":"INFO","msg":"    Version: 2.9\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3684639+08:00","level":"INFO","msg":"    Compiler: win_1916_64bit_release-hwe\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3689917+08:00","level":"INFO","msg":"Plugins Loaded:\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3695257+08:00","level":"INFO","msg":"    wsf_alternate_locations.dll, wsf_coverage.dll, wsf_iads_c2.dll, wsf_prompt.dll, wsf_scenario_analyzer.dll, wsf_scenario_analyzer_iads_c2.dll, wsf_air_combat.dll, wsf_annotation.dll, wsf_argo8.dll, wsf_brawler.dll, wsf_event_gateway.dll, wsf_fires.dll, wsf_multiresolution.dll, wsf_oms_uci.dll, wsf_p6dof.dll, wsf_six_dof.dll, wsf_sosm.dll\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3700481+08:00","level":"INFO","msg":"Extensions Included: \r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3705732+08:00","level":"INFO","msg":"    sensor_plot_lib, wsf_cyber, wsf_grammar_check, wsf_l16, wsf_mil, wsf_mil_parser, wsf_mtt, wsf_nx, wsf_parser, wsf_ripr, wsf_space, wsf_weapon_server, wsf_simdis\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3710908+08:00","level":"INFO","msg":"\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3716101+08:00","level":"INFO","msg":"Loading simulation input.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3716101+08:00","level":"INFO","msg":"Loading simulation input complete.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3721297+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0043848\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.372679+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0.015625\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3732039+08:00","level":"INFO","msg":"Initializing simulation.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3737262+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: Created pipe \\\\.\\pipe\\afsim_events successfully\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3742517+08:00","level":"INFO","msg":"Initializing simulation complete.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3747746+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0067429\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.375819+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3763499+08:00","level":"INFO","msg":"Starting simulation.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3768708+08:00","level":"INFO","msg":"T = 0\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3773946+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3784521+08:00","level":"INFO","msg":"    Platform: BluePatrol01\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3789786+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:10.3794999+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:11.1301858+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:11.1312329+08:00","level":"INFO","msg":"    Platform: BlueIntercept01\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:11.1317473+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:11.1322517+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:11.8730663+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:11.8738294+08:00","level":"INFO","msg":"    Platform: BluePatrol02\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:11.8743412+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:11.8748644+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:12.2407546+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":4,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","access":"read-only"}
+{"time":"2026-06-09T22:17:12.2418942+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":4,"pipe":"control","path":"\\\\.\\pipe\\afsim_control","access":"write-only"}
+{"time":"2026-06-09T22:17:12.2418942+08:00","level":"INFO","msg":"connected to both AFSIM pipes, starting event loop","component":"api","simulation_id":4}
+{"time":"2026-06-09T22:17:20.2489179+08:00","level":"ERROR","msg":"websocket read error","component":"api","component":"ws-client","error":"websocket: close 1005 (no status)"}
+{"time":"2026-06-09T22:17:20.3750496+08:00","level":"INFO","msg":"T = 10.000\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:30.3748153+08:00","level":"INFO","msg":"T = 20.000\r","component":"api","simulation_id":4,"stream":"stdout"}
+{"time":"2026-06-09T22:17:40.372965+08:00","level":"INFO","msg":"T = 30.000\r","component":"api","simulation_id":4,"stream":"stdout"}
+2026/06/09 22:17:45 [DESKTOP-2269V6M/HtJ2boSy8A-000019] "POST http://localhost:8080/api/simulations/1/terminate HTTP/1.1" from [::1]:65132 - 200 23B in 0s
+2026/06/09 22:17:45 [DESKTOP-2269V6M/HtJ2boSy8A-000020] "POST http://localhost:8080/api/simulations/2/terminate HTTP/1.1" from [::1]:65132 - 200 23B in 0s
+2026/06/09 22:17:45 [DESKTOP-2269V6M/HtJ2boSy8A-000021] "POST http://localhost:8080/api/simulations/3/terminate HTTP/1.1" from [::1]:65132 - 200 23B in 0s
+{"time":"2026-06-09T22:17:45.4133892+08:00","level":"INFO","msg":"terminating mission.exe","component":"api","simulation_id":4}
+{"time":"2026-06-09T22:17:45.4147594+08:00","level":"ERROR","msg":"failed to read from event pipe","component":"api","simulation_id":4,"error":"reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:17:45.4153101+08:00","level":"ERROR","msg":"connector error","component":"api","simulation_id":4,"error":"event pipe read error: reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:17:45.4282473+08:00","level":"INFO","msg":"mission.exe exited","component":"api","simulation_id":4,"error":"exit status 1"}
+2026/06/09 22:17:45 [DESKTOP-2269V6M/HtJ2boSy8A-000022] "POST http://localhost:8080/api/simulations/4/terminate HTTP/1.1" from [::1]:65132 - 200 23B in 14.8581ms
+2026/06/09 22:17:45 [DESKTOP-2269V6M/HtJ2boSy8A-000023] "POST http://localhost:8080/api/simulations/5/terminate HTTP/1.1" from [::1]:65132 - 200 23B in 0s
+{"time":"2026-06-09T22:17:46.9341567+08:00","level":"INFO","msg":"starting mission.exe","component":"api","simulation_id":5,"path":"e:\\AFsim\\afsimweb-master\\AFSim\\afsim-2.9.0-win64\\bin\\mission.exe","scenario":"e:\\AFsim\\afsimweb-master\\afsim-gateway\\scenarios\\coastal_campaign.scenario","mode":"realtime","args":["-rt","coastal_campaign.scenario"]}
+2026/06/09 22:17:46 [DESKTOP-2269V6M/HtJ2boSy8A-000024] "POST http://localhost:8080/api/simulations HTTP/1.1" from [::1]:65132 - 201 146B in 2.6533ms
+{"time":"2026-06-09T22:17:46.93681+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":5,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-09T22:17:46.9399467+08:00","level":"INFO","msg":"WebSocket connection request","component":"api","simulation_id":"5"}
+2026/06/09 22:17:46 [DESKTOP-2269V6M/HtJ2boSy8A-000025] "GET http://localhost:8080/api/simulations/5/ws HTTP/1.1" from [::1]:65135 - 000 0B in 522.2µs
+{"time":"2026-06-09T22:17:47.061847+08:00","level":"INFO","msg":"mission:\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0625453+08:00","level":"INFO","msg":"    WSF Version: 2.9.0 02-25-2022\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0630708+08:00","level":"INFO","msg":"    Built: Feb 25 2022 08:12:40\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0635867+08:00","level":"INFO","msg":"Plugin API version info:\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.064109+08:00","level":"INFO","msg":"    Version: 2.9\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.064619+08:00","level":"INFO","msg":"    Compiler: win_1916_64bit_release-hwe\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0651376+08:00","level":"INFO","msg":"Plugins Loaded:\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0656485+08:00","level":"INFO","msg":"    wsf_alternate_locations.dll, wsf_coverage.dll, wsf_iads_c2.dll, wsf_prompt.dll, wsf_scenario_analyzer.dll, wsf_scenario_analyzer_iads_c2.dll, wsf_air_combat.dll, wsf_annotation.dll, wsf_argo8.dll, wsf_brawler.dll, wsf_event_gateway.dll, wsf_fires.dll, wsf_multiresolution.dll, wsf_oms_uci.dll, wsf_p6dof.dll, wsf_six_dof.dll, wsf_sosm.dll\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0661881+08:00","level":"INFO","msg":"Extensions Included: \r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0666997+08:00","level":"INFO","msg":"    sensor_plot_lib, wsf_cyber, wsf_grammar_check, wsf_l16, wsf_mil, wsf_mil_parser, wsf_mtt, wsf_nx, wsf_parser, wsf_ripr, wsf_space, wsf_weapon_server, wsf_simdis\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0672183+08:00","level":"INFO","msg":"\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.067741+08:00","level":"INFO","msg":"Loading simulation input.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0682804+08:00","level":"INFO","msg":"Loading simulation input complete.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0687989+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0044464\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0693148+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0703392+08:00","level":"INFO","msg":"Initializing simulation.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0708763+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: Created pipe \\\\.\\pipe\\afsim_events successfully\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0714129+08:00","level":"INFO","msg":"Initializing simulation complete.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0719317+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0067217\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0724487+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0.015625\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0729948+08:00","level":"INFO","msg":"Starting simulation.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0735168+08:00","level":"INFO","msg":"T = 0\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0740356+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0745528+08:00","level":"INFO","msg":"    Platform: BluePatrol01\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0750704+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.0761035+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.8218006+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.8225553+08:00","level":"INFO","msg":"    Platform: BlueIntercept01\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.8230719+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:47.8235887+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:48.5695386+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:48.5820124+08:00","level":"INFO","msg":"    Platform: BluePatrol02\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:48.5827171+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:48.5832213+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:17:48.9389453+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":5,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","access":"read-only"}
+{"time":"2026-06-09T22:17:48.9394725+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":5,"pipe":"control","path":"\\\\.\\pipe\\afsim_control","access":"write-only"}
+{"time":"2026-06-09T22:17:48.9399901+08:00","level":"INFO","msg":"connected to both AFSIM pipes, starting event loop","component":"api","simulation_id":5}
+{"time":"2026-06-09T22:17:54.9437047+08:00","level":"ERROR","msg":"websocket read error","component":"api","component":"ws-client","error":"websocket: close 1005 (no status)"}
+{"time":"2026-06-09T22:17:57.0739639+08:00","level":"INFO","msg":"T = 10.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:18:07.0690082+08:00","level":"INFO","msg":"T = 20.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:18:17.0700087+08:00","level":"INFO","msg":"T = 30.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:18:27.0695611+08:00","level":"INFO","msg":"T = 40.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:18:37.0717876+08:00","level":"INFO","msg":"T = 50.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:18:47.0693188+08:00","level":"INFO","msg":"T = 60.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:18:57.0729858+08:00","level":"INFO","msg":"T = 70.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:19:07.0696953+08:00","level":"INFO","msg":"T = 80.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:19:17.0792331+08:00","level":"INFO","msg":"T = 90.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:19:27.0778581+08:00","level":"INFO","msg":"T = 100.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:19:37.0686358+08:00","level":"INFO","msg":"T = 110.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:19:47.0693217+08:00","level":"INFO","msg":"T = 120.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:19:57.0796027+08:00","level":"INFO","msg":"T = 130.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:20:07.0748926+08:00","level":"INFO","msg":"T = 140.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:20:17.0698545+08:00","level":"INFO","msg":"T = 150.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:20:27.0733458+08:00","level":"INFO","msg":"T = 160.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:20:37.0750202+08:00","level":"INFO","msg":"T = 170.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:20:47.0743042+08:00","level":"INFO","msg":"T = 180.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:20:57.0789363+08:00","level":"INFO","msg":"T = 190.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:21:07.0692339+08:00","level":"INFO","msg":"T = 200.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:21:17.0747801+08:00","level":"INFO","msg":"T = 210.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:21:27.0750612+08:00","level":"INFO","msg":"T = 220.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:21:37.0796643+08:00","level":"INFO","msg":"T = 230.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:21:47.0766799+08:00","level":"INFO","msg":"T = 240.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:21:57.0695125+08:00","level":"INFO","msg":"T = 250.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:22:07.0760063+08:00","level":"INFO","msg":"T = 260.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:22:17.0689816+08:00","level":"INFO","msg":"T = 270.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:22:27.0698949+08:00","level":"INFO","msg":"T = 280.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:22:37.0685968+08:00","level":"INFO","msg":"T = 290.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:22:47.0690487+08:00","level":"INFO","msg":"T = 300.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:22:57.0699165+08:00","level":"INFO","msg":"T = 310.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:23:07.0796586+08:00","level":"INFO","msg":"T = 320.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:23:17.0781427+08:00","level":"INFO","msg":"T = 330.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+{"time":"2026-06-09T22:23:27.0697031+08:00","level":"INFO","msg":"T = 340.000\r","component":"api","simulation_id":5,"stream":"stdout"}
+2026/06/09 22:23:32 [DESKTOP-2269V6M/HtJ2boSy8A-000026] "POST http://localhost:8080/api/simulations/1/terminate HTTP/1.1" from [::1]:65499 - 200 23B in 0s
+2026/06/09 22:23:32 [DESKTOP-2269V6M/HtJ2boSy8A-000027] "POST http://localhost:8080/api/simulations/2/terminate HTTP/1.1" from [::1]:65499 - 200 23B in 0s
+2026/06/09 22:23:32 [DESKTOP-2269V6M/HtJ2boSy8A-000028] "POST http://localhost:8080/api/simulations/3/terminate HTTP/1.1" from [::1]:65499 - 200 23B in 0s
+2026/06/09 22:23:32 [DESKTOP-2269V6M/HtJ2boSy8A-000029] "POST http://localhost:8080/api/simulations/4/terminate HTTP/1.1" from [::1]:65499 - 200 23B in 0s
+{"time":"2026-06-09T22:23:32.5102648+08:00","level":"INFO","msg":"terminating mission.exe","component":"api","simulation_id":5}
+{"time":"2026-06-09T22:23:32.5159632+08:00","level":"ERROR","msg":"failed to read from event pipe","component":"api","simulation_id":5,"error":"reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:23:32.5159632+08:00","level":"ERROR","msg":"connector error","component":"api","simulation_id":5,"error":"event pipe read error: reading length prefix: The pipe has been ended."}
+{"time":"2026-06-09T22:23:32.529632+08:00","level":"INFO","msg":"mission.exe exited","component":"api","simulation_id":5,"error":"exit status 1"}
+2026/06/09 22:23:32 [DESKTOP-2269V6M/HtJ2boSy8A-000030] "POST http://localhost:8080/api/simulations/5/terminate HTTP/1.1" from [::1]:65499 - 200 23B in 19.3672ms
+2026/06/09 22:23:32 [DESKTOP-2269V6M/HtJ2boSy8A-000031] "POST http://localhost:8080/api/simulations/6/terminate HTTP/1.1" from [::1]:65499 - 200 23B in 0s
+{"time":"2026-06-09T22:23:34.0332558+08:00","level":"INFO","msg":"starting mission.exe","component":"api","simulation_id":6,"path":"e:\\AFsim\\afsimweb-master\\AFSim\\afsim-2.9.0-win64\\bin\\mission.exe","scenario":"e:\\AFsim\\afsimweb-master\\afsim-gateway\\scenarios\\coastal_campaign.scenario","mode":"realtime","args":["-rt","coastal_campaign.scenario"]}
+2026/06/09 22:23:34 [DESKTOP-2269V6M/HtJ2boSy8A-000032] "POST http://localhost:8080/api/simulations HTTP/1.1" from [::1]:65499 - 201 146B in 10.9913ms
+{"time":"2026-06-09T22:23:34.0442471+08:00","level":"INFO","msg":"pipe not available, retrying","component":"api","simulation_id":6,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","error":"CreateFile pipe: The system cannot find the file specified.","retry_in":2000000000}
+{"time":"2026-06-09T22:23:34.0473751+08:00","level":"INFO","msg":"WebSocket connection request","component":"api","simulation_id":"6"}
+2026/06/09 22:23:34 [DESKTOP-2269V6M/HtJ2boSy8A-000033] "GET http://localhost:8080/api/simulations/6/ws HTTP/1.1" from [::1]:65500 - 000 0B in 726.4µs
+{"time":"2026-06-09T22:23:34.1714988+08:00","level":"INFO","msg":"mission:\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1723267+08:00","level":"INFO","msg":"    WSF Version: 2.9.0 02-25-2022\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1728478+08:00","level":"INFO","msg":"    Built: Feb 25 2022 08:12:40\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1733664+08:00","level":"INFO","msg":"Plugin API version info:\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1739161+08:00","level":"INFO","msg":"    Version: 2.9\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1744355+08:00","level":"INFO","msg":"    Compiler: win_1916_64bit_release-hwe\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.174983+08:00","level":"INFO","msg":"Plugins Loaded:\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1755011+08:00","level":"INFO","msg":"    wsf_alternate_locations.dll, wsf_coverage.dll, wsf_iads_c2.dll, wsf_prompt.dll, wsf_scenario_analyzer.dll, wsf_scenario_analyzer_iads_c2.dll, wsf_air_combat.dll, wsf_annotation.dll, wsf_argo8.dll, wsf_brawler.dll, wsf_event_gateway.dll, wsf_fires.dll, wsf_multiresolution.dll, wsf_oms_uci.dll, wsf_p6dof.dll, wsf_six_dof.dll, wsf_sosm.dll\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1760243+08:00","level":"INFO","msg":"Extensions Included: \r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1765516+08:00","level":"INFO","msg":"    sensor_plot_lib, wsf_cyber, wsf_grammar_check, wsf_l16, wsf_mil, wsf_mil_parser, wsf_mtt, wsf_nx, wsf_parser, wsf_ripr, wsf_space, wsf_weapon_server, wsf_simdis\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1775942+08:00","level":"INFO","msg":"\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1781138+08:00","level":"INFO","msg":"Loading simulation input.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1786368+08:00","level":"INFO","msg":"Loading simulation input complete.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1791773+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0043494\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.179702+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1807453+08:00","level":"INFO","msg":"Initializing simulation.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1812598+08:00","level":"INFO","msg":"***** ERROR: wsf_event_gateway: Created pipe \\\\.\\pipe\\afsim_events successfully\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1817812+08:00","level":"INFO","msg":"Initializing simulation complete.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1823227+08:00","level":"INFO","msg":"    Elapsed Wall Clock Time: 0.0066464\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1828489+08:00","level":"INFO","msg":"    Elapsed Processor Time : 0\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1833718+08:00","level":"INFO","msg":"Starting simulation.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1844415+08:00","level":"INFO","msg":"T = 0\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1849623+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1854879+08:00","level":"INFO","msg":"    Platform: BluePatrol01\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1860095+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.1865297+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.9319715+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.9324974+08:00","level":"INFO","msg":"    Platform: BlueIntercept01\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.9330242+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:34.9340892+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:35.6836621+08:00","level":"INFO","msg":"***** WARNING: Undefined radar signature.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:35.6844827+08:00","level":"INFO","msg":"    Platform: BluePatrol02\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:35.6850042+08:00","level":"INFO","msg":"    Platform Type: blue_adv_fighter_1\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:35.6860466+08:00","level":"INFO","msg":"    Using default.\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:36.0456312+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":6,"pipe":"events","path":"\\\\.\\pipe\\afsim_events","access":"read-only"}
+{"time":"2026-06-09T22:23:36.0467555+08:00","level":"INFO","msg":"connected to named pipe","component":"api","simulation_id":6,"pipe":"control","path":"\\\\.\\pipe\\afsim_control","access":"write-only"}
+{"time":"2026-06-09T22:23:36.0467555+08:00","level":"INFO","msg":"connected to both AFSIM pipes, starting event loop","component":"api","simulation_id":6}
+{"time":"2026-06-09T22:23:42.0609372+08:00","level":"ERROR","msg":"websocket read error","component":"api","component":"ws-client","error":"websocket: close 1005 (no status)"}
+{"time":"2026-06-09T22:23:44.182203+08:00","level":"INFO","msg":"T = 10.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:23:54.1829225+08:00","level":"INFO","msg":"T = 20.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:24:04.1798761+08:00","level":"INFO","msg":"T = 30.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:24:14.1858128+08:00","level":"INFO","msg":"T = 40.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:24:21.3320199+08:00","level":"INFO","msg":"WebSocket connection request","component":"api","simulation_id":"6"}
+2026/06/09 22:24:21 [DESKTOP-2269V6M/HtJ2boSy8A-000034] "GET http://localhost:8080/api/simulations/6/ws HTTP/1.1" from [::1]:49168 - 000 0B in 1.0655ms
+{"time":"2026-06-09T22:24:21.6984631+08:00","level":"ERROR","msg":"websocket read error","component":"api","component":"ws-client","error":"websocket: close 1005 (no status)"}
+{"time":"2026-06-09T22:24:24.1881428+08:00","level":"INFO","msg":"T = 50.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:24:34.1797293+08:00","level":"INFO","msg":"T = 60.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:24:44.1785802+08:00","level":"INFO","msg":"T = 70.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:24:54.1900046+08:00","level":"INFO","msg":"T = 80.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:25:04.1782285+08:00","level":"INFO","msg":"T = 90.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:25:14.1786912+08:00","level":"INFO","msg":"T = 100.000\r","component":"api","simulation_id":6,"stream":"stdout"}
+{"time":"2026-06-09T22:25:24.1862429+08:00","level":"INFO","msg":"T = 110.000\r","component":"api","simulation_id":6,"stream":"stdout"}

@@ -1,0 +1,738 @@
+[
+  {
+    "code": "DDG-51",
+    "name": "阿利·伯克级 Flight IIA",
+    "nameEn": "Arleigh Burke-class Flight IIA",
+    "category": "ship",
+    "platformType": "destroyer",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Huntington Ingalls Industries",
+    "description": "美国海军主力防空驱逐舰，配备宙斯盾作战系统，具备区域防空、反舰、反潜和对陆攻击能力。",
+    "tags": [
+      "驱逐舰",
+      "宙斯盾",
+      "防空"
+    ],
+    "platformParams": {
+      "maxSpeed": 56,
+      "cruiseSpeed": 30,
+      "range": 8300,
+      "endurance": 60,
+      "length": 155.3,
+      "width": 20.1,
+      "height": 44,
+      "weight": 9200,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "AN/SPY-1D",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 450,
+        "minRange": 2,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "scanRate": 0,
+        "accuracy": 50,
+        "frequency": 5.4,
+        "power": 4000000,
+        "antennaGain": 42,
+        "description": "宙斯盾相控阵雷达，S波段，四面固定阵列"
+      },
+      {
+        "name": "AN/SPS-67",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 100,
+        "minRange": 0.5,
+        "fovAzimuth": 360,
+        "fovElevation": 25,
+        "scanRate": 15,
+        "accuracy": 30,
+        "frequency": 9,
+        "description": "水面搜索雷达"
+      },
+      {
+        "name": "AN/SQQ-89",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 50,
+        "minRange": 0.5,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 100,
+        "description": "综合反潜作战系统，含舰壳声纳和拖曳阵列"
+      },
+      {
+        "name": "AN/SLQ-32",
+        "type": "ew",
+        "enabled": true,
+        "maxRange": 300,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "description": "电子战系统"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Mk 41 VLS",
+        "type": "missile",
+        "quantity": 96,
+        "maxRange": 370,
+        "minRange": 5,
+        "maxSpeed": 1300,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "96单元垂直发射系统，可装填SM-2/SM-6/ESSM/战斧/ASROC"
+      },
+      {
+        "name": "Mk 45 Mod 4",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 24,
+        "minRange": 1,
+        "maxSpeed": 800,
+        "warheadType": "conventional",
+        "description": "127mm/62倍径舰炮"
+      },
+      {
+        "name": "Phalanx CIWS",
+        "type": "gun",
+        "quantity": 2,
+        "maxRange": 2,
+        "minRange": 0.5,
+        "maxSpeed": 1100,
+        "warheadType": "conventional",
+        "description": "密集阵近防武器系统"
+      },
+      {
+        "name": "Mk 32 SVTT",
+        "type": "torpedo",
+        "quantity": 2,
+        "maxRange": 10,
+        "minRange": 1,
+        "maxSpeed": 80,
+        "warheadType": "conventional",
+        "description": "324mm三联装鱼雷发射管"
+      }
+    ],
+    "communications": [
+      {
+        "name": "Link-16",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 1200,
+        "maxRange": 500,
+        "dataRate": 238,
+        "description": "联合战术信息分发系统"
+      },
+      {
+        "name": "HF Radio",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 30,
+        "maxRange": 3000,
+        "description": "高频无线电通信"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 8000,
+        "side": 15000,
+        "rear": 12000,
+        "average": 11000
+      },
+      "ir": {
+        "frontal": 500,
+        "side": 800,
+        "rear": 1200
+      },
+      "acoustic": {
+        "noise_level": 110,
+        "frequency": 200
+      }
+    },
+    "id": "ships-001"
+  },
+  {
+    "code": "CG-47",
+    "name": "提康德罗加级",
+    "nameEn": "Ticonderoga-class",
+    "category": "ship",
+    "platformType": "cruiser",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Huntington Ingalls Industries",
+    "description": "美国海军宙斯盾巡洋舰，具备强大的区域防空和指挥能力。",
+    "tags": [
+      "巡洋舰",
+      "宙斯盾",
+      "防空"
+    ],
+    "platformParams": {
+      "maxSpeed": 56,
+      "cruiseSpeed": 30,
+      "range": 8000,
+      "endurance": 60,
+      "length": 172.8,
+      "width": 16.8,
+      "height": 46,
+      "weight": 9800,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "AN/SPY-1A/B",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 450,
+        "minRange": 2,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "accuracy": 50,
+        "frequency": 5.4,
+        "power": 4000000,
+        "antennaGain": 42,
+        "description": "宙斯盾相控阵雷达"
+      },
+      {
+        "name": "AN/SQQ-89",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 50,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 100,
+        "description": "综合反潜作战系统"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Mk 41 VLS",
+        "type": "missile",
+        "quantity": 122,
+        "maxRange": 370,
+        "minRange": 5,
+        "maxSpeed": 1300,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "122单元垂直发射系统"
+      },
+      {
+        "name": "Mk 45 Mod 2",
+        "type": "gun",
+        "quantity": 2,
+        "maxRange": 24,
+        "minRange": 1,
+        "maxSpeed": 800,
+        "warheadType": "conventional",
+        "description": "127mm舰炮"
+      }
+    ],
+    "communications": [
+      {
+        "name": "Link-16",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 1200,
+        "maxRange": 500,
+        "dataRate": 238,
+        "description": "联合战术信息分发系统"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 10000,
+        "side": 18000,
+        "rear": 15000,
+        "average": 14000
+      },
+      "ir": {
+        "frontal": 600,
+        "side": 1000,
+        "rear": 1500
+      },
+      "acoustic": {
+        "noise_level": 115,
+        "frequency": 200
+      }
+    },
+    "id": "ships-002"
+  },
+  {
+    "code": "052D",
+    "name": "052D型驱逐舰",
+    "nameEn": "Type 052D Destroyer",
+    "category": "ship",
+    "platformType": "destroyer",
+    "status": "active",
+    "country": "China",
+    "manufacturer": "江南造船厂",
+    "description": "中国海军主力驱逐舰，配备346A型相控阵雷达和64单元垂直发射系统。",
+    "tags": [
+      "驱逐舰",
+      "相控阵",
+      "防空"
+    ],
+    "platformParams": {
+      "maxSpeed": 56,
+      "cruiseSpeed": 30,
+      "range": 7500,
+      "endurance": 50,
+      "length": 157,
+      "width": 17,
+      "height": 42,
+      "weight": 7500,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "346A型相控阵雷达",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 400,
+        "minRange": 2,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "accuracy": 50,
+        "frequency": 5.4,
+        "power": 3000000,
+        "antennaGain": 40,
+        "description": "S波段有源相控阵雷达，四面固定阵列"
+      },
+      {
+        "name": "364型雷达",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 150,
+        "fovAzimuth": 360,
+        "fovElevation": 30,
+        "scanRate": 15,
+        "frequency": 9,
+        "description": "对空/对海搜索雷达"
+      },
+      {
+        "name": "主/被动声纳",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 40,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 100,
+        "description": "舰壳声纳"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "通用垂直发射系统",
+        "type": "missile",
+        "quantity": 64,
+        "maxRange": 200,
+        "minRange": 5,
+        "maxSpeed": 1200,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "64单元通用垂直发射系统，可装填HHQ-9/YJ-18等"
+      },
+      {
+        "name": "H/PJ-38型舰炮",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 24,
+        "minRange": 1,
+        "maxSpeed": 800,
+        "warheadType": "conventional",
+        "description": "130mm/70倍径单管隐身舰炮"
+      },
+      {
+        "name": "H/PJ-11型近防炮",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 3,
+        "minRange": 0.5,
+        "maxSpeed": 1100,
+        "warheadType": "conventional",
+        "description": "11管30mm近防武器系统"
+      }
+    ],
+    "communications": [
+      {
+        "name": "HN-900数据链",
+        "type": "datalink",
+        "enabled": true,
+        "maxRange": 500,
+        "dataRate": 200,
+        "description": "海军数据链系统"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 5000,
+        "side": 12000,
+        "rear": 10000,
+        "average": 8000
+      },
+      "ir": {
+        "frontal": 450,
+        "side": 700,
+        "rear": 1100
+      },
+      "acoustic": {
+        "noise_level": 112,
+        "frequency": 200
+      }
+    },
+    "id": "ships-003"
+  },
+  {
+    "code": "054A",
+    "name": "054A型护卫舰",
+    "nameEn": "Type 054A Frigate",
+    "category": "ship",
+    "platformType": "frigate",
+    "status": "active",
+    "country": "China",
+    "manufacturer": "沪东中华造船",
+    "description": "中国海军主力护卫舰，具备反潜和区域防空能力。",
+    "tags": [
+      "护卫舰",
+      "反潜",
+      "防空"
+    ],
+    "platformParams": {
+      "maxSpeed": 52,
+      "cruiseSpeed": 28,
+      "range": 8000,
+      "endurance": 55,
+      "length": 134.1,
+      "width": 15.2,
+      "height": 36,
+      "weight": 4200,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "382型三坐标雷达",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 200,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "scanRate": 10,
+        "frequency": 5.4,
+        "description": "S波段三坐标搜索雷达"
+      },
+      {
+        "name": "舰壳声纳",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 30,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 100,
+        "description": "中频舰壳声纳"
+      },
+      {
+        "name": "拖曳阵列声纳",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 60,
+        "fovAzimuth": 180,
+        "fovElevation": 30,
+        "accuracy": 150,
+        "description": "低频被动拖曳阵列声纳"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "HHQ-16垂直发射系统",
+        "type": "missile",
+        "quantity": 32,
+        "maxRange": 70,
+        "minRange": 3,
+        "maxSpeed": 1200,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "32单元垂直发射系统"
+      },
+      {
+        "name": "YJ-83反舰导弹",
+        "type": "missile",
+        "quantity": 8,
+        "maxRange": 180,
+        "minRange": 10,
+        "maxSpeed": 310,
+        "warheadType": "conventional",
+        "guidanceType": "radar",
+        "description": "鹰击-83反舰导弹"
+      },
+      {
+        "name": "H/PJ-26型舰炮",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 17,
+        "minRange": 1,
+        "maxSpeed": 800,
+        "warheadType": "conventional",
+        "description": "76mm舰炮"
+      }
+    ],
+    "communications": [
+      {
+        "name": "数据链",
+        "type": "datalink",
+        "enabled": true,
+        "maxRange": 300,
+        "dataRate": 100,
+        "description": "战术数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 3000,
+        "side": 8000,
+        "rear": 6000,
+        "average": 5000
+      },
+      "ir": {
+        "frontal": 350,
+        "side": 550,
+        "rear": 800
+      },
+      "acoustic": {
+        "noise_level": 108,
+        "frequency": 200
+      }
+    },
+    "id": "ships-004"
+  },
+  {
+    "code": "KONGO",
+    "name": "金刚级驱逐舰",
+    "nameEn": "Kongo-class Destroyer",
+    "category": "ship",
+    "platformType": "destroyer",
+    "status": "active",
+    "country": "Japan",
+    "manufacturer": "三菱重工",
+    "description": "日本海上自卫队宙斯盾驱逐舰，基于伯克级设计。",
+    "tags": [
+      "驱逐舰",
+      "宙斯盾",
+      "日本"
+    ],
+    "platformParams": {
+      "maxSpeed": 56,
+      "cruiseSpeed": 30,
+      "range": 8000,
+      "endurance": 55,
+      "length": 161,
+      "width": 21,
+      "height": 45,
+      "weight": 9500,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "AN/SPY-1D",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 450,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "accuracy": 50,
+        "frequency": 5.4,
+        "power": 4000000,
+        "antennaGain": 42,
+        "description": "宙斯盾相控阵雷达"
+      },
+      {
+        "name": "OQS-102",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 50,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 100,
+        "description": "舰壳声纳"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Mk 41 VLS",
+        "type": "missile",
+        "quantity": 90,
+        "maxRange": 370,
+        "minRange": 5,
+        "maxSpeed": 1300,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "90单元垂直发射系统"
+      },
+      {
+        "name": "Mk 45 Mod 4",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 24,
+        "minRange": 1,
+        "maxSpeed": 800,
+        "warheadType": "conventional",
+        "description": "127mm舰炮"
+      }
+    ],
+    "communications": [
+      {
+        "name": "Link-16",
+        "type": "datalink",
+        "enabled": true,
+        "frequency": 1200,
+        "maxRange": 500,
+        "dataRate": 238,
+        "description": "联合战术信息分发系统"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 9000,
+        "side": 16000,
+        "rear": 13000,
+        "average": 12000
+      },
+      "ir": {
+        "frontal": 550,
+        "side": 900,
+        "rear": 1300
+      },
+      "acoustic": {
+        "noise_level": 113,
+        "frequency": 200
+      }
+    },
+    "id": "ships-005"
+  },
+  {
+    "code": "GORSHKOV",
+    "name": "戈尔什科夫海军元帅级",
+    "nameEn": "Admiral Gorshkov-class",
+    "category": "ship",
+    "platformType": "frigate",
+    "status": "active",
+    "country": "Russia",
+    "description": "俄罗斯海军新型多功能护卫舰，配备垂直发射系统和超音速反舰导弹。",
+    "tags": [
+      "护卫舰",
+      "俄罗斯",
+      "多功能"
+    ],
+    "platformParams": {
+      "maxSpeed": 56,
+      "cruiseSpeed": 30,
+      "range": 7000,
+      "endurance": 45,
+      "length": 135,
+      "width": 16,
+      "height": 38,
+      "weight": 5400,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "Poliment-Redut",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 300,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "accuracy": 50,
+        "frequency": 5.4,
+        "description": "四面固定有源相控阵雷达"
+      },
+      {
+        "name": "Zarya-M sonar",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 40,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 100,
+        "description": "舰壳声纳"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Redut VLS",
+        "type": "missile",
+        "quantity": 32,
+        "maxRange": 150,
+        "minRange": 3,
+        "maxSpeed": 1500,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "32单元垂直发射系统，可装填9M96/9M100导弹"
+      },
+      {
+        "name": "Oniks/Yakhont",
+        "type": "missile",
+        "quantity": 8,
+        "maxRange": 300,
+        "minRange": 10,
+        "maxSpeed": 750,
+        "warheadType": "conventional",
+        "guidanceType": "radar",
+        "description": "缟玛瑙超音速反舰导弹"
+      },
+      {
+        "name": "A-192M",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 23,
+        "minRange": 1,
+        "maxSpeed": 800,
+        "warheadType": "conventional",
+        "description": "130mm舰炮"
+      }
+    ],
+    "communications": [
+      {
+        "name": "Sigma C2",
+        "type": "datalink",
+        "enabled": true,
+        "maxRange": 400,
+        "dataRate": 150,
+        "description": "战术数据链系统"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 3500,
+        "side": 9000,
+        "rear": 7000,
+        "average": 6000
+      },
+      "ir": {
+        "frontal": 400,
+        "side": 600,
+        "rear": 900
+      },
+      "acoustic": {
+        "noise_level": 110,
+        "frequency": 200
+      }
+    },
+    "id": "ships-006"
+  }
+]

@@ -1,0 +1,28 @@
+# TrueSim
+
+# AFSIM 引擎二进制包（vendor dependency，不纳入版本控制）
+# 通过 deploy/extract_engine.sh 或手动解压到此处
+AFSim/
+
+# === 构建产物 ===
+afsim-plugin/build/
+afsim-gateway/bin/
+afsim-gateway/output/
+afsim-gateway/mission.log
+**/mission.log
+afsim-web/node_modules/
+afsim-web/dist/
+deploy/.env
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# === OS ===
+Thumbs.db
+.DS_Store
+
+# === Claude ===
+.claude/

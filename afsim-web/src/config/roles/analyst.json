@@ -1,0 +1,11 @@
+{
+  "role": "analyst",
+  "label": "分析师",
+  "description": "数据分析和地形评估",
+  "plugins": ["sim-globe", "map-data", "analysis", "data-center"],
+  "defaultPreset": "analyst-analysis",
+  "restrictions": {
+    "readOnly": true,
+    "canAddLayers": true
+  }
+}

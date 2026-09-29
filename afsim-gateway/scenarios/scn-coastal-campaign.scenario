@@ -1,0 +1,448 @@
+define_path_variable CASE scn-coastal-campaign
+file_path .
+file_path ../../AFSim/afsim-2.9.0-win64/demos/simple_scenario
+file_path ../../AFSim/afsim-2.9.0-win64/demos/base_types
+
+include event_pipe.txt
+include event_output.txt
+include terrain.txt
+
+log_file ../output/$(CASE).log
+event_output file ../output/$(CASE).evt end_event_output
+event_pipe file ../output/$(CASE).aer end_event_pipe
+
+event_gateway
+   enabled true
+   event_pipe_name afsim_events
+   control_pipe_name afsim_control
+   mover_throttle 0.5 sec
+end_event_gateway
+
+# AFSIM Scenario - Auto-generated from TrueSim
+# Scenario: 东海沿海战役想定
+# Generated: 2026-06-11T13:19:19.228Z
+
+# ===== Platform Type Includes =====
+
+include_once platforms/awacs.txt
+include_once platforms/blue_adv_fighter_1_noripr.txt
+include_once platforms/red_adv_fighter_1_noripr.txt
+
+# ===== Route Definitions =====
+
+route 蓝方CAP巡逻路线
+   position 26.2n 120.5e altitude 9000 m
+      speed 550 kts
+   position 26n 122e altitude 9000 m
+      speed 550 kts
+   position 25n 122.5e altitude 9000 m
+      speed 550 kts
+   position 24.5n 121e altitude 9000 m
+      speed 550 kts
+   position 25.5n 120e altitude 9000 m
+      speed 550 kts
+   position 26.2n 120.5e altitude 9000 m
+      speed 550 kts
+end_route
+
+route 蓝方舰队机动路线
+   position 25n 122.2e
+      speed 18 kts
+   position 25.2n 121.5e
+      speed 20 kts
+   position 25n 120.8e
+      speed 20 kts
+end_route
+
+route 红方突防路线
+   position 25.2n 126.5e altitude 8000 m
+      speed 480 kts
+   position 25n 124.5e altitude 3000 m
+      speed 520 kts
+   position 24.8n 122.5e altitude 500 m
+      speed 540 kts
+   position 24.5n 121e altitude 200 m
+      speed 540 kts
+end_route
+
+# ===== Platform Instances =====
+
+platform "172昆明舰" blue_adv_fighter_1
+   side blue
+   position 25n 122e
+   heading 270 deg
+   route
+      position 25n 122.2e
+         speed 18 kts
+      position 25.2n 121.5e
+         speed 20 kts
+      position 25n 120.8e
+         speed 20 kts
+   end_route
+end_platform
+
+platform "570黄山舰" blue_adv_fighter_1
+   side blue
+   position 24.6n 122.2e
+   heading 270 deg
+   route
+      position 25n 122.2e
+         speed 18 kts
+      position 25.2n 121.5e
+         speed 20 kts
+      position 25n 120.8e
+         speed 20 kts
+   end_route
+end_platform
+
+platform "蓝鹰01" blue_adv_fighter_1
+   side blue
+   position 26.2n 120.5e altitude 9000 m
+   heading 90 deg
+   route
+      position 26.2n 120.5e altitude 9000 m
+         speed 550 kts
+      position 26n 122e altitude 9000 m
+         speed 550 kts
+      position 25n 122.5e altitude 9000 m
+         speed 550 kts
+      position 24.5n 121e altitude 9000 m
+         speed 550 kts
+      position 25.5n 120e altitude 9000 m
+         speed 550 kts
+      position 26.2n 120.5e altitude 9000 m
+         speed 550 kts
+   end_route
+   add sensor geo_sensor WSF_GEOMETRIC_SENSOR
+      azimuth_field_of_view -180.0 degrees 180.0 degrees
+      elevation_field_of_view -90.0 degrees 90.0 degrees
+      minimum_range 0 m
+      maximum_range 200000 m
+      on
+      frame_time 1.0 sec
+      reports_location
+      reports_velocity
+      reports_iff
+      track_quality 1.0
+      ignore_same_side
+      internal_link track_manager
+   end_sensor
+   add processor task_mgr WSF_TASK_PROCESSOR
+   end_processor
+   add processor engage_mgr WSF_SCRIPT_PROCESSOR
+      update_interval 2 sec
+      script_variables
+         Set<string> engaged = Set<string>();
+         bool missionAssigned = false;
+         bool missionDone = false;
+         WsfTrackId missionTrackId = WsfTrackId();
+      end_script_variables
+      on_update
+         WsfTaskManager task_mgr = (WsfTaskManager)PLATFORM.Processor("task_mgr");
+         if (!missionAssigned && task_mgr.IsValid())
+         {
+            WsfTrack selfTrack = PLATFORM.MakeTrack();
+            if (task_mgr.AssignTask(selfTrack, "cap"))
+            {
+               missionAssigned = true;
+               missionTrackId = selfTrack.TrackId();
+               writeln(PLATFORM.Name(), " task assigned: cap");
+            }
+         }
+         foreach (WsfLocalTrack track in PLATFORM.MasterTrackList())
+         {
+            if (!track.IsValid()) { continue; }
+            if (track.Side() == PLATFORM.Side()) { continue; }
+            if (engaged.Exists(track.TargetName())) { continue; }
+            double range = PLATFORM.SlantRangeTo(track);
+            if (range < 60000.0)
+            {
+               WsfWeapon wpn = PLATFORM.Weapon("int_missile");
+               if (wpn.IsValid() && wpn.QuantityRemaining() > 0)
+               {
+                  if (wpn.FireSalvo(track, 1))
+                  {
+                     engaged.Insert(track.TargetName());
+                     writeln(PLATFORM.Name(), " engaging ", track.TargetName(), " at range ", range);
+                  }
+               }
+            }
+         }
+         if (missionAssigned && !missionDone && engaged.Size() >= 2 && task_mgr.IsValid())
+         {
+            if (task_mgr.TaskComplete(missionTrackId, "cap"))
+            {
+               missionDone = true;
+               writeln(PLATFORM.Name(), " task complete: cap");
+            }
+         }
+      end_on_update
+   end_processor
+end_platform
+
+platform "蓝鹰02" blue_adv_fighter_1
+   side blue
+   position 25.8n 120.7e altitude 9000 m
+   heading 90 deg
+   route
+      position 26.2n 120.5e altitude 9000 m
+         speed 550 kts
+      position 26n 122e altitude 9000 m
+         speed 550 kts
+      position 25n 122.5e altitude 9000 m
+         speed 550 kts
+      position 24.5n 121e altitude 9000 m
+         speed 550 kts
+      position 25.5n 120e altitude 9000 m
+         speed 550 kts
+      position 26.2n 120.5e altitude 9000 m
+         speed 550 kts
+   end_route
+   add sensor geo_sensor WSF_GEOMETRIC_SENSOR
+      azimuth_field_of_view -180.0 degrees 180.0 degrees
+      elevation_field_of_view -90.0 degrees 90.0 degrees
+      minimum_range 0 m
+      maximum_range 200000 m
+      on
+      frame_time 1.0 sec
+      reports_location
+      reports_velocity
+      reports_iff
+      track_quality 1.0
+      ignore_same_side
+      internal_link track_manager
+   end_sensor
+   add processor task_mgr WSF_TASK_PROCESSOR
+   end_processor
+   add processor engage_mgr WSF_SCRIPT_PROCESSOR
+      update_interval 2 sec
+      script_variables
+         Set<string> engaged = Set<string>();
+         bool missionAssigned = false;
+         bool missionDone = false;
+         WsfTrackId missionTrackId = WsfTrackId();
+      end_script_variables
+      on_update
+         WsfTaskManager task_mgr = (WsfTaskManager)PLATFORM.Processor("task_mgr");
+         if (!missionAssigned && task_mgr.IsValid())
+         {
+            WsfTrack selfTrack = PLATFORM.MakeTrack();
+            if (task_mgr.AssignTask(selfTrack, "cap"))
+            {
+               missionAssigned = true;
+               missionTrackId = selfTrack.TrackId();
+               writeln(PLATFORM.Name(), " task assigned: cap");
+            }
+         }
+         foreach (WsfLocalTrack track in PLATFORM.MasterTrackList())
+         {
+            if (!track.IsValid()) { continue; }
+            if (track.Side() == PLATFORM.Side()) { continue; }
+            if (engaged.Exists(track.TargetName())) { continue; }
+            double range = PLATFORM.SlantRangeTo(track);
+            if (range < 60000.0)
+            {
+               WsfWeapon wpn = PLATFORM.Weapon("int_missile");
+               if (wpn.IsValid() && wpn.QuantityRemaining() > 0)
+               {
+                  if (wpn.FireSalvo(track, 1))
+                  {
+                     engaged.Insert(track.TargetName());
+                     writeln(PLATFORM.Name(), " engaging ", track.TargetName(), " at range ", range);
+                  }
+               }
+            }
+         }
+         if (missionAssigned && !missionDone && engaged.Size() >= 2 && task_mgr.IsValid())
+         {
+            if (task_mgr.TaskComplete(missionTrackId, "cap"))
+            {
+               missionDone = true;
+               writeln(PLATFORM.Name(), " task complete: cap");
+            }
+         }
+      end_on_update
+   end_processor
+end_platform
+
+platform "HQ-9 阵地Alpha" blue_adv_fighter_1
+   side blue
+   position 25.5n 119.5e
+   heading 90 deg
+end_platform
+
+platform "红剑01" RED_ADV_FIGHTER_1
+   side red
+   position 25.5n 126.5e altitude 8000 m
+   heading 270 deg
+   route
+      position 25.2n 126.5e altitude 8000 m
+         speed 480 kts
+      position 25n 124.5e altitude 3000 m
+         speed 520 kts
+      position 24.8n 122.5e altitude 500 m
+         speed 540 kts
+      position 24.5n 121e altitude 200 m
+         speed 540 kts
+   end_route
+   add sensor geo_sensor WSF_GEOMETRIC_SENSOR
+      azimuth_field_of_view -180.0 degrees 180.0 degrees
+      elevation_field_of_view -90.0 degrees 90.0 degrees
+      minimum_range 0 m
+      maximum_range 200000 m
+      on
+      frame_time 1.0 sec
+      reports_location
+      reports_velocity
+      reports_iff
+      track_quality 1.0
+      ignore_same_side
+      internal_link track_manager
+   end_sensor
+   add processor task_mgr WSF_TASK_PROCESSOR
+   end_processor
+   add processor engage_mgr WSF_SCRIPT_PROCESSOR
+      update_interval 2 sec
+      script_variables
+         Set<string> engaged = Set<string>();
+         bool missionAssigned = false;
+         bool missionDone = false;
+         WsfTrackId missionTrackId = WsfTrackId();
+      end_script_variables
+      on_update
+         WsfTaskManager task_mgr = (WsfTaskManager)PLATFORM.Processor("task_mgr");
+         if (!missionAssigned && task_mgr.IsValid())
+         {
+            WsfTrack selfTrack = PLATFORM.MakeTrack();
+            if (task_mgr.AssignTask(selfTrack, "strike"))
+            {
+               missionAssigned = true;
+               missionTrackId = selfTrack.TrackId();
+               writeln(PLATFORM.Name(), " task assigned: strike");
+            }
+         }
+         foreach (WsfLocalTrack track in PLATFORM.MasterTrackList())
+         {
+            if (!track.IsValid()) { continue; }
+            if (track.Side() == PLATFORM.Side()) { continue; }
+            if (engaged.Exists(track.TargetName())) { continue; }
+            double range = PLATFORM.SlantRangeTo(track);
+            if (range < 60000.0)
+            {
+               WsfWeapon wpn = PLATFORM.Weapon("int_missile");
+               if (wpn.IsValid() && wpn.QuantityRemaining() > 0)
+               {
+                  if (wpn.FireSalvo(track, 1))
+                  {
+                     engaged.Insert(track.TargetName());
+                     writeln(PLATFORM.Name(), " engaging ", track.TargetName(), " at range ", range);
+                  }
+               }
+            }
+         }
+         if (missionAssigned && !missionDone && engaged.Size() >= 2 && task_mgr.IsValid())
+         {
+            if (task_mgr.TaskComplete(missionTrackId, "strike"))
+            {
+               missionDone = true;
+               writeln(PLATFORM.Name(), " task complete: strike");
+            }
+         }
+      end_on_update
+   end_processor
+end_platform
+
+platform "红剑02" RED_ADV_FIGHTER_1
+   side red
+   position 24.8n 126.5e altitude 8000 m
+   heading 270 deg
+   route
+      position 25.2n 126.5e altitude 8000 m
+         speed 480 kts
+      position 25n 124.5e altitude 3000 m
+         speed 520 kts
+      position 24.8n 122.5e altitude 500 m
+         speed 540 kts
+      position 24.5n 121e altitude 200 m
+         speed 540 kts
+   end_route
+   add sensor geo_sensor WSF_GEOMETRIC_SENSOR
+      azimuth_field_of_view -180.0 degrees 180.0 degrees
+      elevation_field_of_view -90.0 degrees 90.0 degrees
+      minimum_range 0 m
+      maximum_range 200000 m
+      on
+      frame_time 1.0 sec
+      reports_location
+      reports_velocity
+      reports_iff
+      track_quality 1.0
+      ignore_same_side
+      internal_link track_manager
+   end_sensor
+   add processor task_mgr WSF_TASK_PROCESSOR
+   end_processor
+   add processor engage_mgr WSF_SCRIPT_PROCESSOR
+      update_interval 2 sec
+      script_variables
+         Set<string> engaged = Set<string>();
+         bool missionAssigned = false;
+         bool missionDone = false;
+         WsfTrackId missionTrackId = WsfTrackId();
+      end_script_variables
+      on_update
+         WsfTaskManager task_mgr = (WsfTaskManager)PLATFORM.Processor("task_mgr");
+         if (!missionAssigned && task_mgr.IsValid())
+         {
+            WsfTrack selfTrack = PLATFORM.MakeTrack();
+            if (task_mgr.AssignTask(selfTrack, "strike"))
+            {
+               missionAssigned = true;
+               missionTrackId = selfTrack.TrackId();
+               writeln(PLATFORM.Name(), " task assigned: strike");
+            }
+         }
+         foreach (WsfLocalTrack track in PLATFORM.MasterTrackList())
+         {
+            if (!track.IsValid()) { continue; }
+            if (track.Side() == PLATFORM.Side()) { continue; }
+            if (engaged.Exists(track.TargetName())) { continue; }
+            double range = PLATFORM.SlantRangeTo(track);
+            if (range < 60000.0)
+            {
+               WsfWeapon wpn = PLATFORM.Weapon("int_missile");
+               if (wpn.IsValid() && wpn.QuantityRemaining() > 0)
+               {
+                  if (wpn.FireSalvo(track, 1))
+                  {
+                     engaged.Insert(track.TargetName());
+                     writeln(PLATFORM.Name(), " engaging ", track.TargetName(), " at range ", range);
+                  }
+               }
+            }
+         }
+         if (missionAssigned && !missionDone && engaged.Size() >= 2 && task_mgr.IsValid())
+         {
+            if (task_mgr.TaskComplete(missionTrackId, "strike"))
+            {
+               missionDone = true;
+               writeln(PLATFORM.Name(), " task complete: strike");
+            }
+         }
+      end_on_update
+   end_processor
+end_platform
+
+platform "红鹰EW" RED_ADV_FIGHTER_1
+   side red
+   position 26n 127e altitude 8500 m
+   heading 270 deg
+end_platform
+
+platform "红眼AEW" AWACS
+   side red
+   position 26.5n 128e altitude 7000 m
+   heading 270 deg
+end_platform
+
+end_time 30 mins

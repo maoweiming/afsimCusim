@@ -1,0 +1,221 @@
+syntax = "proto3";
+package afsim.events;
+option go_package = "github.com/truesim/afsim-gateway/internal/proto";
+option optimize_for = LITE_RUNTIME;
+
+// Top-level wrapper - every message on the wire is one of these
+// Wire format: [4 bytes little-endian length][serialized SimEvent]
+message SimEvent {
+  double sim_time = 1;
+  oneof payload {
+    SimStarting            sim_starting        = 2;
+    SimComplete            sim_complete         = 3;
+    SimPausing             sim_pausing          = 4;
+    SimResuming            sim_resuming         = 5;
+    FrameComplete          frame_complete       = 6;
+
+    PlatformAdded          platform_added       = 10;
+    PlatformInitialized    platform_initialized = 11;
+    PlatformDeleted        platform_deleted     = 12;
+    PlatformBroken         platform_broken      = 13;
+    PlatformDamageChanged  platform_damage_changed = 14;
+
+    MoverUpdated           mover_updated        = 20;
+
+    SensorTurnedOn         sensor_turned_on     = 30;
+    SensorTurnedOff        sensor_turned_off    = 31;
+    SensorDetectionChanged sensor_detection_changed = 32;
+    SensorTrackInitiated   sensor_track_initiated = 33;
+    SensorTrackDropped     sensor_track_dropped = 34;
+
+    WeaponFired            weapon_fired         = 40;
+    WeaponHit              weapon_hit           = 41;
+    WeaponMissed           weapon_missed        = 42;
+    WeaponTerminated       weapon_terminated    = 43;
+
+    TrackInitiated         track_initiated      = 50;
+    TrackUpdated           track_updated        = 51;
+    TrackDropped           track_dropped        = 52;
+
+    ZoneEntered            zone_entered         = 60;
+    ZoneExited             zone_exited          = 61;
+
+    FuelEvent              fuel_event           = 70;
+    Comment                comment              = 80;
+
+    TaskAssigned           task_assigned        = 90;
+    TaskCompleted          task_completed       = 91;
+    TaskCanceled           task_canceled        = 92;
+  }
+}
+
+// --- Simulation lifecycle ---
+
+message SimStarting {}
+message SimComplete { double end_time = 1; }
+message SimPausing {}
+message SimResuming {}
+message FrameComplete { double sim_time = 1; }
+
+// --- Platform ---
+
+message PlatformData {
+  uint64 index        = 1;
+  string name         = 2;
+  string type_id      = 3;
+  string side         = 4;
+  string icon         = 5;
+  double lat          = 6;
+  double lon          = 7;
+  double alt          = 8;   // meters MSL
+  float  heading      = 9;  // degrees
+  float  pitch        = 10;
+  float  roll         = 11;
+  double vel_n        = 12; // m/s NED
+  double vel_e        = 13;
+  double vel_d        = 14;
+  double damage_factor = 15; // 0.0-1.0
+}
+
+message PlatformAdded         { PlatformData platform = 1; }
+message PlatformInitialized   { PlatformData platform = 1; }
+message PlatformDeleted       { uint64 index = 1; string name = 2; }
+message PlatformBroken        { uint64 index = 1; double damage = 2; }
+message PlatformDamageChanged { uint64 index = 1; double damage = 2; }
+
+// --- Mover update (high frequency, throttled by plugin) ---
+
+message MoverUpdated {
+  uint64 platform_index = 1;
+  double lat  = 2;
+  double lon  = 3;
+  double alt  = 4;
+  float  heading = 5;
+  float  pitch   = 6;
+  float  roll    = 7;
+  double vel_n   = 8;
+  double vel_e   = 9;
+  double vel_d   = 10;
+}
+
+// --- Sensor ---
+
+message SensorEvent {
+  uint64 platform_index = 1;
+  string sensor_name    = 2;
+  string sensor_type    = 3;
+}
+
+message SensorTurnedOn       { SensorEvent sensor = 1; }
+message SensorTurnedOff      { SensorEvent sensor = 1; }
+message SensorDetectionChanged {
+  SensorEvent sensor  = 1;
+  uint64 target_index = 2;
+  bool detected       = 3;
+}
+message SensorTrackInitiated {
+  SensorEvent sensor = 1;
+  TrackId track_id   = 2;
+  uint64 target_index = 3;
+}
+message SensorTrackDropped {
+  SensorEvent sensor = 1;
+  TrackId track_id   = 2;
+}
+
+// --- Weapon ---
+
+message WeaponFired {
+  uint64 firing_platform_index  = 1;
+  string weapon_name            = 2;
+  uint64 weapon_platform_index  = 3;
+  uint64 target_platform_index  = 4;
+  double launch_lat = 5;
+  double launch_lon = 6;
+  double launch_alt = 7;
+}
+
+message WeaponHit {
+  uint64 weapon_platform_index  = 1;
+  uint64 target_platform_index  = 2;
+  double target_lat = 3;
+  double target_lon = 4;
+  double target_alt = 5;
+}
+
+message WeaponMissed {
+  uint64 weapon_platform_index  = 1;
+  uint64 target_platform_index  = 2;
+}
+
+message WeaponTerminated {
+  uint64 weapon_platform_index  = 1;
+  double lat = 2;
+  double lon = 3;
+  double alt = 4;
+}
+
+// --- Track ---
+
+message TrackId {
+  uint32 originator_index = 1;
+  uint32 track_number     = 2;
+}
+
+message TrackData {
+  TrackId id               = 1;
+  uint64 originator_index  = 2;
+  uint64 target_index      = 3;
+  double lat = 4;
+  double lon = 5;
+  double alt = 6;
+  double vel_n = 7;
+  double vel_e = 8;
+  double vel_d = 9;
+  float  quality = 10;
+}
+
+message TrackInitiated { TrackData track = 1; bool is_local = 2; }
+message TrackUpdated   { TrackData track = 1; bool is_local = 2; }
+message TrackDropped   { TrackId id = 1; bool is_local = 2; }
+
+// --- Zone ---
+
+message ZoneEntered { string zone_name = 1; uint64 platform_index = 2; }
+message ZoneExited  { string zone_name = 1; uint64 platform_index = 2; }
+
+// --- Fuel ---
+
+message FuelEvent {
+  uint64 platform_index = 1;
+  string fuel_name      = 2;
+  string event_name     = 3;
+  double quantity       = 4;
+}
+
+// --- Comment ---
+
+message Comment {
+  uint64 platform_index = 1;
+  string text           = 2;
+}
+
+// --- Task assignment (WsfTaskManager observers) ---
+
+message TaskData {
+  uint32 task_id        = 1;
+  string task_type      = 2;
+  uint64 assigner_index = 3;
+  string assigner_name  = 4;
+  uint64 assignee_index = 5;
+  string assignee_name  = 6;
+  string resource_name  = 7;
+  uint64 target_index   = 8;  // truth platform index from the task track (0 if uncorrelated)
+  string target_name    = 9;
+  uint32 track_number   = 10;
+  double assign_time    = 11;
+}
+
+message TaskAssigned  { TaskData task = 1; }
+message TaskCompleted { TaskData task = 1; string status = 2; }
+message TaskCanceled  { TaskData task = 1; }

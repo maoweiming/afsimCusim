@@ -1,0 +1,10 @@
+go 1.23
+
+use (
+	./services/data-gateway
+	./services/equipment
+	./services/geospatial
+	./services/scenario
+	./services/timeseries
+	./shared/gen
+)

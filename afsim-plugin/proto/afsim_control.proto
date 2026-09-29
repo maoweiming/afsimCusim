@@ -1,0 +1,28 @@
+syntax = "proto3";
+package afsim.control;
+option optimize_for = LITE_RUNTIME;
+
+// Control commands sent from Go gateway to the WSF plugin
+// Wire format: [4 bytes little-endian length][serialized ControlCommand]
+message ControlCommand {
+  uint64 command_id = 1;  // for request/response correlation
+  oneof command {
+    PauseCommand     pause          = 2;
+    ResumeCommand    resume         = 3;
+    StepCommand      step           = 4;
+    SetClockRate     set_clock_rate = 5;
+    TerminateCommand terminate      = 6;
+  }
+}
+
+message PauseCommand  {}
+message ResumeCommand {}
+message StepCommand   { double step_time = 1; }  // seconds to advance
+message SetClockRate  { double rate = 1; }        // 1.0=realtime, 10.0=10x
+message TerminateCommand {}
+
+message ControlResponse {
+  uint64 command_id = 1;
+  bool success      = 2;
+  string error_message = 3;
+}

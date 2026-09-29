@@ -1,0 +1,280 @@
+version: "3.9"
+
+# ──────────────────────────────────────────────────────────────
+# TrueSim Data Platform – Docker Compose
+# ──────────────────────────────────────────────────────────────
+# Usage:
+#   docker compose up -d --build        # build & start everything
+#   docker compose logs -f              # follow all logs
+#   docker compose down -v              # stop & remove volumes
+# ──────────────────────────────────────────────────────────────
+
+x-common-env: &common-env
+  TZ: ${TZ:-Asia/Shanghai}
+
+services:
+  # ═══════════════════════════════════════════════════════════════
+  # Infrastructure Services
+  # ═══════════════════════════════════════════════════════════════
+
+  mongodb:
+    image: mongo:7.0
+    container_name: truesim-mongodb
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-admin123}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE:-truesim_equipment}
+    volumes:
+      - mongodb-data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - truesim-net
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: truesim-redis
+    restart: unless-stopped
+    command: >
+      redis-server
+      --requirepass ${REDIS_PASSWORD:-}
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+    environment:
+      <<: *common-env
+    volumes:
+      - redis-data:/data
+    networks:
+      - truesim-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: truesim-influxdb
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: ${INFLUXDB_USERNAME:-admin}
+      DOCKER_INFLUXDB_INIT_PASSWORD: ${INFLUXDB_PASSWORD:-admin123}
+      DOCKER_INFLUXDB_INIT_ORG: ${INFLUXDB_ORG:-truesim}
+      DOCKER_INFLUXDB_INIT_BUCKET: ${INFLUXDB_BUCKET:-simulation}
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${INFLUXDB_TOKEN:-truesim-super-secret-token}
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+      - influxdb-config:/etc/influxdb2
+    networks:
+      - truesim-net
+    healthcheck:
+      test: ["CMD", "influx", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  minio:
+    image: minio/minio:latest
+    container_name: truesim-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      <<: *common-env
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+    volumes:
+      - minio-data:/data
+    networks:
+      - truesim-net
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  nats:
+    image: nats:2.10-alpine
+    container_name: truesim-nats
+    restart: unless-stopped
+    command: >
+      --jetstream
+      --store_dir /data
+      --auth ${NATS_TOKEN:-truesim-nats-token}
+    environment:
+      <<: *common-env
+    volumes:
+      - nats-data:/data
+    networks:
+      - truesim-net
+    healthcheck:
+      test: ["CMD", "nats-server", "--help"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ═══════════════════════════════════════════════════════════════
+  # Application Services
+  # ═══════════════════════════════════════════════════════════════
+
+  equipment-service:
+    build:
+      context: ..
+      dockerfile: services/equipment/Dockerfile
+    container_name: truesim-equipment-service
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+      PORT: ${EQUIPMENT_PORT:-50051}
+      MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-admin123}@mongodb:27017
+      DB_NAME: ${EQUIPMENT_DB_NAME:-truesim_equipment}
+      NATS_URL: nats://${NATS_TOKEN:-truesim-nats-token}@nats:4222
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+    networks:
+      - truesim-net
+
+  scenario-service:
+    build:
+      context: ..
+      dockerfile: services/scenario/Dockerfile
+    container_name: truesim-scenario-service
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+      PORT: ${SCENARIO_PORT:-50052}
+      MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-admin123}@mongodb:27017
+      DB_NAME: ${SCENARIO_DB_NAME:-scenario}
+      REDIS_ADDR: redis:6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      NATS_URL: nats://${NATS_TOKEN:-truesim-nats-token}@nats:4222
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
+    networks:
+      - truesim-net
+
+  timeseries-service:
+    build:
+      context: ..
+      dockerfile: services/timeseries/Dockerfile
+    container_name: truesim-timeseries-service
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+      PORT: ${TIMESERIES_PORT:-50053}
+      INFLUXDB_URL: http://influxdb:8086
+      INFLUXDB_TOKEN: ${INFLUXDB_TOKEN:-truesim-super-secret-token}
+      INFLUXDB_ORG: ${INFLUXDB_ORG:-truesim}
+      INFLUXDB_BUCKET: ${INFLUXDB_BUCKET:-simulation}
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    networks:
+      - truesim-net
+
+  geospatial-service:
+    build:
+      context: ..
+      dockerfile: services/geospatial/Dockerfile
+    container_name: truesim-geospatial-service
+    restart: unless-stopped
+    environment:
+      <<: *common-env
+      PORT: ${GEOSPATIAL_PORT:-50054}
+      MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-admin123}@mongodb:27017
+      DB_NAME: ${GEOSPATIAL_DB_NAME:-geospatial}
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+      MINIO_BUCKET: ${MINIO_BUCKET:-geospatial-data}
+      MINIO_USE_SSL: "false"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    networks:
+      - truesim-net
+
+  data-gateway:
+    build:
+      context: ..
+      dockerfile: services/gateway/Dockerfile
+    container_name: truesim-data-gateway
+    restart: unless-stopped
+    ports:
+      - "${GATEWAY_PORT:-8080}:8080"
+    environment:
+      <<: *common-env
+      PORT: "8080"
+      EQUIPMENT_SERVICE_ADDR: equipment-service:${EQUIPMENT_PORT:-50051}
+      SCENARIO_SERVICE_ADDR: scenario-service:${SCENARIO_PORT:-50052}
+      TIMESERIES_SERVICE_ADDR: timeseries-service:${TIMESERIES_PORT:-50053}
+      GEOSPATIAL_SERVICE_ADDR: geospatial-service:${GEOSPATIAL_PORT:-50054}
+      NATS_URL: nats://truesim-nats-token@nats:4222
+      REDIS_ADDR: redis:6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+    depends_on:
+      equipment-service:
+        condition: service_started
+      scenario-service:
+        condition: service_started
+      timeseries-service:
+        condition: service_started
+      geospatial-service:
+        condition: service_started
+      nats:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - truesim-net
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+# ──────────────────────────────────────────────────────────────
+# Networks
+# ──────────────────────────────────────────────────────────────
+networks:
+  truesim-net:
+    name: truesim-net
+    driver: bridge
+
+# ──────────────────────────────────────────────────────────────
+# Volumes
+# ──────────────────────────────────────────────────────────────
+volumes:
+  mongodb-data:
+    name: truesim-mongodb-data
+  redis-data:
+    name: truesim-redis-data
+  influxdb-data:
+    name: truesim-influxdb-data
+  influxdb-config:
+    name: truesim-influxdb-config
+  minio-data:
+    name: truesim-minio-data
+  nats-data:
+    name: truesim-nats-data

@@ -1,0 +1,109 @@
+# AFSIM Platform Definition - J-20 Weilong
+# Converted to real AFSIM syntax
+
+platform_type J-20_WEILONG WSF_PLATFORM
+   side red
+   category fighter
+   icon J-20
+
+   # Mover
+   mover WSF_AIR_MOVER
+      maximum_speed 1134.0 knots
+      minimum_speed 118.8 knots
+      cruise_speed 594.0 knots
+      maximum_altitude 59055 ft
+      minimum_altitude 0 ft
+      service_ceiling 59055 ft
+      maximum_range 1457.8 nm
+      endurance 3.2 hr
+      maximum_linear_acceleration 9.0 g
+      length 20.4 m
+      width 13.0 m
+      height 4.45 m
+      empty_mass 17000.0 kg
+      payload_mass 37000.0 kg
+      fuel_mass 10500.0 kg
+   end_mover
+
+   # Radar - Type 1475 AESA
+   sensor Type_1475 WSF_RADAR_SENSOR
+      on
+      initial_mode search
+      mode_template
+         transmitter
+            frequency 12.0 ghz
+            power 12.0 kw
+            bandwidth 1.2 ghz
+            antenna_gain 40.0 dbi
+         end_transmitter
+         receiver
+            noise_figure 2.5 db
+            bandwidth 1.2 ghz
+            sensitivity -112.0 dbm
+         end_receiver
+         one_m2_detect_range 108.0 nm
+         azimuth_field_of_view 120.0 deg
+         elevation_field_of_view 60.0 deg
+         frame_time 1.0 sec
+         reports_location
+         reports_velocity
+         reports_range
+      end_mode_template
+      mode search
+         azimuth_field_of_view 120.0 deg
+         elevation_field_of_view 60.0 deg
+      end_mode
+      mode track
+         azimuth_field_of_view 20.0 deg
+         elevation_field_of_view 20.0 deg
+      end_mode
+   end_sensor
+
+   # EOTS
+   sensor EOTS_30 WSF_PASSIVE_SENSOR
+      on
+   end_sensor
+
+   # DAS
+   sensor EORDAS WSF_PASSIVE_SENSOR
+      on
+   end_sensor
+
+   # Weapons
+   weapon PL_15 WSF_EXPLICIT_WEAPON
+      quantity 4
+   end_weapon
+
+   weapon PL_10 WSF_IMPLICIT_WEAPON
+      quantity 2
+   end_weapon
+
+   weapon Type_30mm WSF_IMPLICIT_WEAPON
+      quantity 1
+   end_weapon
+
+   # Communications
+   comm CJLC_7A WSF_COMM_TRANSCEIVER
+      on
+   end_comm
+
+   comm KTR_909 WSF_COMM_TRANSCEIVER
+      on
+   end_comm
+
+   # Processor
+   processor MissionComputer WSF_SCRIPT_PROCESSOR
+      on
+      update_interval 0.1 sec
+   end_processor
+
+   # Fuel
+   fuel FuelSystem WSF_VARIABLE_RATE_FUEL
+      maximum_quantity 10500.0 kg
+      initial_quantity 10500.0 kg
+      rate 2800.0 kg/hr
+   end_fuel
+
+   # Signature
+   radar_signature J-20_Signature
+end_platform_type

@@ -1,0 +1,130 @@
+
+> afsim-web@0.1.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v6.4.2[39m  [2mready in [0m[1m3423[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3000[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m10:57:05[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx[22m
+[2m10:57:05[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx[22m
+[2m10:57:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx[22m
+[2m10:58:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/PlatformLayer.tsx[22m
+[2m10:59:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/PlatformLayer.tsx[22m
+[2m11:05:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/PlatformLayer.tsx[22m
+[2m11:05:29[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/PlatformLayer.tsx[22m
+[2m11:05:44[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/PlatformLayer.tsx[22m
+[2m11:05:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/PlatformLayer.tsx[22m
+[2m11:06:11[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/PlatformLayer.tsx[22m
+[2m11:07:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/PlatformLayer.tsx[22m
+[2m11:19:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/modules/EquipmentModule.tsx[22m
+[2m11:26:45[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/GlobeView.tsx[22m
+[2m11:26:58[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Globe/GlobeView.tsx[22m
+[2m11:45:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/modules/EquipmentModule.tsx[22m
+[2m11:45:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ControlPanel/SimControls.tsx[22m
+[2m11:46:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ControlPanel/SimControls.tsx[22m
+[2m14:22:50[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/modules/EquipmentModule.tsx[22m
+[2m14:23:16[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/modules/EquipmentModule.tsx[22m
+[2m14:23:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/modules/EquipmentModule.tsx[22m
+[2m14:29:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx, /src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx, /src/pages/modules/EquipmentModule.tsx, /src/modules/equipment/components/EquipmentEditor.tsx, /src/modules/equipment/components/EquipmentImportExport.tsx, /src/modules/equipment/components/EquipmentEditForm.tsx, /src/modules/equipment/components/EquipmentVersionHistory.tsx, /src/modules/equipment/components/EquipmentList.tsx, /src/modules/equipment/components/CategoryTree.tsx, /src/modules/equipment/components/EquipmentDetail.tsx[22m
+[2m14:42:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/EquipmentDetail.tsx[22m
+[2m19:29:49[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:41:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioMapContainer.tsx[22m
+[2m19:42:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioMapContainer.tsx[22m
+[2m19:42:20[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioMapContainer.tsx[22m
+[2m19:46:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:46:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:46:43[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:46:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:47:04[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:47:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:47:43[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:47:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:48:04[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:48:14[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:48:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:48:43[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:48:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:49:11[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:49:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m19:50:05[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.css[22m
+[2m19:50:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/PlatformPlacer.tsx[22m
+[2m19:51:05[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/PlatformPlacer.tsx[22m
+[2m20:09:00[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m20:09:15[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m20:09:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/PlatformPlacer.tsx[22m
+[2m20:09:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/PlatformPlacer.tsx[22m
+[2m20:10:19[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/PlatformPlacer.tsx[22m
+[2m20:10:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/PlatformPlacer.tsx[22m
+[2m20:11:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m20:27:33[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:44:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:44:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:44:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:45:03[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:45:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:45:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:45:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:50:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m20:56:14[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/RouteEditor.tsx[22m
+[2m21:13:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/modules/EquipmentModule.tsx, /src/modules/equipment/components/EquipmentEditor.tsx, /src/modules/equipment/components/EquipmentImportExport.tsx, /src/modules/equipment/components/EquipmentEditForm.tsx, /src/modules/equipment/components/EquipmentVersionHistory.tsx, /src/modules/equipment/components/EquipmentList.tsx, /src/modules/equipment/components/CategoryTree.tsx, /src/modules/equipment/components/EquipmentDetail.tsx[22m
+[2m21:13:15[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/modules/EquipmentModule.tsx, /src/modules/equipment/components/EquipmentEditor.tsx, /src/modules/equipment/components/EquipmentImportExport.tsx, /src/modules/equipment/components/EquipmentEditForm.tsx, /src/modules/equipment/components/EquipmentVersionHistory.tsx, /src/modules/equipment/components/EquipmentList.tsx, /src/modules/equipment/components/CategoryTree.tsx, /src/modules/equipment/components/EquipmentDetail.tsx[22m
+[2m21:57:09[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationStats.tsx[22m
+[2m21:57:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationStats.tsx[22m
+[2m21:57:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationStats.tsx[22m
+[2m22:03:16[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx, /src/modules/equipment/components/ExportDialog.tsx[22m
+[2m22:03:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:04:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:04:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:13:45[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:13:50[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:13:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:14:02[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:14:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:14:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx, /src/modules/scenario/components/EnvironmentPanel.tsx[22m
+[2m22:14:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ScenarioEditorPage.tsx, /src/pages/ScenarioListPage.tsx, /src/modules/scenario/components/PlatformPlacer.tsx, /src/modules/scenario/components/RouteEditor.tsx, /src/modules/scenario/components/ZoneEditor.tsx, /src/modules/scenario/components/ScenarioList.tsx, /src/modules/scenario/components/ScenarioEditor.tsx, /src/modules/scenario/components/EnvironmentPanel.tsx[22m
+[2m22:15:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:15:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx[22m
+[2m22:15:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx[22m
+[2m22:16:10[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:16:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:17:05[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:17:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:17:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:19:05[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/PlatformPlacer.tsx[22m
+[2m22:19:20[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/PlatformPlacer.tsx[22m
+[2m22:19:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioMapContainer.tsx[22m
+[2m22:19:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/modules/scenario/components/ScenarioMapContainer.tsx[22m Could not Fast Refresh (new export)
+[2m22:19:40[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:22:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:22:46[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:22:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:23:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/scenario/components/ScenarioEditor.tsx[22m
+[2m22:34:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/modules/EquipmentModule.tsx, /src/modules/equipment/components/EquipmentEditor.tsx, /src/modules/equipment/components/EquipmentEditForm.tsx, /src/modules/equipment/components/ImportDialog.tsx, /src/modules/equipment/components/EquipmentImportExport.tsx, /src/modules/equipment/components/EquipmentVersionHistory.tsx, /src/modules/equipment/components/EquipmentList.tsx, /src/modules/equipment/components/CategoryTree.tsx, /src/modules/equipment/components/EquipmentDetail.tsx[22m
+[2m22:34:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/ImportDialog.tsx[22m
+[2m22:35:04[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/ImportDialog.tsx[22m
+[2m22:35:14[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/ImportDialog.tsx[22m
+[2m22:35:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/ImportDialog.tsx[22m
+[2m22:35:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/ImportDialog.tsx[22m
+[2m22:35:50[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/ImportDialog.tsx[22m
+[2m22:35:59[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/ImportDialog.tsx[22m
+[2m22:36:29[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/ImportDialog.tsx[22m
+[2m22:36:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx, /src/modules/equipment/components/ExportDialog.tsx[22m
+[2m22:37:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx, /src/modules/equipment/components/ExportDialog.tsx[22m
+[2m22:37:44[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ScenarioPanel/ScenarioList.tsx, /src/modules/equipment/components/ExportDialog.tsx[22m
+[2m22:43:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/EquipmentEditForm.tsx[22m
+[2m22:43:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/EquipmentEditForm.tsx[22m
+[2m22:43:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/equipment/components/EquipmentEditForm.tsx[22m
+[2m22:54:46[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m22:54:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m22:54:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m23:01:04[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationStats.tsx, /src/modules/simulation/components/ReplayControl.tsx[22m
+[2m23:01:46[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m23:01:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m23:01:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m23:03:20[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m23:03:24[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m23:03:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/modules/simulation/components/SimulationSidebar.tsx[22m
+[2m23:11:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33m@ant-design/charts, html2pdf.js[32m[39m
+[2m23:11:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m

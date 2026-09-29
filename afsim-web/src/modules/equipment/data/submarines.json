@@ -1,0 +1,495 @@
+[
+  {
+    "code": "SSN-774",
+    "name": "弗吉尼亚级",
+    "nameEn": "Virginia-class",
+    "category": "submarine",
+    "platformType": "submarine",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "General Dynamics / HII",
+    "description": "美国海军最新攻击核潜艇，具备对陆攻击、反舰、反潜和情报侦察能力。",
+    "tags": [
+      "核潜艇",
+      "攻击潜艇",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 46,
+      "cruiseSpeed": 20,
+      "range": 0,
+      "endurance": 0,
+      "length": 114.9,
+      "width": 10.4,
+      "height": 11,
+      "weight": 7900,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "AN/BQQ-10",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 80,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 50,
+        "description": "综合声纳系统，含球形阵列、舷侧阵列和拖曳阵列"
+      },
+      {
+        "name": "AN/BVS-1",
+        "type": "eo",
+        "enabled": true,
+        "maxRange": 20,
+        "fovAzimuth": 360,
+        "fovElevation": 30,
+        "description": "光电桅杆系统"
+      },
+      {
+        "name": "AN/BLQ-10",
+        "type": "ew",
+        "enabled": true,
+        "maxRange": 100,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "description": "电子战支援系统"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "VPT",
+        "type": "missile",
+        "quantity": 12,
+        "maxRange": 1600,
+        "minRange": 10,
+        "maxSpeed": 880,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "12单元垂直发射管，装填战斧巡航导弹"
+      },
+      {
+        "name": "Mk 48 ADCAP",
+        "type": "torpedo",
+        "quantity": 26,
+        "maxRange": 38,
+        "minRange": 1,
+        "maxSpeed": 100,
+        "warheadType": "conventional",
+        "guidanceType": "wire",
+        "description": "Mk 48 Mod 7 ADCAP重型鱼雷"
+      }
+    ],
+    "communications": [
+      {
+        "name": "EHF SATCOM",
+        "type": "satcom",
+        "enabled": true,
+        "frequency": 44,
+        "maxRange": 0,
+        "dataRate": 10,
+        "description": "极高频卫星通信"
+      },
+      {
+        "name": "VLF Receiver",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 0.03,
+        "maxRange": 0,
+        "description": "甚低频接收机"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 50,
+        "side": 200,
+        "rear": 150,
+        "average": 120
+      },
+      "acoustic": {
+        "noise_level": 95,
+        "frequency": 100
+      }
+    },
+    "id": "submarines-001"
+  },
+  {
+    "code": "SSN-688",
+    "name": "洛杉矶级",
+    "nameEn": "Los Angeles-class",
+    "category": "submarine",
+    "platformType": "submarine",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "General Dynamics / HII",
+    "description": "美国海军数量最多的攻击核潜艇，62艘服役。",
+    "tags": [
+      "核潜艇",
+      "攻击潜艇",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 46,
+      "cruiseSpeed": 20,
+      "range": 0,
+      "endurance": 0,
+      "length": 109.7,
+      "width": 10.1,
+      "height": 10.7,
+      "weight": 6900,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "AN/BQQ-5",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 70,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 60,
+        "description": "综合声纳系统"
+      },
+      {
+        "name": "AN/BSY-1",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 50,
+        "fovAzimuth": 360,
+        "fovElevation": 30,
+        "description": "战斗系统声纳"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "VPT",
+        "type": "missile",
+        "quantity": 12,
+        "maxRange": 1600,
+        "minRange": 10,
+        "maxSpeed": 880,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "12单元垂直发射管"
+      },
+      {
+        "name": "Mk 48 ADCAP",
+        "type": "torpedo",
+        "quantity": 24,
+        "maxRange": 38,
+        "minRange": 1,
+        "maxSpeed": 100,
+        "warheadType": "conventional",
+        "guidanceType": "wire",
+        "description": "Mk 48 ADCAP重型鱼雷"
+      }
+    ],
+    "communications": [
+      {
+        "name": "VLF Receiver",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 0.03,
+        "maxRange": 0,
+        "description": "甚低频接收机"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 60,
+        "side": 250,
+        "rear": 180,
+        "average": 150
+      },
+      "acoustic": {
+        "noise_level": 100,
+        "frequency": 100
+      }
+    },
+    "id": "submarines-002"
+  },
+  {
+    "code": "SSN-A",
+    "name": "机敏级",
+    "nameEn": "Astute-class",
+    "category": "submarine",
+    "platformType": "submarine",
+    "status": "active",
+    "country": "UK",
+    "manufacturer": "BAE Systems Submarines",
+    "description": "英国皇家海军最新攻击核潜艇，配备2076声纳系统。",
+    "tags": [
+      "核潜艇",
+      "攻击潜艇",
+      "英国"
+    ],
+    "platformParams": {
+      "maxSpeed": 46,
+      "cruiseSpeed": 20,
+      "range": 0,
+      "endurance": 0,
+      "length": 97,
+      "width": 11.3,
+      "height": 11,
+      "weight": 7400,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "2076 Sonar",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 100,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 40,
+        "description": "2076型综合声纳系统"
+      },
+      {
+        "name": "CM010 Non-Hull Penetrating",
+        "type": "eo",
+        "enabled": true,
+        "maxRange": 20,
+        "fovAzimuth": 360,
+        "fovElevation": 30,
+        "description": "非穿透光电桅杆"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Spearfish Torpedo",
+        "type": "torpedo",
+        "quantity": 38,
+        "maxRange": 54,
+        "minRange": 1,
+        "maxSpeed": 100,
+        "warheadType": "conventional",
+        "guidanceType": "wire",
+        "description": "旗鱼重型鱼雷"
+      },
+      {
+        "name": "Tomahawk IV",
+        "type": "missile",
+        "quantity": 12,
+        "maxRange": 1600,
+        "minRange": 10,
+        "maxSpeed": 880,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "战斧巡航导弹"
+      }
+    ],
+    "communications": [
+      {
+        "name": "VLF Receiver",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 0.03,
+        "maxRange": 0,
+        "description": "甚低频接收机"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 55,
+        "side": 220,
+        "rear": 160,
+        "average": 130
+      },
+      "acoustic": {
+        "noise_level": 95,
+        "frequency": 100
+      }
+    },
+    "id": "submarines-003"
+  },
+  {
+    "code": "093",
+    "name": "093型攻击核潜艇",
+    "nameEn": "Type 093 SSN",
+    "category": "submarine",
+    "platformType": "submarine",
+    "status": "active",
+    "country": "China",
+    "description": "中国海军第二代攻击核潜艇，具备反舰和反潜能力。",
+    "tags": [
+      "核潜艇",
+      "攻击潜艇",
+      "中国"
+    ],
+    "platformParams": {
+      "maxSpeed": 40,
+      "cruiseSpeed": 18,
+      "range": 0,
+      "endurance": 0,
+      "length": 110,
+      "width": 11,
+      "height": 10.5,
+      "weight": 7000,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "中频被动声纳",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 60,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 80,
+        "description": "球形被动声纳阵列"
+      },
+      {
+        "name": "拖曳阵列声纳",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 80,
+        "fovAzimuth": 180,
+        "fovElevation": 30,
+        "accuracy": 100,
+        "description": "低频被动拖曳阵列"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "YJ-18",
+        "type": "missile",
+        "quantity": 6,
+        "maxRange": 540,
+        "minRange": 10,
+        "maxSpeed": 800,
+        "warheadType": "conventional",
+        "guidanceType": "radar",
+        "description": "鹰击-18潜射反舰导弹"
+      },
+      {
+        "name": "鱼-6重型鱼雷",
+        "type": "torpedo",
+        "quantity": 20,
+        "maxRange": 40,
+        "minRange": 1,
+        "maxSpeed": 90,
+        "warheadType": "conventional",
+        "guidanceType": "wire",
+        "description": "鱼-6线导重型鱼雷"
+      }
+    ],
+    "communications": [
+      {
+        "name": "VLF Receiver",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 0.03,
+        "maxRange": 0,
+        "description": "甚低频接收机"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 70,
+        "side": 280,
+        "rear": 200,
+        "average": 170
+      },
+      "acoustic": {
+        "noise_level": 105,
+        "frequency": 100
+      }
+    },
+    "id": "submarines-004"
+  },
+  {
+    "code": "KILO",
+    "name": "基洛级",
+    "nameEn": "Kilo-class",
+    "category": "submarine",
+    "platformType": "submarine",
+    "status": "active",
+    "country": "Russia",
+    "description": "俄罗斯常规动力潜艇，以安静著称，广泛出口。",
+    "tags": [
+      "常规潜艇",
+      "俄罗斯",
+      "安静"
+    ],
+    "platformParams": {
+      "maxSpeed": 25,
+      "cruiseSpeed": 12,
+      "range": 12000,
+      "endurance": 45,
+      "length": 73.8,
+      "width": 9.9,
+      "height": 8.2,
+      "weight": 3100,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "sea_mover"
+    },
+    "sensors": [
+      {
+        "name": "MGK-400 Rubikon",
+        "type": "sonar",
+        "enabled": true,
+        "maxRange": 50,
+        "fovAzimuth": 360,
+        "fovElevation": 60,
+        "accuracy": 80,
+        "description": "MGK-400型综合声纳系统"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "53-65KE",
+        "type": "torpedo",
+        "quantity": 18,
+        "maxRange": 19,
+        "minRange": 1,
+        "maxSpeed": 90,
+        "warheadType": "conventional",
+        "guidanceType": "wire",
+        "description": "533mm线导鱼雷"
+      },
+      {
+        "name": "Kalibr-PL",
+        "type": "missile",
+        "quantity": 4,
+        "maxRange": 300,
+        "minRange": 10,
+        "maxSpeed": 700,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "口径潜射巡航导弹"
+      }
+    ],
+    "communications": [
+      {
+        "name": "VLF Receiver",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 0.03,
+        "maxRange": 0,
+        "description": "甚低频接收机"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 40,
+        "side": 180,
+        "rear": 120,
+        "average": 100
+      },
+      "acoustic": {
+        "noise_level": 92,
+        "frequency": 80
+      }
+    },
+    "id": "submarines-005"
+  }
+]

@@ -1,0 +1,683 @@
+################################################################################
+# 一体化防空反导 (IAMD) 分层防御想定 — TrueSim Web 平台版本 (剧本ID: IAMD-LayeredDefense-001)
+# 事件(含武器发射/命中)经命名管道实时推送到网关 -> WebSocket -> 前端 CesiumJS。
+################################################################################
+
+define_path_variable CASE iamd_layered_defense
+file_path .
+file_path ../../AFSim/afsim-2.9.0-win64/demos/simple_scenario
+file_path ../../AFSim/afsim-2.9.0-win64/demos/base_types
+
+include event_pipe.txt
+include event_output.txt
+include terrain.txt
+
+log_file ../output/$(CASE).log
+event_output file ../output/$(CASE).evt end_event_output
+event_pipe   file ../output/$(CASE).aer end_event_pipe
+
+event_gateway
+   enabled true
+   event_pipe_name afsim_events
+   control_pipe_name afsim_control
+   mover_throttle 0.5 sec
+end_event_gateway
+
+script_interface
+end_script_interface
+
+# 锁定随机种子:确保概率性雷达探测的时序可复现(本地与 Web 网关运行结果一致)
+random_seed 12345
+
+################################################################################
+# 0) 威胁目标特征 (RCS 分级:战机大 / 巡航导弹中 / 无人机小)
+################################################################################
+
+radar_signature FIGHTER_SIG WSF_RADAR_SIGNATURE
+   constant 8 dBsm
+end_radar_signature
+
+radar_signature CRUISE_MSL_SIG WSF_RADAR_SIGNATURE
+   constant 0 dBsm
+end_radar_signature
+
+radar_signature UAV_SIG WSF_RADAR_SIGNATURE
+   constant -10 dBsm
+end_radar_signature
+
+radar_signature INTERCEPTOR_SIG WSF_RADAR_SIGNATURE
+   constant 0 dBsm
+end_radar_signature
+
+################################################################################
+# 1) 拦截弹模型 (两型:远/中程 STANDARD_SAM,近程 SHORT_SAM)
+################################################################################
+
+# --- 通用气动 ---
+aero SAM_AERO WSF_AERO
+   reference_area 0.10 m2
+   cd_zero_subsonic 0.30
+   cd_zero_supersonic 0.45
+   mach_begin_cd_rise 0.900
+   mach_end_cd_rise 1.200
+   mach_max_supersonic 5.000
+   cl_max 20.000
+   aspect_ratio 3.000
+end_aero
+
+aero SHORT_SAM_AERO WSF_AERO
+   reference_area 0.04 m2
+   cd_zero_subsonic 0.30
+   cd_zero_supersonic 0.45
+   mach_begin_cd_rise 0.900
+   mach_end_cd_rise 1.200
+   mach_max_supersonic 4.000
+   cl_max 25.000
+   aspect_ratio 3.000
+end_aero
+
+# --- 制导计算机 (分阶段:助推爬升段 + 末制导段) ---
+# 地面/舰载发射必须先助推转弯(g_bias 抬头),再转入比例导引末制导
+processor SAM_GUIDANCE WSF_GUIDANCE_COMPUTER
+   phase LAUNCH
+      g_bias 5.0
+      maximum_commanded_g 45.0 g
+      next_phase TERMINAL when phase_time > 4.0 seconds
+   end_phase
+   phase TERMINAL
+      proportional_navigation_gain 5.0
+      velocity_pursuit_gain 5.0
+      g_bias 1.0
+      maximum_commanded_g 45.0 g
+   end_phase
+end_processor
+
+processor SAM_FUSE WSF_AIR_TARGET_FUSE
+   max_time_of_flight_to_detonate 200.0 sec
+end_processor
+
+# --- 远/中程拦截弹 (类 SM-6 / PAC-3) ---
+platform_type STANDARD_SAM_MISSILE WSF_PLATFORM
+   icon sm6
+   category interceptor
+   radar_signature INTERCEPTOR_SIG
+
+   mover WSF_GUIDED_MOVER
+      aero SAM_AERO
+      total_mass 1700.0 kg
+      fuel_mass 1100.0 kg
+      specific_impulse 250.0 sec
+      thrust 130000.0 newtons
+      thrust_duration 18.0 sec
+      update_interval 0.05 sec
+   end_mover
+
+   processor guidance SAM_GUIDANCE
+   end_processor
+   processor fuse SAM_FUSE
+   end_processor
+end_platform_type
+
+# --- 近程拦截弹 (类 SHORAD / C-UAS) ---
+platform_type SHORT_SAM_MISSILE WSF_PLATFORM
+   icon stinger
+   category interceptor
+   radar_signature INTERCEPTOR_SIG
+
+   mover WSF_GUIDED_MOVER
+      aero SHORT_SAM_AERO
+      total_mass 110.0 kg
+      fuel_mass 60.0 kg
+      specific_impulse 230.0 sec
+      thrust 22000.0 newtons
+      thrust_duration 6.0 sec
+      update_interval 0.05 sec
+   end_mover
+
+   processor guidance SAM_GUIDANCE
+   end_processor
+   processor fuse SAM_FUSE
+   end_processor
+end_platform_type
+
+weapon_effects SAM_EFFECT WSF_SPHERICAL_LETHALITY
+   minimum_radius 35.0 m
+   maximum_radius 75.0 m
+   maximum_damage 1.0
+   minimum_damage 0.4
+   threshold_damage 0.3
+   exponent 1.0
+end_weapon_effects
+
+weapon STANDARD_SAM WSF_EXPLICIT_WEAPON
+   launched_platform_type STANDARD_SAM_MISSILE
+   weapon_effects SAM_EFFECT
+   category surface_to_air_missile
+end_weapon
+
+weapon SHORT_SAM WSF_EXPLICIT_WEAPON
+   launched_platform_type SHORT_SAM_MISSILE
+   weapon_effects SAM_EFFECT
+   category surface_to_air_missile
+end_weapon
+
+################################################################################
+# 2) 防空雷达 (三型:远程搜索 / 中程火控 / 近程)
+################################################################################
+
+antenna_pattern AD_ANTENNA
+   constant_pattern
+      peak_gain 40 dB
+      azimuth_beamwidth 2 deg
+      elevation_beamwidth 2 deg
+   end_constant_pattern
+end_antenna_pattern
+
+# 远程舰载搜索雷达 (类 SPY-1)
+sensor LONG_RANGE_RADAR WSF_RADAR_SENSOR
+   frame_time 2 sec
+   scan_mode azimuth_and_elevation
+   azimuth_scan_limits -180 deg 180 deg
+   elevation_scan_limits -10 deg 85 deg
+   minimum_range 0 nm
+   maximum_range 200 nm
+   transmitter
+      antenna_pattern AD_ANTENNA
+      power 100.0 kw
+      pulse_width 2.0e-6 sec
+      pulse_repetition_frequency 2000 hz
+      frequency 3.0 ghz
+   end_transmitter
+   receiver
+      antenna_pattern AD_ANTENNA
+      bandwidth 1.0 mhz
+      internal_loss 4.0 dB
+      noise_figure 3.0 dB
+   end_receiver
+   swerling_case 1
+   number_of_pulses_integrated 20
+   detector_law square
+   probability_of_false_alarm 1.0e-6
+   one_m2_detect_range 160 nm
+   hits_to_establish_track 2 3
+   hits_to_maintain_track 1 3
+   reports_location
+   reports_range
+   reports_bearing
+   reports_velocity
+end_sensor
+
+# 中程火控雷达 (类爱国者)
+sensor MEDIUM_RANGE_RADAR WSF_RADAR_SENSOR
+   frame_time 1 sec
+   scan_mode azimuth_and_elevation
+   azimuth_scan_limits -90 deg 90 deg
+   elevation_scan_limits -10 deg 85 deg
+   minimum_range 0 nm
+   maximum_range 80 nm
+   transmitter
+      antenna_pattern AD_ANTENNA
+      power 60.0 kw
+      pulse_width 1.0e-6 sec
+      pulse_repetition_frequency 5000 hz
+      frequency 5.0 ghz
+   end_transmitter
+   receiver
+      antenna_pattern AD_ANTENNA
+      bandwidth 1.0 mhz
+      internal_loss 4.0 dB
+      noise_figure 3.0 dB
+   end_receiver
+   swerling_case 1
+   number_of_pulses_integrated 15
+   detector_law square
+   probability_of_false_alarm 1.0e-6
+   one_m2_detect_range 70 nm
+   hits_to_establish_track 2 3
+   hits_to_maintain_track 1 3
+   reports_location
+   reports_range
+   reports_bearing
+   reports_velocity
+end_sensor
+
+# 近程雷达 (SHORAD / C-UAS)
+sensor SHORT_RANGE_RADAR WSF_RADAR_SENSOR
+   frame_time 0.5 sec
+   scan_mode azimuth_and_elevation
+   azimuth_scan_limits -180 deg 180 deg
+   elevation_scan_limits -5 deg 85 deg
+   minimum_range 0 nm
+   maximum_range 20 nm
+   transmitter
+      antenna_pattern AD_ANTENNA
+      power 20.0 kw
+      pulse_width 0.5e-6 sec
+      pulse_repetition_frequency 10000 hz
+      frequency 10.0 ghz
+   end_transmitter
+   receiver
+      antenna_pattern AD_ANTENNA
+      bandwidth 2.0 mhz
+      internal_loss 4.0 dB
+      noise_figure 3.0 dB
+   end_receiver
+   swerling_case 1
+   number_of_pulses_integrated 10
+   detector_law square
+   probability_of_false_alarm 1.0e-6
+   one_m2_detect_range 25 nm
+   hits_to_establish_track 1 2
+   hits_to_maintain_track 1 3
+   reports_location
+   reports_range
+   reports_bearing
+   reports_velocity
+end_sensor
+
+################################################################################
+# 3) 蓝军防御平台类型
+################################################################################
+
+# ---- 外层:舰载远程区域防空 (DDG) ----
+platform_type DDG_DEFENDER WSF_PLATFORM
+   icon ddg
+   radar_signature FIGHTER_SIG
+
+   sensor radar LONG_RANGE_RADAR
+      processor track-proc
+   end_sensor
+   processor track-proc WSF_TRACK_PROCESSOR
+      update_interval 1.0 sec
+   end_processor
+
+   processor engage-proc WSF_SCRIPT_PROCESSOR
+      update_interval 1.0 sec
+      script_variables
+         double lastFireTime  = -100.0;
+         Map<string, double> engagedTime = Map<string, double>();
+         double REENGAGE_DELAY = 10.0;
+         double FIRE_COOLDOWN = 4.0;
+         double MAX_RANGE     = 95000.0;   # 外层拦截包线 ~50nm
+         double MIN_RANGE     = 8000.0;
+         string LAYER         = "外层防空(DDG)";
+         bool   SKIP_UAV      = true;    # 外层不打无人机,留给内层
+      end_script_variables
+      on_update
+         WsfWeapon weapon = PLATFORM.Weapon("sam");
+         if ((weapon.QuantityRemaining() > 0) && (TIME_NOW - lastFireTime >= FIRE_COOLDOWN))
+         {
+            WsfLocalTrackList trackList = PLATFORM.MasterTrackList();
+            WsfTrack best = WsfTrack();
+            double   bestRng = 1.0e12;
+            bool     found = false;
+            foreach (WsfTrack track in trackList)
+            {
+               # 敌我识别:仅交战与本方阵营不同的目标(排除友军与己方拦截弹)
+               WsfPlatform tgt = WsfSimulation.FindPlatform(track.TargetName());
+               # 威胁分工:外/中层跳过无人机(留给内层 SHORAD),专注战机与巡航导弹
+               if (tgt.IsValid() && (tgt.Side() != PLATFORM.Side()) &&
+                   ((!SKIP_UAV) || (tgt.Type() != "ATTACK_UAV")))
+               {
+                  # 射-观-射:同一目标在 REENGAGE_DELAY 秒内不重复发射
+                  string tname = track.TargetName();
+                  bool recent = false;
+                  if (engagedTime.Exists(tname))
+                  {
+                     if (TIME_NOW - engagedTime[tname] < REENGAGE_DELAY) { recent = true; }
+                  }
+                  double rng = PLATFORM.SlantRangeTo(track);
+                  if ((!recent) && (rng > MIN_RANGE) && (rng < MAX_RANGE) && (rng < bestRng))
+                  {
+                     bestRng = rng;
+                     best = track;
+                     found = true;
+                  }
+               }
+            }
+            if (found)
+            {
+               bool fired = weapon.Fire(best);
+               if (fired)
+               {
+                  lastFireTime = TIME_NOW;
+                  engagedTime[best.TargetName()] = TIME_NOW;
+                  print(TIME_NOW, " [", PLATFORM.Name(), "] ", LAYER,
+                        " 拦截 -> ", best.TargetName(),
+                        " 斜距 ", bestRng, " m, 余弹 ", weapon.QuantityRemaining());
+               }
+            }
+         }
+      end_on_update
+   end_processor
+
+   weapon sam STANDARD_SAM
+      quantity 20
+      firing_interval 1.2 sec
+   end_weapon
+end_platform_type
+
+# ---- 中层:爱国者中程防空 ----
+platform_type PATRIOT_DEFENDER WSF_PLATFORM
+   icon patriot
+   radar_signature FIGHTER_SIG
+
+   sensor radar MEDIUM_RANGE_RADAR
+      processor track-proc
+   end_sensor
+   processor track-proc WSF_TRACK_PROCESSOR
+      update_interval 1.0 sec
+   end_processor
+
+   processor engage-proc WSF_SCRIPT_PROCESSOR
+      update_interval 1.0 sec
+      script_variables
+         double lastFireTime  = -100.0;
+         Map<string, double> engagedTime = Map<string, double>();
+         double REENGAGE_DELAY = 10.0;
+         double FIRE_COOLDOWN = 3.0;
+         double MAX_RANGE     = 75000.0;   # 中层拦截包线(加大,更早拦截快速目标)
+         double MIN_RANGE     = 3000.0;
+         string LAYER         = "中层防空(Patriot)";
+         bool   SKIP_UAV      = true;    # 中层不打无人机,专注战机/巡航导弹
+      end_script_variables
+      on_update
+         WsfWeapon weapon = PLATFORM.Weapon("sam");
+         if ((weapon.QuantityRemaining() > 0) && (TIME_NOW - lastFireTime >= FIRE_COOLDOWN))
+         {
+            WsfLocalTrackList trackList = PLATFORM.MasterTrackList();
+            WsfTrack best = WsfTrack();
+            double   bestRng = 1.0e12;
+            bool     found = false;
+            foreach (WsfTrack track in trackList)
+            {
+               # 敌我识别:仅交战与本方阵营不同的目标(排除友军与己方拦截弹)
+               WsfPlatform tgt = WsfSimulation.FindPlatform(track.TargetName());
+               # 威胁分工:外/中层跳过无人机(留给内层 SHORAD),专注战机与巡航导弹
+               if (tgt.IsValid() && (tgt.Side() != PLATFORM.Side()) &&
+                   ((!SKIP_UAV) || (tgt.Type() != "ATTACK_UAV")))
+               {
+                  # 射-观-射:同一目标在 REENGAGE_DELAY 秒内不重复发射
+                  string tname = track.TargetName();
+                  bool recent = false;
+                  if (engagedTime.Exists(tname))
+                  {
+                     if (TIME_NOW - engagedTime[tname] < REENGAGE_DELAY) { recent = true; }
+                  }
+                  double rng = PLATFORM.SlantRangeTo(track);
+                  if ((!recent) && (rng > MIN_RANGE) && (rng < MAX_RANGE) && (rng < bestRng))
+                  {
+                     bestRng = rng;
+                     best = track;
+                     found = true;
+                  }
+               }
+            }
+            if (found)
+            {
+               bool fired = weapon.Fire(best);
+               if (fired)
+               {
+                  lastFireTime = TIME_NOW;
+                  engagedTime[best.TargetName()] = TIME_NOW;
+                  print(TIME_NOW, " [", PLATFORM.Name(), "] ", LAYER,
+                        " 拦截 -> ", best.TargetName(),
+                        " 斜距 ", bestRng, " m, 余弹 ", weapon.QuantityRemaining());
+               }
+            }
+         }
+      end_on_update
+   end_processor
+
+   weapon sam STANDARD_SAM
+      quantity 16
+      firing_interval 1.2 sec
+   end_weapon
+end_platform_type
+
+# ---- 内层:近程防空 / C-UAS (SHORAD) ----
+platform_type SHORAD_DEFENDER WSF_PLATFORM
+   icon shorad
+   radar_signature UAV_SIG
+
+   sensor radar SHORT_RANGE_RADAR
+      processor track-proc
+   end_sensor
+   processor track-proc WSF_TRACK_PROCESSOR
+      update_interval 0.5 sec
+   end_processor
+
+   processor engage-proc WSF_SCRIPT_PROCESSOR
+      update_interval 0.5 sec
+      script_variables
+         double lastFireTime  = -100.0;
+         Map<string, double> engagedTime = Map<string, double>();
+         double REENGAGE_DELAY = 10.0;
+         double FIRE_COOLDOWN = 2.0;
+         double MAX_RANGE     = 12000.0;   # 内层拦截包线
+         double MIN_RANGE     = 500.0;
+         string LAYER         = "内层防空(SHORAD)";
+         bool   SKIP_UAV      = false;   # 内层 C-UAS:专打无人机蜂群及近程漏网
+      end_script_variables
+      on_update
+         WsfWeapon weapon = PLATFORM.Weapon("sam");
+         if ((weapon.QuantityRemaining() > 0) && (TIME_NOW - lastFireTime >= FIRE_COOLDOWN))
+         {
+            WsfLocalTrackList trackList = PLATFORM.MasterTrackList();
+            WsfTrack best = WsfTrack();
+            double   bestRng = 1.0e12;
+            bool     found = false;
+            foreach (WsfTrack track in trackList)
+            {
+               # 敌我识别:仅交战与本方阵营不同的目标(排除友军与己方拦截弹)
+               WsfPlatform tgt = WsfSimulation.FindPlatform(track.TargetName());
+               # 威胁分工:外/中层跳过无人机(留给内层 SHORAD),专注战机与巡航导弹
+               if (tgt.IsValid() && (tgt.Side() != PLATFORM.Side()) &&
+                   ((!SKIP_UAV) || (tgt.Type() != "ATTACK_UAV")))
+               {
+                  # 射-观-射:同一目标在 REENGAGE_DELAY 秒内不重复发射
+                  string tname = track.TargetName();
+                  bool recent = false;
+                  if (engagedTime.Exists(tname))
+                  {
+                     if (TIME_NOW - engagedTime[tname] < REENGAGE_DELAY) { recent = true; }
+                  }
+                  double rng = PLATFORM.SlantRangeTo(track);
+                  if ((!recent) && (rng > MIN_RANGE) && (rng < MAX_RANGE) && (rng < bestRng))
+                  {
+                     bestRng = rng;
+                     best = track;
+                     found = true;
+                  }
+               }
+            }
+            if (found)
+            {
+               bool fired = weapon.Fire(best);
+               if (fired)
+               {
+                  lastFireTime = TIME_NOW;
+                  engagedTime[best.TargetName()] = TIME_NOW;
+                  print(TIME_NOW, " [", PLATFORM.Name(), "] ", LAYER,
+                        " 拦截 -> ", best.TargetName(),
+                        " 斜距 ", bestRng, " m, 余弹 ", weapon.QuantityRemaining());
+               }
+            }
+         }
+      end_on_update
+   end_processor
+
+   weapon sam SHORT_SAM
+      quantity 14
+      firing_interval 1.0 sec
+   end_weapon
+end_platform_type
+
+# ---- 空中预警:E-2D (监视 + 态势上报,不交战) ----
+platform_type E2D_AWACS WSF_PLATFORM
+   icon e2d
+   radar_signature FIGHTER_SIG
+
+   mover WSF_AIR_MOVER
+      maximum_speed 180 m/sec
+      minimum_speed 80 m/sec
+      default_radial_acceleration 2.0 g
+   end_mover
+
+   sensor radar LONG_RANGE_RADAR
+      processor track-proc
+   end_sensor
+   processor track-proc WSF_TRACK_PROCESSOR
+      update_interval 1.0 sec
+   end_processor
+
+   processor awacs-report WSF_SCRIPT_PROCESSOR
+      update_interval 5.0 sec
+      script_variables
+         double lastReport = -100.0;
+      end_script_variables
+      on_update
+         if (TIME_NOW - lastReport >= 30.0)
+         {
+            WsfLocalTrackList trackList = PLATFORM.MasterTrackList();
+            print("==================================================");
+            print(TIME_NOW, " [", PLATFORM.Name(), "] 预警态势 | 当前空情航迹数: ",
+                  trackList.TrackCount());
+            lastReport = TIME_NOW;
+         }
+      end_on_update
+   end_processor
+end_platform_type
+
+################################################################################
+# 4) 红军威胁平台类型
+################################################################################
+
+platform_type SU30_STRIKE WSF_PLATFORM
+   icon su30
+   radar_signature FIGHTER_SIG
+   mover WSF_AIR_MOVER
+      maximum_speed 600 m/sec
+      minimum_speed 150 m/sec
+      default_radial_acceleration 8.0 g
+   end_mover
+end_platform_type
+
+platform_type CRUISE_MISSILE WSF_PLATFORM
+   icon cruise
+   radar_signature CRUISE_MSL_SIG
+   mover WSF_AIR_MOVER
+      maximum_speed 300 m/sec
+      minimum_speed 150 m/sec
+      default_radial_acceleration 5.0 g
+   end_mover
+end_platform_type
+
+platform_type ATTACK_UAV WSF_PLATFORM
+   icon uav
+   radar_signature UAV_SIG
+   mover WSF_AIR_MOVER
+      maximum_speed 60 m/sec
+      minimum_speed 25 m/sec
+      default_radial_acceleration 2.0 g
+   end_mover
+end_platform_type
+
+################################################################################
+# 5) 实例化场景 (蓝军防御阵位居西;红军自东向西多轴突入)
+################################################################################
+
+# ---- 蓝军防御阵位 ----
+
+# 外层 DDG:打击群核心以东
+platform ddg-guardian DDG_DEFENDER
+   side blue
+   position 24:30:00n 121:10:00e altitude 0 m msl
+   sensor radar
+      on
+   end_sensor
+end_platform
+
+# 中层爱国者:核心区
+platform patriot-bastion PATRIOT_DEFENDER
+   side blue
+   position 24:30:00n 120:35:00e altitude 0 m agl
+   sensor radar
+      on
+   end_sensor
+end_platform
+
+# 内层 SHORAD:核心区点防御
+platform shorad-sentry SHORAD_DEFENDER
+   side blue
+   position 24:30:00n 120:30:00e altitude 0 m agl
+   sensor radar
+      on
+   end_sensor
+end_platform
+
+# 空中预警 E-2D:核心区上空盘旋
+platform e2d-hawkeye E2D_AWACS
+   side blue
+   sensor radar
+      on
+   end_sensor
+   route
+      position 24:40:00n 120:30:00e altitude 9000 m speed 150 m/sec
+      position 24:40:00n 121:00:00e altitude 9000 m speed 150 m/sec
+      position 24:20:00n 121:00:00e altitude 9000 m speed 150 m/sec
+      position 24:20:00n 120:30:00e altitude 9000 m speed 150 m/sec
+      position 24:40:00n 120:30:00e altitude 9000 m speed 150 m/sec
+   end_route
+end_platform
+
+# ---- 红军威胁 (自东向西突入) ----
+
+# 空中打击群:苏-30 高空,东北轴
+platform su30-strike-1 SU30_STRIKE
+   side red
+   route
+      position 24:45:00n 122:30:00e altitude 10000 m speed 450 m/sec
+      position 24:30:00n 120:30:00e altitude 10000 m speed 450 m/sec
+   end_route
+end_platform
+
+platform su30-strike-2 SU30_STRIKE
+   side red
+   route
+      position 24:27:00n 122:30:00e altitude 9500 m speed 450 m/sec
+      position 24:30:00n 120:35:00e altitude 9500 m speed 450 m/sec
+   end_route
+end_platform
+
+# 巡航导弹:低空突防,正东轴
+platform cruise-msl-1 CRUISE_MISSILE
+   side red
+   route
+      position 24:30:00n 122:00:00e altitude 100 m msl speed 280 m/sec
+      position 24:30:00n 120:35:00e altitude 100 m msl speed 280 m/sec
+   end_route
+end_platform
+
+# 无人机蜂群:低慢小,近距突入核心区 (内层 SHORAD 目标)
+platform uav-swarm-1 ATTACK_UAV
+   side red
+   route
+      position 24:30:00n 120:48:00e altitude 500 m msl speed 90 m/sec
+      position 24:30:00n 120:30:00e altitude 500 m msl speed 90 m/sec
+   end_route
+end_platform
+
+platform uav-swarm-2 ATTACK_UAV
+   side red
+   route
+      position 24:28:00n 120:48:00e altitude 400 m msl speed 90 m/sec
+      position 24:30:00n 120:30:00e altitude 400 m msl speed 90 m/sec
+   end_route
+end_platform
+
+################################################################################
+# 7) 仿真控制
+################################################################################
+
+end_time 900 sec

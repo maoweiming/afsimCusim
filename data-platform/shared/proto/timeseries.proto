@@ -1,0 +1,274 @@
+syntax = "proto3";
+
+package truesim.timeseries;
+
+option go_package = "truesim/timeseries";
+
+// ============ 时序数据服务 ============
+
+service TimeseriesService {
+  // 仿真帧数据
+  rpc WriteFrames(WriteFramesRequest) returns (WriteFramesResponse);
+  rpc QueryFrames(QueryFramesRequest) returns (QueryFramesResponse);
+  rpc StreamFrames(StreamFramesRequest) returns (stream SimulationFrame);
+
+  // 回放管理
+  rpc CreateReplay(CreateReplayRequest) returns (PlaybackSession);
+  rpc GetReplay(GetReplayRequest) returns (PlaybackSession);
+  rpc ListReplays(ListReplaysRequest) returns (ListReplaysResponse);
+  rpc DeleteReplay(DeleteReplayRequest) returns (Empty);
+  rpc StreamReplay(StreamReplayRequest) returns (stream SimulationFrame);
+
+  // 统计分析
+  rpc GetSimulationStats(GetStatsRequest) returns (SimulationStats);
+  rpc GetPlatformTrack(GetTrackRequest) returns (PlatformTrack);
+  rpc GetEngagementEvents(GetEngagementRequest) returns (EngagementEvents);
+
+  // 数据导出
+  rpc ExportToCSV(ExportRequest) returns (ExportResponse);
+  rpc ExportToKML(ExportRequest) returns (ExportResponse);
+}
+
+// ============ 核心消息 ============
+
+message Empty {}
+
+message SimulationFrame {
+  double sim_time = 1;          // 仿真时间 (秒)
+  string platform_id = 2;
+  string platform_name = 3;
+  string side = 4;              // "red", "blue", "neutral"
+
+  GeoPosition position = 5;
+  Velocity velocity = 6;
+  double heading = 7;           // 航向角 (度)
+  double altitude = 8;          // 高度 (米)
+
+  repeated SensorState sensors = 9;
+  repeated WeaponState weapons = 10;
+  repeated CommState comms = 11;
+
+  string status = 12;           // "active", "destroyed", "landed", "damaged"
+  double fuel_remaining = 13;
+  double damage_level = 14;     // 0.0 - 1.0
+
+  map<string, string> metadata = 15;
+}
+
+message GeoPosition {
+  double longitude = 1;
+  double latitude = 2;
+  double altitude_msl = 3;     // MSL 高度 (米)
+  double altitude_agl = 4;     // AGL 高度 (米)
+}
+
+message Velocity {
+  double north = 1;            // 北向速度 (m/s)
+  double east = 2;             // 东向速度 (m/s)
+  double down = 3;             // 下向速度 (m/s)
+  double speed = 4;            // 合速度 (m/s)
+}
+
+message SensorState {
+  string sensor_id = 1;
+  string sensor_name = 2;
+  string type = 3;             // "radar", "ir", "eo", "ew"
+  bool active = 4;
+  string mode = 5;             // "search", "track", "lock", "off"
+  double azimuth = 6;          // 方位角
+  double elevation = 7;        // 仰角
+  repeated TrackDetection detections = 8;
+}
+
+message TrackDetection {
+  string target_id = 1;
+  double range = 2;
+  double bearing = 3;
+  double confidence = 4;       // 0.0 - 1.0
+  string classification = 5;
+}
+
+message WeaponState {
+  string weapon_id = 1;
+  string weapon_name = 2;
+  string type = 3;
+  int32 remaining = 4;
+  int32 total = 5;
+  string status = 6;           // "ready", "firing", "reloading", "empty"
+}
+
+message CommState {
+  string comm_id = 1;
+  string comm_name = 2;
+  bool active = 3;
+  string frequency = 4;
+  double bandwidth = 5;
+}
+
+// ============ 回放 ============
+
+message PlaybackSession {
+  string id = 1;
+  string scenario_id = 2;
+  string simulation_id = 3;
+  string name = 4;
+  string created_by = 5;
+  string created_at = 6;
+  double start_time = 7;       // 仿真起始时间
+  double end_time = 8;         // 仿真结束时间
+  double duration = 9;         // 总时长 (秒)
+  int64 frame_count = 10;
+  map<string, string> metadata = 11;
+}
+
+message StreamReplayRequest {
+  string replay_id = 1;
+  double start_time = 2;       // 从哪个仿真时间开始
+  double end_time = 3;
+  double speed = 4;            // 播放速度倍率
+  int32 frame_interval = 5;    // 帧间隔 (ms)
+}
+
+message StreamFramesRequest {
+  string simulation_id = 1;
+}
+
+// ============ 查询 ============
+
+message WriteFramesRequest {
+  string simulation_id = 1;
+  repeated SimulationFrame frames = 2;
+}
+
+message WriteFramesResponse {
+  int64 written = 1;
+  int64 failed = 2;
+  repeated string errors = 3;
+}
+
+message QueryFramesRequest {
+  string simulation_id = 1;
+  double start_time = 2;
+  double end_time = 3;
+  repeated string platform_ids = 4;
+  int32 limit = 5;
+  int32 offset = 6;
+}
+
+message QueryFramesResponse {
+  repeated SimulationFrame frames = 1;
+  int64 total = 2;
+}
+
+message CreateReplayRequest {
+  string scenario_id = 1;
+  string simulation_id = 2;
+  string name = 3;
+  string created_by = 4;
+  map<string, string> metadata = 5;
+}
+
+message GetReplayRequest {
+  string id = 1;
+}
+
+message ListReplaysRequest {
+  string scenario_id = 1;
+  string simulation_id = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+}
+
+message ListReplaysResponse {
+  repeated PlaybackSession replays = 1;
+  int32 total = 2;
+}
+
+message DeleteReplayRequest {
+  string id = 1;
+}
+
+// ============ 统计 ============
+
+message GetStatsRequest {
+  string simulation_id = 1;
+}
+
+message SimulationStats {
+  string simulation_id = 1;
+  double duration = 2;
+  int64 total_frames = 3;
+  int32 platform_count = 4;
+  int32 events_count = 5;
+  repeated PlatformStats platform_stats = 6;
+  repeated EngagementSummary engagements = 7;
+}
+
+message PlatformStats {
+  string platform_id = 1;
+  string platform_name = 2;
+  string side = 3;
+  double max_speed = 4;
+  double min_altitude = 5;
+  double max_altitude = 6;
+  double total_distance = 7;
+  int32 shots_fired = 8;
+  int32 kills = 9;
+  string final_status = 10;
+}
+
+message EngagementSummary {
+  string id = 1;
+  double time = 2;
+  string attacker_id = 3;
+  string target_id = 4;
+  string weapon_type = 5;
+  string result = 6;           // "hit", "miss", "destroyed"
+}
+
+message GetTrackRequest {
+  string simulation_id = 1;
+  string platform_id = 2;
+}
+
+message PlatformTrack {
+  string platform_id = 1;
+  string platform_name = 2;
+  repeated SimulationFrame frames = 3;
+}
+
+message GetEngagementRequest {
+  string simulation_id = 1;
+}
+
+message EngagementEvents {
+  repeated EngagementEvent events = 1;
+}
+
+message EngagementEvent {
+  string id = 1;
+  double time = 2;
+  string type = 3;             // "weapon_launch", "impact", "detection"
+  string source_id = 4;
+  string target_id = 5;
+  string weapon_id = 6;
+  string result = 7;
+  GeoPosition position = 8;
+}
+
+// ============ 导出 ============
+
+message ExportRequest {
+  string simulation_id = 1;
+  string format = 2;           // "csv", "kml", "json"
+  repeated string platform_ids = 3;
+  double start_time = 4;
+  double end_time = 5;
+}
+
+message ExportResponse {
+  bytes data = 1;
+  string filename = 2;
+  string content_type = 3;
+  int64 size = 4;
+}

@@ -1,0 +1,27 @@
+define_path_variable CASE coastal_campaign
+file_path .
+file_path ../../AFSim/afsim-2.9.0-win64/demos/simple_scenario
+file_path ../../AFSim/afsim-2.9.0-win64/demos/base_types
+
+include event_pipe.txt
+include event_output.txt
+include terrain.txt
+
+log_file ../output/$(CASE).log
+event_output file ../output/$(CASE).evt end_event_output
+event_pipe file ../output/$(CASE).aer end_event_pipe
+
+event_gateway
+   enabled true
+   event_pipe_name afsim_events
+   control_pipe_name afsim_control
+   mover_throttle 0.5 sec
+end_event_gateway
+
+include_once platforms/blue_adv_fighter_1_noripr.txt
+include_once platforms/red_adv_fighter_1_noripr.txt
+include_once platforms/red_multirole_fighter_2_noripr.txt
+include_once platforms/awacs.txt
+include scenarios/coastal_laydown.txt
+
+end_time 30 mins

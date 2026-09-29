@@ -1,0 +1,96 @@
+define_path_variable CASE scn-1781433311711
+file_path .
+file_path ../../AFSim/afsim-2.9.0-win64/demos/simple_scenario
+file_path ../../AFSim/afsim-2.9.0-win64/demos/base_types
+
+include event_pipe.txt
+include event_output.txt
+include terrain.txt
+
+log_file ../output/$(CASE).log
+event_output file ../output/$(CASE).evt end_event_output
+event_pipe file ../output/$(CASE).aer end_event_pipe
+
+event_gateway
+   enabled true
+   event_pipe_name afsim_events
+   control_pipe_name afsim_control
+   mover_throttle 0.5 sec
+end_event_gateway
+
+# AFSIM Scenario - Auto-generated from TrueSim
+# Scenario: 瓦斯特战役
+# Generated: 2026-06-14T10:54:32.604Z
+
+# ===== Platform Type Includes =====
+
+include_once platforms/blue_adv_fighter_1_noripr.txt
+include_once platforms/red_adv_fighter_1_noripr.txt
+
+# ===== Route Definitions =====
+
+route 蓝方进入航线
+   position 24.35n 120.3e altitude 8000 m
+      speed 480 kts
+   position 24.35n 121.6e altitude 8000 m
+      speed 480 kts
+end_route
+
+route 红方进入航线
+   position 24.35n 123e altitude 8200 m
+      speed 480 kts
+   position 24.35n 121.7e altitude 8200 m
+      speed 480 kts
+end_route
+
+# ===== Platform Instances =====
+
+platform "蓝鹰01" blue_adv_fighter_1
+   side blue
+   position 24.5n 120.3e altitude 8000 m
+   heading 90 deg
+   route
+      position 24.35n 120.3e altitude 8000 m
+         speed 480 kts
+      position 24.35n 121.6e altitude 8000 m
+         speed 480 kts
+   end_route
+end_platform
+
+platform "蓝鹰02" blue_adv_fighter_1
+   side blue
+   position 24.2n 120.3e altitude 8500 m
+   heading 90 deg
+   route
+      position 24.35n 120.3e altitude 8000 m
+         speed 480 kts
+      position 24.35n 121.6e altitude 8000 m
+         speed 480 kts
+   end_route
+end_platform
+
+platform "红鹰01" RED_ADV_FIGHTER_1
+   side red
+   position 24.5n 123e altitude 8200 m
+   heading 270 deg
+   route
+      position 24.35n 123e altitude 8200 m
+         speed 480 kts
+      position 24.35n 121.7e altitude 8200 m
+         speed 480 kts
+   end_route
+end_platform
+
+platform "红鹰02" RED_ADV_FIGHTER_1
+   side red
+   position 24.2n 123e altitude 8500 m
+   heading 270 deg
+   route
+      position 24.35n 123e altitude 8200 m
+         speed 480 kts
+      position 24.35n 121.7e altitude 8200 m
+         speed 480 kts
+   end_route
+end_platform
+
+end_time 30 mins

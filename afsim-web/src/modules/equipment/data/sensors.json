@@ -1,0 +1,602 @@
+[
+  {
+    "code": "APG-81",
+    "name": "AN/APG-81",
+    "nameEn": "AN/APG-81 AESA",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Northrop Grumman",
+    "description": "F-35战斗机搭载的有源相控阵雷达，具备空对空、空对地和电子战能力。",
+    "tags": [
+      "AESA",
+      "机载雷达",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "AN/APG-81",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 200,
+        "minRange": 1,
+        "fovAzimuth": 120,
+        "fovElevation": 120,
+        "scanRate": 0,
+        "accuracy": 10,
+        "frequency": 10,
+        "power": 10000,
+        "antennaGain": 38,
+        "pulseWidth": 10,
+        "prf": 10000,
+        "sensitivity": -85,
+        "description": "X波段有源相控阵雷达，~1200个T/R组件"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-001"
+  },
+  {
+    "code": "APG-77",
+    "name": "AN/APG-77",
+    "nameEn": "AN/APG-77 AESA",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Northrop Grumman",
+    "description": "F-22A战斗机搭载的有源相控阵雷达，具备低截获概率特性。",
+    "tags": [
+      "AESA",
+      "机载雷达",
+      "LPI",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "AN/APG-77",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 250,
+        "minRange": 1,
+        "fovAzimuth": 120,
+        "fovElevation": 120,
+        "scanRate": 0,
+        "accuracy": 8,
+        "frequency": 10,
+        "power": 15000,
+        "antennaGain": 40,
+        "pulseWidth": 10,
+        "prf": 15000,
+        "sensitivity": -90,
+        "description": "X波段有源相控阵雷达，~2000个T/R组件，LPI模式"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-002"
+  },
+  {
+    "code": "APG-83",
+    "name": "AN/APG-83 SABR",
+    "nameEn": "AN/APG-83 SABR",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Northrop Grumman",
+    "description": "F-16V战斗机搭载的有源相控阵雷达，可扩展敏捷波束雷达。",
+    "tags": [
+      "AESA",
+      "机载雷达",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "AN/APG-83 SABR",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 160,
+        "minRange": 1,
+        "fovAzimuth": 120,
+        "fovElevation": 120,
+        "scanRate": 0,
+        "accuracy": 12,
+        "frequency": 10,
+        "power": 8000,
+        "antennaGain": 36,
+        "pulseWidth": 10,
+        "prf": 10000,
+        "sensitivity": -82,
+        "description": "X波段有源相控阵雷达"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-003"
+  },
+  {
+    "code": "SPY-1D",
+    "name": "AN/SPY-1D",
+    "nameEn": "AN/SPY-1D",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Lockheed Martin",
+    "description": "宙斯盾作战系统的核心相控阵雷达，S波段四面固定阵列。",
+    "tags": [
+      "舰载雷达",
+      "相控阵",
+      "宙斯盾",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "AN/SPY-1D",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 450,
+        "minRange": 2,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "scanRate": 0,
+        "accuracy": 50,
+        "frequency": 5.4,
+        "power": 4000000,
+        "antennaGain": 42,
+        "pulseWidth": 50,
+        "prf": 5000,
+        "sensitivity": -110,
+        "description": "S波段无源相控阵雷达，四面固定阵列，可同时跟踪数百个目标"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-004"
+  },
+  {
+    "code": "IRBIS-E",
+    "name": "雪豹-E",
+    "nameEn": "Irbis-E",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "Russia",
+    "manufacturer": "NIIP",
+    "description": "Su-35S战斗机搭载的无源相控阵雷达，探测距离400km。",
+    "tags": [
+      "PESA",
+      "机载雷达",
+      "俄罗斯"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "Irbis-E",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 400,
+        "minRange": 2,
+        "fovAzimuth": 120,
+        "fovElevation": 120,
+        "scanRate": 0,
+        "accuracy": 15,
+        "frequency": 10,
+        "power": 20000,
+        "antennaGain": 38,
+        "pulseWidth": 15,
+        "prf": 8000,
+        "sensitivity": -85,
+        "description": "X波段无源相控阵雷达，PESA体制"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-005"
+  },
+  {
+    "code": "346A",
+    "name": "346A型相控阵雷达",
+    "nameEn": "Type 346A AESA",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "China",
+    "description": "052D驱逐舰搭载的S波段有源相控阵雷达。",
+    "tags": [
+      "舰载雷达",
+      "AESA",
+      "中国"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "346A",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 400,
+        "minRange": 2,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "scanRate": 0,
+        "accuracy": 50,
+        "frequency": 5.4,
+        "power": 3000000,
+        "antennaGain": 40,
+        "pulseWidth": 50,
+        "prf": 5000,
+        "sensitivity": -108,
+        "description": "S波段有源相控阵雷达，四面固定阵列"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-006"
+  },
+  {
+    "code": "AN/AAQ-37",
+    "name": "AN/AAQ-37 DAS",
+    "nameEn": "AN/AAQ-37 Distributed Aperture System",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Northrop Grumman",
+    "description": "F-35分布式孔径系统，6个红外传感器覆盖全向，提供态势感知和导弹告警。",
+    "tags": [
+      "红外",
+      "分布式孔径",
+      "态势感知",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "AN/AAQ-37 DAS",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 100,
+        "minRange": 0.1,
+        "fovAzimuth": 360,
+        "fovElevation": 360,
+        "scanRate": 0,
+        "accuracy": 1,
+        "description": "全向红外分布式孔径系统，6个传感器覆盖4π球面度"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-007"
+  },
+  {
+    "code": "OLS-35",
+    "name": "OLS-35",
+    "nameEn": "OLS-35 IRST",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "Russia",
+    "description": "Su-35S搭载的红外搜索与跟踪系统。",
+    "tags": [
+      "IRST",
+      "红外",
+      "俄罗斯"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "OLS-35",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 90,
+        "minRange": 0.5,
+        "fovAzimuth": 60,
+        "fovElevation": 60,
+        "scanRate": 0,
+        "accuracy": 5,
+        "description": "红外搜索与跟踪系统，含激光测距"
+      },
+      {
+        "name": "OLS-35 LRF",
+        "type": "ladar",
+        "enabled": true,
+        "maxRange": 20,
+        "accuracy": 5,
+        "description": "配套激光测距仪"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-008"
+  },
+  {
+    "code": "AN/SLQ-32",
+    "name": "AN/SLQ-32(V)",
+    "nameEn": "AN/SLQ-32 Electronic Warfare Suite",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "USA",
+    "description": "美国海军标准电子战系统，提供电子侦察和电子对抗能力。",
+    "tags": [
+      "电子战",
+      "ESM",
+      "ECM",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "AN/SLQ-32",
+        "type": "ew",
+        "enabled": true,
+        "maxRange": 300,
+        "minRange": 5,
+        "fovAzimuth": 360,
+        "fovElevation": 90,
+        "scanRate": 0,
+        "accuracy": 2,
+        "frequency": 18,
+        "power": 100000,
+        "sensitivity": -60,
+        "description": "舰载电子战系统，含ESM和ECM功能"
+      }
+    ],
+    "weapons": [],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-009"
+  },
+  {
+    "code": "KJ-500",
+    "name": "空警-500",
+    "nameEn": "KJ-500 AEW",
+    "category": "sensor",
+    "platformType": "sensor",
+    "status": "active",
+    "country": "China",
+    "description": "中国空军预警机，搭载有源相控阵雷达。",
+    "tags": [
+      "预警机",
+      "AESA",
+      "中国"
+    ],
+    "platformParams": {
+      "maxSpeed": 0,
+      "cruiseSpeed": 0,
+      "range": 0,
+      "endurance": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "weight": 0,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "math3d"
+    },
+    "sensors": [
+      {
+        "name": "KJ-500 Radar",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 450,
+        "minRange": 5,
+        "fovAzimuth": 360,
+        "fovElevation": 40,
+        "scanRate": 6,
+        "accuracy": 100,
+        "frequency": 3,
+        "power": 5000000,
+        "antennaGain": 40,
+        "sensitivity": -115,
+        "description": "三面固定有源相控阵雷达，S波段"
+      }
+    ],
+    "weapons": [],
+    "communications": [
+      {
+        "name": "Datalink",
+        "type": "datalink",
+        "enabled": true,
+        "maxRange": 500,
+        "dataRate": 500,
+        "description": "战术数据链系统"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0,
+        "side": 0,
+        "rear": 0,
+        "average": 0
+      }
+    },
+    "id": "sensors-010"
+  }
+]

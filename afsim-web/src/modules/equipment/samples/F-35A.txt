@@ -1,0 +1,115 @@
+# AFSIM Platform Definition - F-35A Lightning II
+# Converted to real AFSIM syntax
+
+platform_type F-35A_LIGHTNING_II WSF_PLATFORM
+   side blue
+   category fighter
+   icon F-35
+
+   # Mover
+   mover WSF_AIR_MOVER
+      maximum_speed 1057.8 knots
+      minimum_speed 108.0 knots
+      cruise_speed 540.0 knots
+      maximum_altitude 50000 ft
+      minimum_altitude 0 ft
+      service_ceiling 50000 ft
+      maximum_range 1198.8 nm
+      endurance 2.8 hr
+      maximum_linear_acceleration 9.0 g
+      length 15.67 m
+      width 10.7 m
+      height 4.38 m
+      empty_mass 13290.0 kg
+      payload_mass 31800.0 kg
+      fuel_mass 8390.0 kg
+   end_mover
+
+   # Radar - AN/APG-81 AESA
+   sensor AN_APG_81 WSF_RADAR_SENSOR
+      on
+      initial_mode search
+      mode_template
+         transmitter
+            frequency 10.0 ghz
+            power 10.0 kw
+            bandwidth 1.0 ghz
+            pulse_width 0.01 us
+            pulse_repetition_frequency 10000 hz
+            antenna_gain 38.0 dbi
+         end_transmitter
+         receiver
+            noise_figure 3.0 db
+            bandwidth 1.0 ghz
+            sensitivity -110.0 dbm
+         end_receiver
+         one_m2_detect_range 97.2 nm
+         azimuth_field_of_view 120.0 deg
+         elevation_field_of_view 60.0 deg
+         frame_time 1.0 sec
+         reports_location
+         reports_velocity
+         reports_range
+      end_mode_template
+      mode search
+         azimuth_field_of_view 120.0 deg
+         elevation_field_of_view 60.0 deg
+      end_mode
+      mode track
+         azimuth_field_of_view 20.0 deg
+         elevation_field_of_view 20.0 deg
+      end_mode
+   end_sensor
+
+   # DAS - Distributed Aperture System
+   sensor AN_AAQ_37_DAS WSF_PASSIVE_SENSOR
+      on
+   end_sensor
+
+   # EOTS - Electro-Optical Targeting System
+   sensor AN_AAQ_40_EOTS WSF_PASSIVE_SENSOR
+      on
+   end_sensor
+
+   # Weapons
+   weapon AIM_120D WSF_EXPLICIT_WEAPON
+      quantity 4
+   end_weapon
+
+   weapon AIM_9X WSF_IMPLICIT_WEAPON
+      quantity 2
+   end_weapon
+
+   weapon GBU_53B WSF_IMPLICIT_WEAPON
+      quantity 4
+   end_weapon
+
+   weapon GAU_22A WSF_IMPLICIT_WEAPON
+      quantity 1
+   end_weapon
+
+   # Communications
+   comm MIDS_JTRS WSF_COMM_TRANSCEIVER
+      on
+   end_comm
+
+   comm AN_ARC_210 WSF_COMM_TRANSCEIVER
+      on
+   end_comm
+
+   # Processor
+   processor MissionComputer WSF_SCRIPT_PROCESSOR
+      on
+      update_interval 0.1 sec
+   end_processor
+
+   # Fuel
+   fuel FuelSystem WSF_VARIABLE_RATE_FUEL
+      maximum_quantity 8390.0 kg
+      initial_quantity 8390.0 kg
+      rate 2500.0 kg/hr
+   end_fuel
+
+   # Signature
+   radar_signature F-35A_Signature
+end_platform_type

@@ -1,0 +1,13 @@
+{
+  "role": "viewer",
+  "label": "观察员",
+  "description": "最小化视图，仅查看仿真态势",
+  "plugins": ["sim-globe"],
+  "defaultPreset": "viewer-minimal",
+  "restrictions": {
+    "readOnly": true,
+    "canAddLayers": false,
+    "canModifyScenarios": false,
+    "canControlSimulation": false
+  }
+}

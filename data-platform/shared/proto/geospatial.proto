@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package truesim.geospatial;
+
+option go_package = "truesim/geospatial";
+
+// ============ 地理空间服务 ============
+
+service GeospatialService {
+  rpc AddDataSource(AddSourceRequest) returns (DataSource);
+  rpc RemoveDataSource(RemoveSourceRequest) returns (Empty);
+  rpc ListDataSources(ListSourcesRequest) returns (ListSourcesResponse);
+  rpc UploadTerrain(UploadTerrainRequest) returns (TerrainMetadata);
+  rpc GetTerrainHeight(GetHeightRequest) returns (HeightResponse);
+  rpc ComputeLOS(ComputeLOSRequest) returns (LOSResponse);
+}
+
+// ============ 消息定义 ============
+
+message Empty {}
+
+message DataSource {
+  string id = 1;
+  string name = 2;
+  string type = 3;          // "wmts", "wms", "tms", "geojson", "czml"
+  string url = 4;
+  string format = 5;
+  map<string, string> properties = 6;
+  string created_at = 7;
+}
+
+message TerrainMetadata {
+  string id = 1;
+  string name = 2;
+  BoundingBox bounds = 3;
+  double min_height = 4;
+  double max_height = 5;
+  double resolution = 6;
+  string format = 7;        // "quantized-mesh", "terrain", "geotiff"
+  int64 tile_count = 8;
+  int64 size_bytes = 9;
+  string created_at = 10;
+}
+
+message VectorLayer {
+  string id = 1;
+  string name = 2;
+  string type = 3;          // "point", "line", "polygon"
+  string source = 4;
+  string style = 5;         // JSON style definition
+  map<string, string> metadata = 6;
+}
+
+message BoundingBox {
+  double south = 1;
+  double west = 2;
+  double north = 3;
+  double east = 4;
+}
+
+message GeoPosition {
+  double longitude = 1;
+  double latitude = 2;
+  double altitude = 3;
+}
+
+// ============ 请求/响应 ============
+
+message AddSourceRequest {
+  string name = 1;
+  string type = 2;
+  string url = 3;
+  string format = 4;
+  map<string, string> properties = 5;
+}
+
+message RemoveSourceRequest {
+  string id = 1;
+}
+
+message ListSourcesRequest {
+  string type = 1;
+}
+
+message ListSourcesResponse {
+  repeated DataSource sources = 1;
+}
+
+message UploadTerrainRequest {
+  string name = 1;
+  bytes data = 2;
+  string format = 3;
+  BoundingBox bounds = 4;
+}
+
+message GetHeightRequest {
+  double longitude = 1;
+  double latitude = 2;
+}
+
+message HeightResponse {
+  double height = 1;
+  string source = 2;
+}
+
+message ComputeLOSRequest {
+  GeoPosition observer = 1;
+  GeoPosition target = 2;
+  double frequency = 3;      // 频率 (GHz), 用于考虑大气折射
+  double earth_radius_factor = 4; // 地球半径因子 (4/3 标准大气折射)
+}
+
+message LOSResponse {
+  bool has_los = 1;
+  double distance = 2;
+  double clearance = 3;      // 最小余隙 (米), 负值表示遮挡
+  repeated GeoPosition obstruction_points = 4;
+}

@@ -1,0 +1,285 @@
+################################################################################
+# 空对空作战仿真 (Air-to-Air BVR) — TrueSim Web 平台版本
+#
+# 由 afsimgenerator 的 scenarios/air_to_air_bvr.txt 移植而来,
+# 加上 Web 平台所需的 file_path / event_gateway 头部,
+# 使仿真事件能通过命名管道实时推送到 Go 网关 -> WebSocket -> 前端 CesiumJS。
+#
+# 运行方式见文末说明(通过前端「仿真运行」模块点击启动)。
+################################################################################
+
+# ------------------------------------------------------------------ Web 平台头部
+define_path_variable CASE air_to_air_bvr
+file_path .
+file_path ../../AFSim/afsim-2.9.0-win64/demos/simple_scenario
+file_path ../../AFSim/afsim-2.9.0-win64/demos/base_types
+
+include event_pipe.txt
+include event_output.txt
+include terrain.txt
+
+log_file ../output/$(CASE).log
+event_output file ../output/$(CASE).evt end_event_output
+event_pipe   file ../output/$(CASE).aer end_event_pipe
+
+# 关键:把事件经命名管道实时推送给 TrueSim 网关
+event_gateway
+   enabled true
+   event_pipe_name afsim_events
+   control_pipe_name afsim_control
+   mover_throttle 0.5 sec
+end_event_gateway
+
+script_interface
+end_script_interface
+
+################################################################################
+# 0) 目标特征 (雷达/红外/光学)
+################################################################################
+
+radar_signature FIGHTER_RADAR_SIG WSF_RADAR_SIGNATURE
+   constant 5 dBsm
+end_radar_signature
+
+infrared_signature FIGHTER_IR_SIG WSF_INFRARED_SIGNATURE
+   constant 200 watts/steradian
+end_infrared_signature
+
+optical_signature FIGHTER_OPTICAL_SIG WSF_OPTICAL_SIGNATURE
+   constant 15 m^2
+end_optical_signature
+
+################################################################################
+# 1) 火控雷达
+################################################################################
+
+antenna_pattern FCR_ANTENNA
+   constant_pattern
+      peak_gain 35 dB
+      azimuth_beamwidth 3 deg
+      elevation_beamwidth 3 deg
+   end_constant_pattern
+end_antenna_pattern
+
+sensor FIRE_CONTROL_RADAR WSF_RADAR_SENSOR
+   frame_time 2 sec
+   scan_mode azimuth
+   minimum_range 0 nm
+   maximum_range 100 nm
+
+   transmitter
+      antenna_pattern FCR_ANTENNA
+      power 15.0 kw
+      pulse_width 1.0e-6 sec
+      pulse_repetition_frequency 10000 hz
+      frequency 10.0 ghz
+   end_transmitter
+
+   receiver
+      antenna_pattern FCR_ANTENNA
+      bandwidth 1.0 mhz
+      internal_loss 5.0 dB
+      noise_figure 3.0 dB
+   end_receiver
+
+   swerling_case 1
+   number_of_pulses_integrated 10
+   detector_law square
+   probability_of_false_alarm 1.0e-6
+   one_m2_detect_range 70 nm
+
+   hits_to_establish_track 2 3
+   hits_to_maintain_track 1 3
+
+   reports_location
+   reports_range
+   reports_bearing
+   reports_velocity
+end_sensor
+
+################################################################################
+# 2) 中距空空导弹 (有动力 + 比例导引)
+################################################################################
+
+aero AAM_AERO WSF_AERO
+   reference_area 0.05 m2
+   cd_zero_subsonic 0.30
+   cd_zero_supersonic 0.45
+   mach_begin_cd_rise 0.900
+   mach_end_cd_rise 1.200
+   mach_max_supersonic 4.000
+   cl_max 18.000
+   aspect_ratio 3.000
+end_aero
+
+processor AAM_GUIDANCE WSF_GUIDANCE_COMPUTER
+   proportional_navigation_gain 5.0
+   velocity_pursuit_gain 1.0
+   g_bias 1.0
+   maximum_commanded_g 40.0 g
+   guidance_delay 0.0 sec
+   update_interval 0.05 sec
+end_processor
+
+processor AAM_FUSE WSF_AIR_TARGET_FUSE
+   max_time_of_flight_to_detonate 100.0 sec
+end_processor
+
+platform_type AAM_MISSILE WSF_PLATFORM
+   icon aim120
+   category missile
+
+   radar_signature    FIGHTER_RADAR_SIG
+   infrared_signature FIGHTER_IR_SIG
+   optical_signature  FIGHTER_OPTICAL_SIG
+
+   mover WSF_GUIDED_MOVER
+      aero AAM_AERO
+      total_mass 152.0 kg
+      fuel_mass 71.0 kg
+      specific_impulse 222.0 sec
+      thrust 25800.0 newtons
+      thrust_duration 6.0 sec
+      update_interval 0.05 sec
+   end_mover
+
+   processor guidance AAM_GUIDANCE
+   end_processor
+
+   processor fuse AAM_FUSE
+   end_processor
+end_platform_type
+
+weapon_effects AAM_EFFECT WSF_SPHERICAL_LETHALITY
+   minimum_radius 8.0 m
+   maximum_radius 15.0 m
+   maximum_damage 1.0
+   minimum_damage 0.3
+   threshold_damage 0.3
+   exponent 1.0
+end_weapon_effects
+
+weapon AAM WSF_EXPLICIT_WEAPON
+   launched_platform_type AAM_MISSILE
+   weapon_effects AAM_EFFECT
+   category air_to_air_missile
+end_weapon
+
+################################################################################
+# 3) 蓝方战斗机
+################################################################################
+
+platform_type BLUE_FIGHTER WSF_PLATFORM
+   icon F-22
+
+   radar_signature    FIGHTER_RADAR_SIG
+   infrared_signature FIGHTER_IR_SIG
+   optical_signature  FIGHTER_OPTICAL_SIG
+
+   mover WSF_AIR_MOVER
+      maximum_speed 600 m/sec
+      minimum_speed 120 m/sec
+      default_radial_acceleration 9.0 g
+   end_mover
+
+   sensor radar FIRE_CONTROL_RADAR
+      processor track-proc
+   end_sensor
+
+   processor track-proc WSF_TRACK_PROCESSOR
+      update_interval 1.0 sec
+   end_processor
+
+   processor attack-proc WSF_SCRIPT_PROCESSOR
+      update_interval 1.0 sec
+
+      script_variables
+         double lastFireTime  = -100.0;
+         double FIRE_COOLDOWN = 8.0;
+         double MAX_RANGE     = 55000.0;
+         double MIN_RANGE     = 3000.0;
+      end_script_variables
+
+      on_update
+         WsfWeapon weapon = PLATFORM.Weapon("aam");
+         WsfLocalTrackList trackList = PLATFORM.MasterTrackList();
+
+         if ((weapon.QuantityRemaining() > 0) && (trackList.TrackCount() > 0))
+         {
+            if (TIME_NOW - lastFireTime >= FIRE_COOLDOWN)
+            {
+               WsfTrack track = trackList.TrackEntry(0);
+               double rng = PLATFORM.SlantRangeTo(track);
+               if ((rng > MIN_RANGE) && (rng < MAX_RANGE))
+               {
+                  bool fired = weapon.Fire(track);
+                  if (fired)
+                  {
+                     lastFireTime = TIME_NOW;
+                     print(TIME_NOW, " [", PLATFORM.Name(), "] 发射 AAM -> ",
+                           track.TargetName(), " 距离 ", rng, " m, 余弹 ",
+                           weapon.QuantityRemaining());
+                  }
+               }
+            }
+         }
+      end_on_update
+   end_processor
+
+   weapon aam AAM
+      quantity 4
+      firing_interval 2.0 sec
+   end_weapon
+end_platform_type
+
+################################################################################
+# 4) 红方战斗机 (目标机)
+################################################################################
+
+platform_type RED_FIGHTER WSF_PLATFORM
+   icon Su-27
+
+   radar_signature    FIGHTER_RADAR_SIG
+   infrared_signature FIGHTER_IR_SIG
+   optical_signature  FIGHTER_OPTICAL_SIG
+
+   mover WSF_AIR_MOVER
+      maximum_speed 550 m/sec
+      minimum_speed 120 m/sec
+      default_radial_acceleration 7.0 g
+   end_mover
+end_platform_type
+
+################################################################################
+# 5) 实例化平台 (东海方向迎头对进,贴合本平台想定坐标范围)
+################################################################################
+
+platform blue-fighter BLUE_FIGHTER
+   side blue
+
+   sensor radar
+      on
+   end_sensor
+
+   route
+      position 24:30:00n 120:00:00e altitude 10000 m speed 350 m/sec
+      position 24:30:00n 121:30:00e altitude 10000 m speed 350 m/sec
+      position 24:30:00n 123:00:00e altitude 10000 m speed 350 m/sec
+   end_route
+end_platform
+
+platform red-fighter RED_FIGHTER
+   side red
+
+   route
+      position 24:30:00n 123:00:00e altitude 10000 m speed 320 m/sec
+      position 24:30:00n 121:30:00e altitude 10000 m speed 320 m/sec
+      position 24:30:00n 120:00:00e altitude 10000 m speed 320 m/sec
+   end_route
+end_platform
+
+################################################################################
+# 6) 仿真控制
+################################################################################
+
+end_time 600 sec

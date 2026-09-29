@@ -1,0 +1,598 @@
+[
+  {
+    "code": "AIM-120D",
+    "name": "AIM-120D AMRAAM",
+    "nameEn": "AIM-120D AMRAAM",
+    "category": "missile",
+    "platformType": "missile",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Raytheon",
+    "description": "美国空军最新中距空空导弹，具备双向数据链和主动雷达导引头。",
+    "tags": [
+      "空空导弹",
+      "中距",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 4900,
+      "cruiseSpeed": 3000,
+      "range": 160,
+      "endurance": 0,
+      "length": 3.66,
+      "width": 0.18,
+      "height": 0.18,
+      "weight": 152,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "air_mover"
+    },
+    "sensors": [
+      {
+        "name": "Active Radar Seeker",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 20,
+        "minRange": 0.5,
+        "fovAzimuth": 60,
+        "fovElevation": 60,
+        "accuracy": 5,
+        "frequency": 10,
+        "description": "主动雷达导引头"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "WDU-41/B",
+        "type": "warhead",
+        "quantity": 1,
+        "maxRange": 0,
+        "warheadType": "conventional",
+        "warheadWeight": 23,
+        "blastRadius": 15,
+        "description": "高爆破片战斗部"
+      }
+    ],
+    "communications": [
+      {
+        "name": "Two-way Datalink",
+        "type": "datalink",
+        "enabled": true,
+        "maxRange": 160,
+        "description": "双向数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.01,
+        "side": 0.05,
+        "rear": 0.03,
+        "average": 0.03
+      },
+      "ir": {
+        "frontal": 10,
+        "side": 15,
+        "rear": 50
+      }
+    },
+    "id": "missiles-001"
+  },
+  {
+    "code": "AIM-9X",
+    "name": "AIM-9X 响尾蛇",
+    "nameEn": "AIM-9X Sidewinder",
+    "category": "missile",
+    "platformType": "missile",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Raytheon",
+    "description": "美国最新近距红外空空导弹，具备大离轴发射能力。",
+    "tags": [
+      "空空导弹",
+      "近距",
+      "红外",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 2800,
+      "cruiseSpeed": 2000,
+      "range": 35,
+      "endurance": 0,
+      "length": 3,
+      "width": 0.13,
+      "height": 0.13,
+      "weight": 85,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "air_mover"
+    },
+    "sensors": [
+      {
+        "name": "IR Seeker",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 15,
+        "minRange": 0.3,
+        "fovAzimuth": 90,
+        "fovElevation": 90,
+        "accuracy": 2,
+        "description": "红外成像导引头"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "WDU-17/B",
+        "type": "warhead",
+        "quantity": 1,
+        "maxRange": 0,
+        "warheadType": "conventional",
+        "warheadWeight": 9.4,
+        "blastRadius": 10,
+        "description": "连续杆战斗部"
+      }
+    ],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.005,
+        "side": 0.02,
+        "rear": 0.01,
+        "average": 0.01
+      },
+      "ir": {
+        "frontal": 5,
+        "side": 8,
+        "rear": 30
+      }
+    },
+    "id": "missiles-002"
+  },
+  {
+    "code": "R77",
+    "name": "R-77-1",
+    "nameEn": "R-77-1 (AA-12 Adder)",
+    "category": "missile",
+    "platformType": "missile",
+    "status": "active",
+    "country": "Russia",
+    "description": "俄罗斯中距空空导弹，配备主动雷达导引头和栅格尾翼。",
+    "tags": [
+      "空空导弹",
+      "中距",
+      "俄罗斯"
+    ],
+    "platformParams": {
+      "maxSpeed": 4300,
+      "cruiseSpeed": 2800,
+      "range": 110,
+      "endurance": 0,
+      "length": 3.6,
+      "width": 0.2,
+      "height": 0.2,
+      "weight": 175,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "air_mover"
+    },
+    "sensors": [
+      {
+        "name": "Active Radar",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 18,
+        "minRange": 0.5,
+        "fovAzimuth": 60,
+        "fovElevation": 60,
+        "accuracy": 8,
+        "frequency": 10,
+        "description": "9B-1103M主动雷达导引头"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "HE-Fragmentation",
+        "type": "warhead",
+        "quantity": 1,
+        "maxRange": 0,
+        "warheadType": "conventional",
+        "warheadWeight": 30,
+        "blastRadius": 15,
+        "description": "高爆破片战斗部"
+      }
+    ],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.015,
+        "side": 0.06,
+        "rear": 0.04,
+        "average": 0.04
+      },
+      "ir": {
+        "frontal": 12,
+        "side": 18,
+        "rear": 55
+      }
+    },
+    "id": "missiles-003"
+  },
+  {
+    "code": "PL15",
+    "name": "霹雳-15",
+    "nameEn": "PL-15",
+    "category": "missile",
+    "platformType": "missile",
+    "status": "active",
+    "country": "China",
+    "description": "中国最新中距空空导弹，配备有源相控阵雷达导引头，射程超过150km。",
+    "tags": [
+      "空空导弹",
+      "中距",
+      "AESA",
+      "中国"
+    ],
+    "platformParams": {
+      "maxSpeed": 5000,
+      "cruiseSpeed": 3000,
+      "range": 200,
+      "endurance": 0,
+      "length": 3.9,
+      "width": 0.2,
+      "height": 0.2,
+      "weight": 185,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "air_mover"
+    },
+    "sensors": [
+      {
+        "name": "AESA Seeker",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 25,
+        "minRange": 0.5,
+        "fovAzimuth": 60,
+        "fovElevation": 60,
+        "accuracy": 5,
+        "frequency": 12,
+        "description": "有源相控阵雷达导引头"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "HE-Fragmentation",
+        "type": "warhead",
+        "quantity": 1,
+        "maxRange": 0,
+        "warheadType": "conventional",
+        "warheadWeight": 25,
+        "blastRadius": 15,
+        "description": "高爆破片战斗部"
+      }
+    ],
+    "communications": [
+      {
+        "name": "Two-way Datalink",
+        "type": "datalink",
+        "enabled": true,
+        "maxRange": 200,
+        "description": "双向数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.012,
+        "side": 0.05,
+        "rear": 0.03,
+        "average": 0.03
+      },
+      "ir": {
+        "frontal": 11,
+        "side": 16,
+        "rear": 50
+      }
+    },
+    "id": "missiles-004"
+  },
+  {
+    "code": "TOMAHAWK",
+    "name": "战斧 Block IV",
+    "nameEn": "Tomahawk Block IV",
+    "category": "missile",
+    "platformType": "missile",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "Raytheon",
+    "description": "美国海军远程对陆攻击巡航导弹，可从水面舰艇和潜艇发射。",
+    "tags": [
+      "巡航导弹",
+      "对陆攻击",
+      "远程",
+      "美国"
+    ],
+    "platformParams": {
+      "maxSpeed": 880,
+      "cruiseSpeed": 800,
+      "range": 1600,
+      "endurance": 2,
+      "length": 5.56,
+      "width": 0.52,
+      "height": 0.52,
+      "weight": 1440,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "air_mover"
+    },
+    "sensors": [
+      {
+        "name": "DSMAC",
+        "type": "eo",
+        "enabled": true,
+        "maxRange": 5,
+        "fovAzimuth": 45,
+        "fovElevation": 45,
+        "accuracy": 10,
+        "description": "数字景象匹配区域相关器"
+      },
+      {
+        "name": "GPS/INS",
+        "type": "navigation",
+        "enabled": true,
+        "accuracy": 5,
+        "description": "GPS/惯导复合制导"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "WDU-36/B",
+        "type": "warhead",
+        "quantity": 1,
+        "maxRange": 0,
+        "warheadType": "conventional",
+        "warheadWeight": 340,
+        "blastRadius": 30,
+        "description": "1000磅高爆战斗部"
+      }
+    ],
+    "communications": [
+      {
+        "name": "SATCOM",
+        "type": "satcom",
+        "enabled": true,
+        "maxRange": 1600,
+        "description": "卫星通信数据链，支持飞行中重新瞄准"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.1,
+        "side": 0.5,
+        "rear": 0.3,
+        "average": 0.3
+      },
+      "ir": {
+        "frontal": 15,
+        "side": 25,
+        "rear": 40
+      }
+    },
+    "id": "missiles-005"
+  },
+  {
+    "code": "YJ18",
+    "name": "鹰击-18",
+    "nameEn": "YJ-18",
+    "category": "missile",
+    "platformType": "missile",
+    "status": "active",
+    "country": "China",
+    "description": "中国海军远程反舰导弹，采用亚音速巡航+超音速末段突防模式。",
+    "tags": [
+      "反舰导弹",
+      "远程",
+      "超音速末段",
+      "中国"
+    ],
+    "platformParams": {
+      "maxSpeed": 1000,
+      "cruiseSpeed": 800,
+      "range": 540,
+      "endurance": 0.8,
+      "length": 8.2,
+      "width": 0.54,
+      "height": 0.54,
+      "weight": 2000,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "air_mover"
+    },
+    "sensors": [
+      {
+        "name": "Active Radar Seeker",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 40,
+        "minRange": 1,
+        "fovAzimuth": 45,
+        "fovElevation": 45,
+        "accuracy": 10,
+        "frequency": 10,
+        "description": "主动雷达导引头"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Semi-Armor Piercing",
+        "type": "warhead",
+        "quantity": 1,
+        "maxRange": 0,
+        "warheadType": "conventional",
+        "warheadWeight": 300,
+        "blastRadius": 20,
+        "description": "半穿甲战斗部"
+      }
+    ],
+    "communications": [
+      {
+        "name": "Datalink",
+        "type": "datalink",
+        "enabled": true,
+        "maxRange": 540,
+        "description": "中继数据链"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.05,
+        "side": 0.3,
+        "rear": 0.2,
+        "average": 0.15
+      },
+      "ir": {
+        "frontal": 20,
+        "side": 35,
+        "rear": 60
+      }
+    },
+    "id": "missiles-006"
+  },
+  {
+    "code": "BRAHMOS",
+    "name": "布拉莫斯",
+    "nameEn": "BrahMos",
+    "category": "missile",
+    "platformType": "missile",
+    "status": "active",
+    "country": "India",
+    "manufacturer": "BrahMos Aerospace",
+    "description": "印俄联合研制的超音速巡航导弹，最高速度Mach 2.8。",
+    "tags": [
+      "巡航导弹",
+      "超音速",
+      "印度"
+    ],
+    "platformParams": {
+      "maxSpeed": 2900,
+      "cruiseSpeed": 2500,
+      "range": 450,
+      "endurance": 0.3,
+      "length": 8.4,
+      "width": 0.67,
+      "height": 0.67,
+      "weight": 3000,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "air_mover"
+    },
+    "sensors": [
+      {
+        "name": "Active Radar",
+        "type": "radar",
+        "enabled": true,
+        "maxRange": 30,
+        "minRange": 1,
+        "fovAzimuth": 45,
+        "fovElevation": 45,
+        "accuracy": 5,
+        "frequency": 10,
+        "description": "主动雷达导引头"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Semi-Armor Piercing",
+        "type": "warhead",
+        "quantity": 1,
+        "maxRange": 0,
+        "warheadType": "conventional",
+        "warheadWeight": 300,
+        "blastRadius": 20,
+        "description": "半穿甲战斗部"
+      }
+    ],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.03,
+        "side": 0.2,
+        "rear": 0.15,
+        "average": 0.1
+      },
+      "ir": {
+        "frontal": 25,
+        "side": 40,
+        "rear": 70
+      }
+    },
+    "id": "missiles-007"
+  },
+  {
+    "code": "R73",
+    "name": "R-73 (AA-11 Archer)",
+    "nameEn": "R-73 Archer",
+    "category": "missile",
+    "platformType": "missile",
+    "status": "active",
+    "country": "Russia",
+    "description": "俄罗斯近距红外空空导弹，大离轴发射角。",
+    "tags": [
+      "空空导弹",
+      "近距",
+      "红外",
+      "俄罗斯"
+    ],
+    "platformParams": {
+      "maxSpeed": 2500,
+      "cruiseSpeed": 1800,
+      "range": 30,
+      "endurance": 0,
+      "length": 2.93,
+      "width": 0.17,
+      "height": 0.17,
+      "weight": 105,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 0,
+      "motionModel": "air_mover"
+    },
+    "sensors": [
+      {
+        "name": "IR Seeker",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 12,
+        "minRange": 0.3,
+        "fovAzimuth": 60,
+        "fovElevation": 60,
+        "accuracy": 3,
+        "description": "红外导引头"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "HE-Fragmentation",
+        "type": "warhead",
+        "quantity": 1,
+        "maxRange": 0,
+        "warheadType": "conventional",
+        "warheadWeight": 8,
+        "blastRadius": 8,
+        "description": "高爆破片战斗部"
+      }
+    ],
+    "communications": [],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 0.004,
+        "side": 0.015,
+        "rear": 0.01,
+        "average": 0.01
+      },
+      "ir": {
+        "frontal": 4,
+        "side": 6,
+        "rear": 25
+      }
+    },
+    "id": "missiles-008"
+  }
+]

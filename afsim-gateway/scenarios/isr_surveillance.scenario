@@ -1,0 +1,223 @@
+################################################################################
+# ISR 情报监视侦察仿真 (ISR) — TrueSim Web 平台版本
+#
+# 由 afsimgenerator 的 scenarios/isr_surveillance.txt 移植而来,
+# 加上 Web 平台所需的 file_path / event_gateway 头部,
+# 使仿真事件能通过命名管道实时推送到 Go 网关 -> WebSocket -> 前端 CesiumJS。
+#
+# 场景:高空侦察机巡逻搜索,发现并跟踪区域内目标(地面车队 + 空中过境机),周期上报态势。
+#       ISR 任务重在态势感知,不进行打击。
+################################################################################
+
+# ------------------------------------------------------------------ Web 平台头部
+define_path_variable CASE isr_surveillance
+file_path .
+file_path ../../AFSim/afsim-2.9.0-win64/demos/simple_scenario
+file_path ../../AFSim/afsim-2.9.0-win64/demos/base_types
+
+include event_pipe.txt
+include event_output.txt
+include terrain.txt
+
+log_file ../output/$(CASE).log
+event_output file ../output/$(CASE).evt end_event_output
+event_pipe   file ../output/$(CASE).aer end_event_pipe
+
+# 关键:把事件经命名管道实时推送给 TrueSim 网关
+event_gateway
+   enabled true
+   event_pipe_name afsim_events
+   control_pipe_name afsim_control
+   mover_throttle 0.5 sec
+end_event_gateway
+
+script_interface
+end_script_interface
+
+################################################################################
+# 0) 目标特征
+################################################################################
+
+radar_signature TARGET_RADAR_SIG WSF_RADAR_SIGNATURE
+   constant 15 dBsm
+end_radar_signature
+
+################################################################################
+# 1) 广域监视雷达 (下视搜索)
+################################################################################
+
+antenna_pattern SURV_RADAR_ANTENNA
+   constant_pattern
+      peak_gain 38 dB
+      azimuth_beamwidth 2 deg
+      elevation_beamwidth 4 deg
+   end_constant_pattern
+end_antenna_pattern
+
+sensor SURVEILLANCE_RADAR WSF_RADAR_SENSOR
+   frame_time 2 sec
+   scan_mode azimuth_and_elevation
+   azimuth_scan_limits -180 deg 180 deg
+   elevation_scan_limits -85 deg 5 deg
+   minimum_range 0 nm
+   maximum_range 150 nm
+
+   transmitter
+      antenna_pattern SURV_RADAR_ANTENNA
+      power 50.0 kw
+      pulse_width 2.0e-6 sec
+      pulse_repetition_frequency 2000 hz
+      frequency 9.0 ghz
+   end_transmitter
+
+   receiver
+      antenna_pattern SURV_RADAR_ANTENNA
+      bandwidth 1.0 mhz
+      internal_loss 5.0 dB
+      noise_figure 3.0 dB
+   end_receiver
+
+   swerling_case 1
+   number_of_pulses_integrated 20
+   detector_law square
+   probability_of_false_alarm 1.0e-6
+   one_m2_detect_range 120 nm
+
+   hits_to_establish_track 2 3
+   hits_to_maintain_track 1 3
+
+   reports_location
+   reports_range
+   reports_bearing
+   reports_velocity
+end_sensor
+
+################################################################################
+# 2) 蓝方 ISR 侦察平台
+################################################################################
+
+platform_type BLUE_ISR WSF_PLATFORM
+   icon RQ-4
+
+   radar_signature TARGET_RADAR_SIG
+
+   mover WSF_AIR_MOVER
+      maximum_speed 200 m/sec
+      minimum_speed 80 m/sec
+      default_radial_acceleration 2.0 g
+   end_mover
+
+   sensor surv-radar SURVEILLANCE_RADAR
+      processor track-proc
+   end_sensor
+
+   processor track-proc WSF_TRACK_PROCESSOR
+      update_interval 1.0 sec
+   end_processor
+
+   processor isr-report WSF_SCRIPT_PROCESSOR
+      update_interval 5.0 sec
+
+      script_variables
+         double lastReport = -100.0;
+      end_script_variables
+
+      on_update
+         if (TIME_NOW - lastReport >= 30.0)
+         {
+            WsfLocalTrackList trackList = PLATFORM.MasterTrackList();
+            print("==================================================");
+            print(TIME_NOW, " [", PLATFORM.Name(), "] ISR 态势报告 | 当前航迹数: ",
+                  trackList.TrackCount());
+
+            foreach (WsfTrack track in trackList)
+            {
+               if (track.LocationValid())
+               {
+                  print("   目标=", track.TargetName(),
+                        "  纬度=", track.Latitude(),
+                        "  经度=", track.Longitude(),
+                        "  高度=", track.Altitude(), " m",
+                        "  斜距=", PLATFORM.SlantRangeTo(track), " m");
+               }
+               else
+               {
+                  print("   目标=", track.TargetName(), "  (位置未定)");
+               }
+            }
+            lastReport = TIME_NOW;
+         }
+      end_on_update
+   end_processor
+end_platform_type
+
+################################################################################
+# 3) 红方侦察目标 (地面车队 + 空中过境机)
+################################################################################
+
+platform_type RED_GROUND_CONVOY WSF_PLATFORM
+   icon truck
+   radar_signature TARGET_RADAR_SIG
+
+   mover WSF_GROUND_MOVER
+      maximum_speed 25 m/sec
+   end_mover
+end_platform_type
+
+platform_type RED_TRANSPORT WSF_PLATFORM
+   icon transport
+   radar_signature TARGET_RADAR_SIG
+
+   mover WSF_AIR_MOVER
+      maximum_speed 230 m/sec
+      minimum_speed 100 m/sec
+      default_radial_acceleration 2.0 g
+   end_mover
+end_platform_type
+
+################################################################################
+# 4) 实例化场景平台 (东海方向,贴合本平台想定坐标范围)
+################################################################################
+
+# 蓝方 ISR 平台:高空盒形巡逻航线
+platform blue-isr BLUE_ISR
+   side blue
+
+   sensor surv-radar
+      on
+   end_sensor
+
+   route
+      position 24:40:00n 120:30:00e altitude 16000 m speed 180 m/sec
+      position 24:40:00n 121:30:00e altitude 16000 m speed 180 m/sec
+      position 24:20:00n 121:30:00e altitude 16000 m speed 180 m/sec
+      position 24:20:00n 120:30:00e altitude 16000 m speed 180 m/sec
+      position 24:40:00n 120:30:00e altitude 16000 m speed 180 m/sec
+   end_route
+end_platform
+
+# 红方地面车队:东西向机动
+platform red-convoy RED_GROUND_CONVOY
+   side red
+
+   route
+      position 24:30:00n 120:40:00e altitude 0 m agl speed 15 m/sec
+      position 24:30:00n 121:20:00e altitude 0 m agl speed 15 m/sec
+   end_route
+end_platform
+
+# 红方空中过境机:由南向北穿越监视区
+platform red-transport RED_TRANSPORT
+   side red
+
+   route
+      position 24:10:00n 121:00:00e altitude 9000 m speed 200 m/sec
+      position 24:50:00n 121:00:00e altitude 9000 m speed 200 m/sec
+   end_route
+end_platform
+
+################################################################################
+# 5) 仿真控制
+################################################################################
+
+end_time 600 sec

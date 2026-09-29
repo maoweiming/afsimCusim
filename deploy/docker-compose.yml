@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  gateway:
+    build:
+      context: ../afsim-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - afsim-engine:/opt/afsim:ro
+      - scenario-data:/data/scenarios
+      - output-data:/data/output
+    environment:
+      - AFSIM_MISSION_PATH=/opt/afsim/bin/mission.exe
+      - AFSIM_PLUGIN_PATH=/opt/afsim/bin/wsf_plugins
+      - SCENARIO_DIR=/data/scenarios
+      - OUTPUT_DIR=/data/output
+      - PORT=8080
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ../afsim-web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      gateway:
+        condition: service_healthy
+    environment:
+      - GATEWAY_URL=http://gateway:8080
+
+volumes:
+  afsim-engine:
+    driver: local
+  scenario-data:
+    driver: local
+  output-data:
+    driver: local

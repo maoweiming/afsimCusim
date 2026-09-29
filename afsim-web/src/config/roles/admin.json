@@ -1,0 +1,8 @@
+{
+  "role": "admin",
+  "label": "管理员",
+  "description": "完全访问权限，可管理所有功能模块",
+  "plugins": ["sim-globe", "map-data", "scenario", "equipment", "data-center", "analysis"],
+  "defaultPreset": "admin-full",
+  "restrictions": {}
+}

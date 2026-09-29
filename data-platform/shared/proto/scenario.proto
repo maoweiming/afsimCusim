@@ -1,0 +1,429 @@
+syntax = "proto3";
+
+package truesim.scenario;
+
+option go_package = "truesim/scenario";
+
+// ============ 想定服务 ============
+
+service ScenarioService {
+  // CRUD
+  rpc CreateScenario(CreateScenarioRequest) returns (Scenario);
+  rpc GetScenario(GetScenarioRequest) returns (Scenario);
+  rpc UpdateScenario(UpdateScenarioRequest) returns (Scenario);
+  rpc DeleteScenario(DeleteScenarioRequest) returns (Empty);
+  rpc ListScenario(ListScenarioRequest) returns (ListScenarioResponse);
+
+  // 分支管理
+  rpc CreateBranch(CreateBranchRequest) returns (Branch);
+  rpc ListBranches(ListBranchesRequest) returns (ListBranchesResponse);
+  rpc MergeBranch(MergeBranchRequest) returns (MergeResult);
+  rpc ResolveConflict(ResolveConflictRequest) returns (MergeResult);
+
+  // 提交管理
+  rpc CommitChanges(CommitRequest) returns (Commit);
+  rpc GetCommitHistory(GetCommitHistoryRequest) returns (CommitHistory);
+  rpc RevertCommit(RevertCommitRequest) returns (Commit);
+
+  // 合并请求
+  rpc CreateMergeRequest(CreateMRRequest) returns (MergeRequest);
+  rpc ReviewMergeRequest(ReviewMRRequest) returns (MergeRequest);
+  rpc ApproveMergeRequest(ApproveMRRequest) returns (MergeRequest);
+
+  // 实时协同
+  rpc JoinCollabRoom(JoinRoomRequest) returns (stream CollabEvent);
+  rpc SendOperation(SendOpRequest) returns (OperationAck);
+  rpc AcquireLock(AcquireLockRequest) returns (LockResponse);
+  rpc ReleaseLock(ReleaseLockRequest) returns (Empty);
+
+  // 评论
+  rpc AddComment(AddCommentRequest) returns (Comment);
+  rpc GetComments(GetCommentsRequest) returns (GetCommentsResponse);
+  rpc ResolveComment(ResolveCommentRequest) returns (Comment);
+}
+
+// ============ 核心消息 ============
+
+message Empty {}
+
+message Scenario {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string version = 4;
+  string status = 5;
+
+  TerrainConfig terrain = 6;
+  repeated PlatformInstance platforms = 7;
+  repeated RouteDefinition routes = 8;
+  repeated ZoneDefinition zones = 9;
+  repeated TriggerDefinition triggers = 10;
+
+  repeated string tags = 11;
+  string category = 12;
+  string classification = 13;
+  string created_by = 14;
+  string created_at = 15;
+  string updated_at = 16;
+}
+
+message TerrainConfig {
+  string data_source = 1;
+  BoundingBox bounds = 2;
+}
+
+message BoundingBox {
+  double south = 1;
+  double west = 2;
+  double north = 3;
+  double east = 4;
+}
+
+message EquipmentRef {
+  string equipment_id = 1;
+  int32 version = 2;
+  string name = 3;
+  string category = 4;
+}
+
+message PlatformInstance {
+  string id = 1;
+  string equipment_id = 2;      // deprecated: 使用 equipment_ref
+  string name = 3;
+  string side = 4;
+
+  Position initial_position = 5;
+  double initial_altitude = 6;
+  double initial_heading = 7;
+  double initial_speed = 8;
+
+  string route_id = 9;
+  EquipmentRef equipment_ref = 10;  // 版本锁定的装备引用
+}
+
+message Position {
+  double lng = 1;
+  double lat = 2;
+}
+
+message RouteDefinition {
+  string id = 1;
+  string name = 2;
+  repeated RouteWaypoint waypoints = 3;
+}
+
+message RouteWaypoint {
+  Position position = 1;
+  double altitude = 2;
+  double speed = 3;
+}
+
+message ZoneDefinition {
+  string id = 1;
+  string name = 2;
+  string type = 3; // "exclusion", "inclusion", "threat", "safe"
+  oneof geometry {
+    CircleZone circle = 4;
+    PolygonZone polygon = 5;
+  }
+}
+
+message CircleZone {
+  Position center = 1;
+  double radius = 2;
+}
+
+message PolygonZone {
+  repeated Position vertices = 1;
+}
+
+message TriggerDefinition {
+  string id = 1;
+  string name = 2;
+  string condition = 3;
+  string action = 4;
+}
+
+// ============ 分支和提交 ============
+
+message Branch {
+  string id = 1;
+  string scenario_id = 2;
+  string name = 3;
+  string parent_branch_id = 4;
+  string created_by = 5;
+  string created_at = 6;
+  string status = 7; // "active", "merged", "abandoned"
+  string head_commit_id = 8;
+}
+
+message Commit {
+  string id = 1;
+  string branch_id = 2;
+  string message = 3;
+  string author = 4;
+  string author_name = 5;
+  string timestamp = 6;
+  repeated Change changes = 7;
+  string parent_commit_id = 8;
+}
+
+message Change {
+  string type = 1; // "add", "modify", "delete"
+  string entity_type = 2;
+  string entity_id = 3;
+  string entity_name = 4;
+  string before = 5; // JSON
+  string after = 6;  // JSON
+}
+
+message CommitHistory {
+  repeated Commit commits = 1;
+}
+
+// ============ 合并请求 ============
+
+message MergeRequest {
+  string id = 1;
+  string scenario_id = 2;
+  string source_branch = 3;
+  string target_branch = 4;
+  string title = 5;
+  string description = 6;
+  string author = 7;
+  string author_name = 8;
+  string status = 9;
+  repeated Conflict conflicts = 10;
+  repeated Reviewer reviewers = 11;
+  repeated string approvals = 12;
+  repeated string rejections = 13;
+  repeated MRComment comments = 14;
+  string created_at = 15;
+  string updated_at = 16;
+}
+
+message Conflict {
+  string entity_type = 1;
+  string entity_id = 2;
+  string entity_name = 3;
+  string field = 4;
+  string source_value = 5;
+  string target_value = 6;
+  string resolution = 7;
+  string resolved_by = 8;
+  string resolved_value = 9;
+}
+
+message Reviewer {
+  string user_id = 1;
+  string user_name = 2;
+  string status = 3;
+  string comment = 4;
+  string reviewed_at = 5;
+}
+
+message MRComment {
+  string id = 1;
+  string user_id = 2;
+  string user_name = 3;
+  string content = 4;
+  string timestamp = 5;
+  string parent_id = 6;
+  bool resolved = 7;
+}
+
+// ============ 协同 ============
+
+message CollabEvent {
+  string type = 1;
+  string user_id = 2;
+  int64 timestamp = 3;
+  string payload = 4; // JSON
+}
+
+message OperationAck {
+  string operation_id = 1;
+  bool success = 2;
+  repeated Operation transformed_ops = 3;
+  string error = 4;
+}
+
+message Operation {
+  string id = 1;
+  string user_id = 2;
+  int64 timestamp = 3;
+  string type = 4;
+  string path = 5;
+  string old_value = 6;
+  string new_value = 7;
+  map<string, int64> vector_clock = 8;
+}
+
+// ============ 评论 ============
+
+message Comment {
+  string id = 1;
+  string user_id = 2;
+  string user_name = 3;
+  string content = 4;
+  string timestamp = 5;
+  string parent_id = 6;
+  Position position = 7;
+  string entity_type = 8;
+  string entity_id = 9;
+  bool resolved = 10;
+}
+
+// ============ 请求/响应 ============
+
+message CreateScenarioRequest {
+  Scenario scenario = 1;
+}
+
+message GetScenarioRequest {
+  string id = 1;
+  string branch = 2;
+}
+
+message UpdateScenarioRequest {
+  Scenario scenario = 1;
+}
+
+message DeleteScenarioRequest {
+  string id = 1;
+}
+
+message ListScenarioRequest {
+  string status = 1;
+  repeated string tags = 2;
+  string search = 3;
+  int32 page = 4;
+  int32 page_size = 5;
+}
+
+message ListScenarioResponse {
+  repeated Scenario scenarios = 1;
+  int32 total = 2;
+}
+
+message CreateBranchRequest {
+  string scenario_id = 1;
+  string name = 2;
+  string parent_branch_id = 3;
+}
+
+message ListBranchesRequest {
+  string scenario_id = 1;
+}
+
+message ListBranchesResponse {
+  repeated Branch branches = 1;
+}
+
+message MergeBranchRequest {
+  string scenario_id = 1;
+  string source_branch = 2;
+  string target_branch = 3;
+}
+
+message MergeResult {
+  bool success = 1;
+  repeated Conflict conflicts = 2;
+  string error = 3;
+}
+
+message ResolveConflictRequest {
+  string scenario_id = 1;
+  string merge_request_id = 2;
+  repeated Conflict resolutions = 3;
+}
+
+message CommitRequest {
+  string scenario_id = 1;
+  string branch = 2;
+  string message = 3;
+  repeated Change changes = 4;
+}
+
+message GetCommitHistoryRequest {
+  string scenario_id = 1;
+  string branch = 2;
+  int32 limit = 3;
+}
+
+message RevertCommitRequest {
+  string scenario_id = 1;
+  string commit_id = 2;
+}
+
+message CreateMRRequest {
+  string scenario_id = 1;
+  string source_branch = 2;
+  string target_branch = 3;
+  string title = 4;
+  string description = 5;
+}
+
+message ReviewMRRequest {
+  string scenario_id = 1;
+  string mr_id = 2;
+  string user_id = 3;
+  string status = 4;
+  string comment = 5;
+}
+
+message ApproveMRRequest {
+  string scenario_id = 1;
+  string mr_id = 2;
+  string user_id = 3;
+}
+
+message JoinRoomRequest {
+  string scenario_id = 1;
+  string branch = 2;
+  string user_id = 3;
+}
+
+message SendOpRequest {
+  string scenario_id = 1;
+  Operation operation = 2;
+}
+
+message AcquireLockRequest {
+  string scenario_id = 1;
+  string object_id = 2;
+  string object_type = 3;
+  string user_id = 4;
+  string lock_type = 5;
+}
+
+message LockResponse {
+  bool success = 1;
+  string locked_by = 2;
+  string error = 3;
+}
+
+message ReleaseLockRequest {
+  string scenario_id = 1;
+  string object_id = 2;
+}
+
+message AddCommentRequest {
+  string scenario_id = 1;
+  Comment comment = 2;
+}
+
+message GetCommentsRequest {
+  string scenario_id = 1;
+  string entity_type = 2;
+  string entity_id = 3;
+}
+
+message GetCommentsResponse {
+  repeated Comment comments = 1;
+}
+
+message ResolveCommentRequest {
+  string scenario_id = 1;
+  string comment_id = 2;
+}

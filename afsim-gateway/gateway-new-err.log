@@ -1,0 +1,13 @@
+panic: assignment to entry in nil map
+
+goroutine 11 [running]:
+github.com/truesim/afsim-gateway/internal/simstate.(*SimulationState).applySensorDetection(0x7ff7a25d166e?, 0xb4efab6f9c0)
+	E:/AFsim/afsimweb-master/afsim-gateway/internal/simstate/state.go:279 +0x19c
+github.com/truesim/afsim-gateway/internal/simstate.(*SimulationState).ApplyEvent(0xb4efa8ec410, 0xb4efab6f980)
+	E:/AFsim/afsimweb-master/afsim-gateway/internal/simstate/state.go:107 +0x594
+github.com/truesim/afsim-gateway/internal/engine.(*Connector).Run(0xb4efa87c770, {0x7ff7a2853c98, 0xb4efaa00230})
+	E:/AFsim/afsimweb-master/afsim-gateway/internal/engine/connector.go:145 +0x6db
+github.com/truesim/afsim-gateway/internal/api.(*SimulationManager).Create.func1()
+	E:/AFsim/afsimweb-master/afsim-gateway/internal/api/handler.go:328 +0x3d
+created by github.com/truesim/afsim-gateway/internal/api.(*SimulationManager).Create in goroutine 39
+	E:/AFsim/afsimweb-master/afsim-gateway/internal/api/handler.go:327 +0xd25

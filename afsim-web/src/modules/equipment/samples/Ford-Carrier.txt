@@ -1,0 +1,125 @@
+# AFSIM Platform Definition - CVN-78 Gerald R. Ford
+# Converted to real AFSIM syntax
+
+platform_type CVN-78_FORD WSF_PLATFORM
+   side blue
+   category carrier
+   icon CVN-78
+
+   # Mover
+   mover WSF_SURFACE_MOVER
+      maximum_speed 30.2 knots
+      minimum_speed 0.0 knots
+      cruise_speed 20.0 knots
+      maximum_range 0.0 nm
+      endurance 90.0 day
+      length 337.0 m
+      width 78.0 m
+      height 76.0 m
+   end_mover
+
+   # Radar - AN/SPY-3 MFR
+   sensor AN_SPY_3_MFR WSF_RADAR_SENSOR
+      on
+      initial_mode search
+      mode_template
+         transmitter
+            frequency 10.0 ghz
+            power 50.0 kw
+            bandwidth 1.0 ghz
+            pulse_width 0.1 us
+            pulse_repetition_frequency 5000 hz
+            antenna_gain 42.0 dbi
+         end_transmitter
+         receiver
+            noise_figure 4.0 db
+            bandwidth 1.0 ghz
+            sensitivity -115.0 dbm
+         end_receiver
+         one_m2_detect_range 216.0 nm
+         azimuth_field_of_view 120.0 deg
+         elevation_field_of_view 60.0 deg
+         frame_time 2.0 sec
+         reports_location
+         reports_range
+      end_mode_template
+   end_sensor
+
+   # Radar - AN/SPY-4 VSR
+   sensor AN_SPY_4_VSR WSF_RADAR_SENSOR
+      on
+      initial_mode search
+      mode_template
+         transmitter
+            frequency 3.0 ghz
+            power 100.0 kw
+            bandwidth 0.5 ghz
+            pulse_width 1.0 us
+            pulse_repetition_frequency 1000 hz
+            antenna_gain 38.0 dbi
+         end_transmitter
+         receiver
+            noise_figure 5.0 db
+            bandwidth 0.5 ghz
+            sensitivity -120.0 dbm
+         end_receiver
+         one_m2_detect_range 270.0 nm
+         azimuth_field_of_view 360.0 deg
+         elevation_field_of_view 70.0 deg
+         frame_time 6.0 sec
+         reports_location
+         reports_range
+      end_mode_template
+   end_sensor
+
+   # EW - AN/SLQ-32
+   sensor AN_SLQ_32 WSF_PASSIVE_SENSOR
+      on
+   end_sensor
+
+   # Weapons
+   weapon RIM_162_ESSM WSF_EXPLICIT_WEAPON
+      quantity 32
+   end_weapon
+
+   weapon RIM_116_RAM WSF_EXPLICIT_WEAPON
+      quantity 21
+   end_weapon
+
+   weapon Phalanx_CIWS WSF_IMPLICIT_WEAPON
+      quantity 2
+   end_weapon
+
+   # Communications
+   comm CEC WSF_COMM_TRANSCEIVER
+      on
+   end_comm
+
+   comm Link_16 WSF_COMM_TRANSCEIVER
+      on
+   end_comm
+
+   comm SATCOM WSF_COMM_TRANSCEIVER
+      on
+   end_comm
+
+   # Processors
+   processor CCS WSF_SCRIPT_PROCESSOR
+      on
+      update_interval 0.5 sec
+   end_processor
+
+   processor NTDS WSF_SCRIPT_PROCESSOR
+      on
+      update_interval 0.2 sec
+   end_processor
+
+   # Fuel - Nuclear reactor
+   fuel NuclearReactor WSF_FUEL
+      maximum_quantity 0.0 kg
+      initial_quantity 0.0 kg
+   end_fuel
+
+   # Signature
+   radar_signature CVN-78_Signature
+end_platform_type

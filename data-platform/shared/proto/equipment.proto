@@ -1,0 +1,417 @@
+syntax = "proto3";
+
+package truesim.equipment;
+
+option go_package = "truesim/equipment";
+
+// ============ 装备服务 ============
+
+service EquipmentService {
+  // CRUD
+  rpc CreateEquipment(CreateEquipmentRequest) returns (Equipment);
+  rpc GetEquipment(GetEquipmentRequest) returns (Equipment);
+  rpc UpdateEquipment(UpdateEquipmentRequest) returns (Equipment);
+  rpc DeleteEquipment(DeleteEquipmentRequest) returns (Empty);
+  rpc ListEquipment(ListEquipmentRequest) returns (ListEquipmentResponse);
+
+  // 子系统管理
+  rpc AddSensor(AddSensorRequest) returns (SensorConfig);
+  rpc UpdateSensor(UpdateSensorRequest) returns (SensorConfig);
+  rpc RemoveSensor(RemoveSensorRequest) returns (Empty);
+  rpc AddWeapon(AddWeaponRequest) returns (WeaponConfig);
+  rpc UpdateWeapon(UpdateWeaponRequest) returns (WeaponConfig);
+  rpc RemoveWeapon(RemoveWeaponRequest) returns (Empty);
+  rpc AddCommunication(AddCommRequest) returns (CommConfig);
+  rpc UpdateCommunication(UpdateCommRequest) returns (CommConfig);
+  rpc RemoveCommunication(RemoveCommRequest) returns (Empty);
+
+  // 版本管理
+  rpc GetVersionHistory(GetVersionRequest) returns (VersionHistory);
+  rpc CompareVersions(CompareVersionsRequest) returns (VersionDiff);
+  rpc RollbackVersion(RollbackRequest) returns (Equipment);
+
+  // 协同
+  rpc LockEquipment(LockRequest) returns (LockResponse);
+  rpc UnlockEquipment(UnlockRequest) returns (Empty);
+  rpc WatchEquipment(WatchRequest) returns (stream EquipmentUpdate);
+
+  // 批量操作
+  rpc ImportEquipment(ImportRequest) returns (ImportResult);
+  rpc ExportEquipment(ExportRequest) returns (ExportResult);
+}
+
+// ============ 消息定义 ============
+
+message Empty {}
+
+message Equipment {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  string category = 4;
+  string platform_type = 5;
+  string description = 6;
+  int32 version = 7;
+  string status = 8;
+
+  PlatformParams platform_params = 9;
+  repeated SensorConfig sensors = 10;
+  repeated WeaponConfig weapons = 11;
+  repeated CommConfig communications = 12;
+  SignatureParams signature_params = 13;
+
+  repeated string tags = 14;
+  string created_by = 15;
+  string updated_by = 16;
+  string created_at = 17;
+  string updated_at = 18;
+
+  // New common fields
+  string name_en = 20;
+  string country = 21;
+  string manufacturer = 22;
+  string domain = 23;  // air, land, surface, subsurface, space
+
+  // Extended subsystem configs
+  MoverConfig mover = 30;
+  repeated ProcessorConfig processors = 31;
+  FuelConfig fuel = 32;
+
+  // AFSIM raw config (JSON bytes for type-specific details)
+  bytes raw_config = 50;
+
+  // Version metadata
+  string version_tag = 60;
+
+  // Deprecated ID-only references (kept for backward compat, prefer inline sensors/weapons/communications)
+  repeated string sensor_ids = 90 [deprecated = true];
+  repeated string weapon_ids = 91 [deprecated = true];
+  repeated string comm_ids = 92 [deprecated = true];
+}
+
+message PlatformParams {
+  // 运动性能
+  double max_speed = 1;
+  double cruise_speed = 2;
+  double min_speed = 3;
+  double max_altitude = 4;
+  double min_altitude = 5;
+  double ceiling = 6;
+  double range = 7;
+  double endurance = 8;
+  double max_g = 9;
+
+  // 物理特性
+  double length = 10;
+  double width = 11;
+  double height = 12;
+  double weight = 13;
+  double max_takeoff_weight = 14;
+  double fuel_capacity = 15;
+
+  // 运动模型
+  string motion_model = 16;
+}
+
+message SensorConfig {
+  string id = 1;
+  string name = 2;
+  string type = 3;  // radar, ir, eo, sonar, ew, esm, ladar, sar
+  bool enabled = 4;
+
+  double max_range = 5;
+  double min_range = 6;
+  double fov_azimuth = 7;
+  double fov_elevation = 8;
+  double scan_rate = 9;
+  double accuracy = 10;
+
+  // 雷达特有
+  double frequency = 11;
+  double power = 12;
+  double antenna_gain = 13;
+  double pulse_width = 14;
+  double prf = 15;
+
+  // 被动传感器
+  double sensitivity = 16;
+
+  // AFSIM subtype-specific details
+  bytes raw_config = 20;
+  string description = 21;
+}
+
+message WeaponConfig {
+  string id = 1;
+  string name = 2;
+  string type = 3;  // missile, bomb, gun, torpedo
+  int32 quantity = 4;
+
+  double max_range = 5;
+  double min_range = 6;
+  double no_escape_range = 7;
+  double no_maneuver_range = 8;
+
+  double max_speed = 9;
+  double max_altitude = 10;
+  double max_g = 11;
+  double flight_time = 12;
+
+  string warhead_type = 13;
+  double warhead_weight = 14;
+  double blast_radius = 15;
+  double penetration = 16;
+
+  string guidance_type = 17;
+  double seeker_range = 18;
+
+  double weight = 19;
+  bytes raw_config = 20;
+  string description = 21;
+}
+
+message CommConfig {
+  string id = 1;
+  string name = 2;
+  string type = 3;  // uhf, vhf, satcom, datalink
+  bool enabled = 4;
+
+  double frequency = 5;
+  double bandwidth = 6;
+  double max_range = 7;
+  double data_rate = 8;
+  double latency = 9;
+
+  double hop_rate = 10;
+  string encryption = 11;
+
+  bytes raw_config = 20;
+  string description = 21;
+}
+
+message SignatureParams {
+  RCSParams rcs = 1;
+  IRParams ir = 2;
+  AcousticParams acoustic = 3;
+  VisualParams visual = 4;
+  bytes raw_config = 10;
+}
+
+message MoverConfig {
+  string id = 1;
+  string name = 2;
+  string type = 3;  // air, ground, surface, subsurface, space, kinematic
+  double max_speed = 4;
+  double max_acceleration = 5;
+  double max_deceleration = 6;
+  double max_climb_rate = 7;
+  double max_turn_rate = 8;
+  double max_roll_rate = 9;
+  double stall_speed = 10;
+  double cruise_speed = 11;
+  bytes raw_config = 20;
+  string description = 21;
+}
+
+message ProcessorConfig {
+  string id = 1;
+  string name = 2;
+  string type = 3;  // track_manager, engagement_manager, sa_processor, etc.
+  bool enabled = 4;
+  double update_rate = 5;
+  int32 max_tracks = 6;
+  bytes raw_config = 20;
+  string description = 21;
+}
+
+message FuelConfig {
+  string id = 1;
+  string name = 2;
+  string type = 3;  // basic, variable_rate, tabular_rate, tanked
+  double max_fuel = 4;
+  double current_fuel = 5;
+  double consumption_rate = 6;
+  double specific_fuel_consumption = 7;
+  bytes raw_config = 20;
+  string description = 21;
+}
+
+message RCSParams {
+  double frontal = 1;
+  double side = 2;
+  double rear = 3;
+  double average = 4;
+}
+
+message IRParams {
+  double frontal = 1;
+  double side = 2;
+  double rear = 3;
+}
+
+message AcousticParams {
+  double noise_level = 1;
+  double frequency = 2;
+}
+
+message VisualParams {
+  double visibility = 1;
+}
+
+// ============ 请求/响应 ============
+
+message CreateEquipmentRequest {
+  Equipment equipment = 1;
+}
+
+message GetEquipmentRequest {
+  string id = 1;
+}
+
+message UpdateEquipmentRequest {
+  Equipment equipment = 1;
+}
+
+message DeleteEquipmentRequest {
+  string id = 1;
+}
+
+message ListEquipmentRequest {
+  string category = 1;
+  string status = 2;
+  repeated string tags = 3;
+  string search = 4;
+  int32 page = 5;
+  int32 page_size = 6;
+}
+
+message ListEquipmentResponse {
+  repeated Equipment equipment = 1;
+  int32 total = 2;
+}
+
+message AddSensorRequest {
+  string equipment_id = 1;
+  SensorConfig sensor = 2;
+}
+
+message UpdateSensorRequest {
+  string equipment_id = 1;
+  SensorConfig sensor = 2;
+}
+
+message RemoveSensorRequest {
+  string equipment_id = 1;
+  string sensor_id = 2;
+}
+
+message AddWeaponRequest {
+  string equipment_id = 1;
+  WeaponConfig weapon = 2;
+}
+
+message UpdateWeaponRequest {
+  string equipment_id = 1;
+  WeaponConfig weapon = 2;
+}
+
+message RemoveWeaponRequest {
+  string equipment_id = 1;
+  string weapon_id = 2;
+}
+
+message AddCommRequest {
+  string equipment_id = 1;
+  CommConfig comm = 2;
+}
+
+message UpdateCommRequest {
+  string equipment_id = 1;
+  CommConfig comm = 2;
+}
+
+message RemoveCommRequest {
+  string equipment_id = 1;
+  string comm_id = 2;
+}
+
+message GetVersionRequest {
+  string equipment_id = 1;
+}
+
+message VersionHistory {
+  repeated VersionEntry versions = 1;
+}
+
+message VersionEntry {
+  int32 version = 1;
+  string author = 2;
+  string timestamp = 3;
+  string message = 4;
+}
+
+message CompareVersionsRequest {
+  string equipment_id = 1;
+  int32 version_a = 2;
+  int32 version_b = 3;
+}
+
+message VersionDiff {
+  repeated FieldDiff changes = 1;
+}
+
+message FieldDiff {
+  string path = 1;
+  string old_value = 2;
+  string new_value = 3;
+}
+
+message RollbackRequest {
+  string equipment_id = 1;
+  int32 target_version = 2;
+}
+
+message LockRequest {
+  string id = 1;
+}
+
+message LockResponse {
+  bool success = 1;
+  string locked_by = 2;
+  string error = 3;
+}
+
+message UnlockRequest {
+  string id = 1;
+}
+
+message WatchRequest {
+  string id = 1;
+}
+
+message EquipmentUpdate {
+  string type = 1; // "updated", "locked", "unlocked", "deleted"
+  Equipment equipment = 2;
+  string user_id = 3;
+}
+
+message ImportRequest {
+  bytes data = 1;
+  string format = 2; // "json", "csv", "xml"
+}
+
+message ImportResult {
+  int32 imported = 1;
+  int32 failed = 2;
+  repeated string errors = 3;
+}
+
+message ExportRequest {
+  repeated string ids = 1;
+  string format = 2;
+}
+
+message ExportResult {
+  bytes data = 1;
+  string format = 2;
+}

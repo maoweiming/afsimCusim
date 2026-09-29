@@ -1,0 +1,12 @@
+{
+  "role": "operator",
+  "label": "操作员",
+  "description": "仿真操作和想定管理",
+  "plugins": ["sim-globe", "scenario", "equipment"],
+  "defaultPreset": "operator-standard",
+  "restrictions": {
+    "canAddLayers": true,
+    "canModifyScenarios": true,
+    "canControlSimulation": true
+  }
+}

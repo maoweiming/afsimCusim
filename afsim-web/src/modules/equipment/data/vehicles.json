@@ -1,0 +1,513 @@
+[
+  {
+    "code": "M1A2",
+    "name": "M1A2 SEPv3 艾布拉姆斯",
+    "nameEn": "M1A2 Abrams SEPv3",
+    "category": "vehicle",
+    "platformType": "tank",
+    "status": "active",
+    "country": "USA",
+    "manufacturer": "General Dynamics Land Systems",
+    "description": "美国陆军主力主战坦克，配备120mm滑膛炮和先进的火控系统。",
+    "tags": [
+      "主战坦克",
+      "美国",
+      "重型"
+    ],
+    "platformParams": {
+      "maxSpeed": 67,
+      "cruiseSpeed": 40,
+      "range": 426,
+      "endurance": 0,
+      "length": 9.77,
+      "width": 3.66,
+      "height": 2.44,
+      "weight": 73000,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 1900,
+      "motionModel": "ground_mover"
+    },
+    "sensors": [
+      {
+        "name": "FLIR",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 10,
+        "fovAzimuth": 360,
+        "fovElevation": 30,
+        "description": "前视红外系统"
+      },
+      {
+        "name": "CITV",
+        "type": "eo",
+        "enabled": true,
+        "maxRange": 10,
+        "fovAzimuth": 360,
+        "fovElevation": 20,
+        "description": "车长独立热成像仪"
+      },
+      {
+        "name": "LRF",
+        "type": "ladar",
+        "enabled": true,
+        "maxRange": 8,
+        "accuracy": 5,
+        "description": "激光测距仪"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "M256A1",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 4,
+        "minRange": 0.2,
+        "maxSpeed": 1650,
+        "warheadType": "conventional",
+        "description": "120mm/L44滑膛炮"
+      },
+      {
+        "name": "M240C",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 1.8,
+        "minRange": 0.1,
+        "maxSpeed": 853,
+        "warheadType": "conventional",
+        "description": "7.62mm同轴机枪"
+      },
+      {
+        "name": "M2HB",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 2,
+        "minRange": 0.1,
+        "maxSpeed": 928,
+        "warheadType": "conventional",
+        "description": "12.7mm重机枪"
+      }
+    ],
+    "communications": [
+      {
+        "name": "SINCGARS",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 80,
+        "maxRange": 40,
+        "dataRate": 16,
+        "description": "单信道地面和机载无线电系统"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 10,
+        "side": 25,
+        "rear": 20,
+        "average": 18
+      },
+      "ir": {
+        "frontal": 80,
+        "side": 120,
+        "rear": 200
+      },
+      "acoustic": {
+        "noise_level": 95,
+        "frequency": 500
+      }
+    },
+    "id": "vehicles-001"
+  },
+  {
+    "code": "LEOPARD2",
+    "name": "豹2A7+",
+    "nameEn": "Leopard 2A7+",
+    "category": "vehicle",
+    "platformType": "tank",
+    "status": "active",
+    "country": "Germany",
+    "manufacturer": "Krauss-Maffei Wegmann",
+    "description": "德国陆军最新改进型主战坦克，综合防护能力优秀。",
+    "tags": [
+      "主战坦克",
+      "德国",
+      "重型"
+    ],
+    "platformParams": {
+      "maxSpeed": 68,
+      "cruiseSpeed": 45,
+      "range": 450,
+      "endurance": 0,
+      "length": 10.97,
+      "width": 3.75,
+      "height": 2.64,
+      "weight": 67500,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 1200,
+      "motionModel": "ground_mover"
+    },
+    "sensors": [
+      {
+        "name": "EMES 15",
+        "type": "eo",
+        "enabled": true,
+        "maxRange": 10,
+        "fovAzimuth": 360,
+        "fovElevation": 20,
+        "description": "火控系统含热成像"
+      },
+      {
+        "name": "PERI-R17A2",
+        "type": "eo",
+        "enabled": true,
+        "maxRange": 10,
+        "fovAzimuth": 360,
+        "fovElevation": 30,
+        "description": "车长周视镜"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "Rh 120 L/55A1",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 5,
+        "minRange": 0.2,
+        "maxSpeed": 1750,
+        "warheadType": "conventional",
+        "description": "120mm/L55滑膛炮"
+      },
+      {
+        "name": "MG3",
+        "type": "gun",
+        "quantity": 2,
+        "maxRange": 1.8,
+        "minRange": 0.1,
+        "maxSpeed": 820,
+        "warheadType": "conventional",
+        "description": "7.62mm机枪"
+      }
+    ],
+    "communications": [
+      {
+        "name": "SEM 80/90",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 80,
+        "maxRange": 40,
+        "description": "VHF无线电"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 10,
+        "side": 24,
+        "rear": 19,
+        "average": 17
+      },
+      "ir": {
+        "frontal": 75,
+        "side": 110,
+        "rear": 180
+      },
+      "acoustic": {
+        "noise_level": 93,
+        "frequency": 500
+      }
+    },
+    "id": "vehicles-002"
+  },
+  {
+    "code": "T90M",
+    "name": "T-90M 突破",
+    "nameEn": "T-90M Proryv",
+    "category": "vehicle",
+    "platformType": "tank",
+    "status": "active",
+    "country": "Russia",
+    "description": "俄罗斯陆军最新改进型主战坦克，配备主动防护系统。",
+    "tags": [
+      "主战坦克",
+      "俄罗斯",
+      "中型"
+    ],
+    "platformParams": {
+      "maxSpeed": 65,
+      "cruiseSpeed": 40,
+      "range": 550,
+      "endurance": 0,
+      "length": 9.53,
+      "width": 3.78,
+      "height": 2.23,
+      "weight": 48000,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 1200,
+      "motionModel": "ground_mover"
+    },
+    "sensors": [
+      {
+        "name": "Sosna-U",
+        "type": "eo",
+        "enabled": true,
+        "maxRange": 8,
+        "fovAzimuth": 360,
+        "fovElevation": 20,
+        "description": "多通道火控系统"
+      },
+      {
+        "name": "PN-72U Shturm",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 5,
+        "fovAzimuth": 360,
+        "fovElevation": 15,
+        "description": "热成像瞄准具"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "2A46M-5",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 4,
+        "minRange": 0.2,
+        "maxSpeed": 1700,
+        "warheadType": "conventional",
+        "description": "125mm/L48滑膛炮"
+      },
+      {
+        "name": "9M119 Refleks",
+        "type": "missile",
+        "quantity": 8,
+        "maxRange": 5,
+        "minRange": 0.1,
+        "maxSpeed": 300,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "炮射反坦克导弹"
+      }
+    ],
+    "communications": [
+      {
+        "name": "R-168-25U Akveduk",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 80,
+        "maxRange": 35,
+        "description": "战术电台"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 8,
+        "side": 20,
+        "rear": 16,
+        "average": 14
+      },
+      "ir": {
+        "frontal": 70,
+        "side": 100,
+        "rear": 160
+      },
+      "acoustic": {
+        "noise_level": 90,
+        "frequency": 500
+      }
+    },
+    "id": "vehicles-003"
+  },
+  {
+    "code": "TYPE99A",
+    "name": "99A型主战坦克",
+    "nameEn": "Type 99A",
+    "category": "vehicle",
+    "platformType": "tank",
+    "status": "active",
+    "country": "China",
+    "description": "中国陆军最新主战坦克，配备125mm滑膛炮和主动防护系统。",
+    "tags": [
+      "主战坦克",
+      "中国",
+      "重型"
+    ],
+    "platformParams": {
+      "maxSpeed": 65,
+      "cruiseSpeed": 40,
+      "range": 450,
+      "endurance": 0,
+      "length": 11,
+      "width": 3.5,
+      "height": 2.3,
+      "weight": 58000,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 1200,
+      "motionModel": "ground_mover"
+    },
+    "sensors": [
+      {
+        "name": "上反式火控系统",
+        "type": "eo",
+        "enabled": true,
+        "maxRange": 8,
+        "fovAzimuth": 360,
+        "fovElevation": 20,
+        "description": "上反稳像式火控系统"
+      },
+      {
+        "name": "热成像仪",
+        "type": "ir",
+        "enabled": true,
+        "maxRange": 7,
+        "fovAzimuth": 360,
+        "fovElevation": 15,
+        "description": "二代热成像瞄准具"
+      },
+      {
+        "name": "激光压制系统",
+        "type": "ladar",
+        "enabled": true,
+        "maxRange": 4,
+        "description": "激光压制观瞄系统"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "ZPT-98",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 4,
+        "minRange": 0.2,
+        "maxSpeed": 1700,
+        "warheadType": "conventional",
+        "description": "125mm/L50滑膛炮"
+      },
+      {
+        "name": "GP125",
+        "type": "missile",
+        "quantity": 6,
+        "maxRange": 5,
+        "minRange": 0.1,
+        "maxSpeed": 300,
+        "warheadType": "conventional",
+        "guidanceType": "command",
+        "description": "炮射反坦克导弹"
+      }
+    ],
+    "communications": [
+      {
+        "name": "VHF电台",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 80,
+        "maxRange": 35,
+        "description": "VHF战术电台"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 9,
+        "side": 22,
+        "rear": 18,
+        "average": 15
+      },
+      "ir": {
+        "frontal": 72,
+        "side": 105,
+        "rear": 170
+      },
+      "acoustic": {
+        "noise_level": 92,
+        "frequency": 500
+      }
+    },
+    "id": "vehicles-004"
+  },
+  {
+    "code": "HMMWV",
+    "name": "悍马",
+    "nameEn": "HMMWV M1151",
+    "category": "vehicle",
+    "platformType": "vehicle",
+    "status": "active",
+    "country": "USA",
+    "description": "美国陆军高机动多用途轮式车辆，广泛使用。",
+    "tags": [
+      "轮式车辆",
+      "美国",
+      "轻型"
+    ],
+    "platformParams": {
+      "maxSpeed": 113,
+      "cruiseSpeed": 70,
+      "range": 500,
+      "endurance": 0,
+      "length": 4.96,
+      "width": 2.18,
+      "height": 1.83,
+      "weight": 5200,
+      "maxTakeoffWeight": 0,
+      "fuelCapacity": 95,
+      "motionModel": "ground_mover"
+    },
+    "sensors": [
+      {
+        "name": "驾驶员夜视仪",
+        "type": "ir",
+        "enabled": false,
+        "maxRange": 1,
+        "fovAzimuth": 40,
+        "fovElevation": 20,
+        "description": "AN/VAS-5驾驶员视觉增强器"
+      }
+    ],
+    "weapons": [
+      {
+        "name": "M2HB",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 2,
+        "minRange": 0.1,
+        "maxSpeed": 928,
+        "warheadType": "conventional",
+        "description": "12.7mm重机枪"
+      },
+      {
+        "name": "M240B",
+        "type": "gun",
+        "quantity": 1,
+        "maxRange": 1.8,
+        "minRange": 0.1,
+        "maxSpeed": 853,
+        "warheadType": "conventional",
+        "description": "7.62mm通用机枪"
+      }
+    ],
+    "communications": [
+      {
+        "name": "SINCGARS",
+        "type": "radio",
+        "enabled": true,
+        "frequency": 80,
+        "maxRange": 35,
+        "description": "单信道地面和机载无线电系统"
+      }
+    ],
+    "signatureParams": {
+      "rcs": {
+        "frontal": 3,
+        "side": 8,
+        "rear": 6,
+        "average": 5
+      },
+      "ir": {
+        "frontal": 30,
+        "side": 50,
+        "rear": 80
+      },
+      "acoustic": {
+        "noise_level": 80,
+        "frequency": 1000
+      }
+    },
+    "id": "vehicles-005"
+  }
+]

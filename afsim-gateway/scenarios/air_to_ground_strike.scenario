@@ -1,0 +1,258 @@
+################################################################################
+# 空对地精确打击仿真 (Air-to-Ground Strike / SEAD) — TrueSim Web 平台版本
+#
+# 由 afsimgenerator 的 scenarios/air_to_ground_strike.txt 移植而来,
+# 加上 Web 平台所需的 file_path / event_gateway 头部,
+# 使仿真事件能通过命名管道实时推送到 Go 网关 -> WebSocket -> 前端 CesiumJS。
+#
+# 场景:打击机机载下视雷达探测地面 SAM 站 -> 进入投放包线 -> 投放制导炸弹 -> 命中摧毁
+################################################################################
+
+# ------------------------------------------------------------------ Web 平台头部
+define_path_variable CASE air_to_ground_strike
+file_path .
+file_path ../../AFSim/afsim-2.9.0-win64/demos/simple_scenario
+file_path ../../AFSim/afsim-2.9.0-win64/demos/base_types
+
+include event_pipe.txt
+include event_output.txt
+include terrain.txt
+
+log_file ../output/$(CASE).log
+event_output file ../output/$(CASE).evt end_event_output
+event_pipe   file ../output/$(CASE).aer end_event_pipe
+
+# 关键:把事件经命名管道实时推送给 TrueSim 网关
+event_gateway
+   enabled true
+   event_pipe_name afsim_events
+   control_pipe_name afsim_control
+   mover_throttle 0.5 sec
+end_event_gateway
+
+script_interface
+end_script_interface
+
+################################################################################
+# 0) 地面目标特征 (大 RCS,便于下视雷达探测)
+################################################################################
+
+radar_signature GROUND_TARGET_SIG WSF_RADAR_SIGNATURE
+   constant 20 dBsm
+end_radar_signature
+
+################################################################################
+# 1) 机载下视打击雷达
+################################################################################
+
+antenna_pattern STRIKE_RADAR_ANTENNA
+   constant_pattern
+      peak_gain 35 dB
+      azimuth_beamwidth 3 deg
+      elevation_beamwidth 3 deg
+   end_constant_pattern
+end_antenna_pattern
+
+sensor STRIKE_RADAR WSF_RADAR_SENSOR
+   frame_time 1 sec
+   scan_mode azimuth_and_elevation
+   azimuth_scan_limits -60 deg 60 deg
+   elevation_scan_limits -85 deg 10 deg
+   minimum_range 0 nm
+   maximum_range 60 nm
+
+   transmitter
+      antenna_pattern STRIKE_RADAR_ANTENNA
+      power 15.0 kw
+      pulse_width 1.0e-6 sec
+      pulse_repetition_frequency 10000 hz
+      frequency 10.0 ghz
+   end_transmitter
+
+   receiver
+      antenna_pattern STRIKE_RADAR_ANTENNA
+      bandwidth 1.0 mhz
+      internal_loss 5.0 dB
+      noise_figure 3.0 dB
+   end_receiver
+
+   swerling_case 1
+   number_of_pulses_integrated 10
+   detector_law square
+   probability_of_false_alarm 1.0e-6
+   one_m2_detect_range 50 nm
+
+   hits_to_establish_track 2 3
+   hits_to_maintain_track 1 3
+
+   reports_location
+   reports_range
+   reports_bearing
+end_sensor
+
+################################################################################
+# 2) GPS/激光制导炸弹 (类 GBU,无动力滑翔)
+################################################################################
+
+aero GBU_AERO WSF_AERO
+   reference_area 0.10 m2
+   cd_zero_subsonic 0.10
+   cd_zero_supersonic 0.40
+   mach_begin_cd_rise 0.800
+   mach_end_cd_rise 1.200
+   mach_max_supersonic 2.000
+   cl_max 10.000
+   aspect_ratio 4.000
+end_aero
+
+processor GBU_GUIDANCE WSF_GUIDANCE_COMPUTER
+   proportional_navigation_gain 5.0
+   velocity_pursuit_gain 5.0
+   g_bias 1.0
+   maximum_commanded_g 20.0 g
+   guidance_delay 0.0 sec
+   update_interval 0.1 sec
+end_processor
+
+processor GBU_FUSE WSF_GROUND_TARGET_FUSE
+   proximity_cancel_on_loss_of_target
+end_processor
+
+platform_type GBU_BOMB WSF_PLATFORM
+   icon gbu-15
+   category bomb
+
+   radar_signature GROUND_TARGET_SIG
+
+   mover WSF_GUIDED_MOVER
+      aero GBU_AERO
+      total_mass 460.0 kg
+      update_interval 0.1 sec
+   end_mover
+
+   processor guidance GBU_GUIDANCE
+   end_processor
+
+   processor fuse GBU_FUSE
+   end_processor
+end_platform_type
+
+weapon_effects GBU_EFFECT WSF_SPHERICAL_LETHALITY
+   minimum_radius 25.0 m
+   maximum_radius 35.0 m
+   maximum_damage 1.0
+   minimum_damage 0.3
+   threshold_damage 0.3
+   exponent 1.0
+end_weapon_effects
+
+weapon GBU WSF_EXPLICIT_WEAPON
+   launched_platform_type GBU_BOMB
+   weapon_effects GBU_EFFECT
+   category guided_bomb
+end_weapon
+
+################################################################################
+# 3) 蓝方打击机平台类型
+################################################################################
+
+platform_type BLUE_STRIKER WSF_PLATFORM
+   icon F-15E
+
+   radar_signature GROUND_TARGET_SIG
+
+   mover WSF_AIR_MOVER
+      maximum_speed 500 m/sec
+      minimum_speed 120 m/sec
+      default_radial_acceleration 7.0 g
+   end_mover
+
+   sensor radar STRIKE_RADAR
+      processor track-proc
+   end_sensor
+
+   processor track-proc WSF_TRACK_PROCESSOR
+      update_interval 1.0 sec
+   end_processor
+
+   processor attack-proc WSF_SCRIPT_PROCESSOR
+      update_interval 1.0 sec
+
+      script_variables
+         double lastReleaseTime = -100.0;
+         double RELEASE_COOLDOWN = 5.0;
+         double MAX_RANGE = 15000.0;
+         double MIN_RANGE = 1000.0;
+      end_script_variables
+
+      on_update
+         WsfWeapon weapon = PLATFORM.Weapon("gbu");
+         WsfLocalTrackList trackList = PLATFORM.MasterTrackList();
+
+         if ((weapon.QuantityRemaining() > 0) && (trackList.TrackCount() > 0))
+         {
+            if (TIME_NOW - lastReleaseTime >= RELEASE_COOLDOWN)
+            {
+               WsfTrack track = trackList.TrackEntry(0);
+               double rng = PLATFORM.SlantRangeTo(track);
+               if ((rng > MIN_RANGE) && (rng < MAX_RANGE))
+               {
+                  bool fired = weapon.Fire(track);
+                  if (fired)
+                  {
+                     lastReleaseTime = TIME_NOW;
+                     print(TIME_NOW, " [", PLATFORM.Name(), "] 投放 GBU -> ",
+                           track.TargetName(), " 斜距 ", rng, " m, 余弹 ",
+                           weapon.QuantityRemaining());
+                  }
+               }
+            }
+         }
+      end_on_update
+   end_processor
+
+   weapon gbu GBU
+      quantity 2
+      firing_interval 3.0 sec
+   end_weapon
+end_platform_type
+
+################################################################################
+# 4) 红方地面 SAM / 雷达站 (打击目标)
+################################################################################
+
+platform_type RED_SAM_SITE WSF_PLATFORM
+   icon SA-10
+
+   radar_signature GROUND_TARGET_SIG
+   # 无 mover:有 position 的平台即为固定地面站
+end_platform_type
+
+################################################################################
+# 5) 实例化场景平台 (东海方向,贴合本平台想定坐标范围)
+################################################################################
+
+platform blue-striker BLUE_STRIKER
+   side blue
+
+   sensor radar
+      on
+   end_sensor
+
+   route
+      position 24:30:00n 120:00:00e altitude 8000 m speed 280 m/sec
+      position 24:30:00n 121:00:00e altitude 8000 m speed 280 m/sec
+      position 24:30:00n 122:00:00e altitude 8000 m speed 280 m/sec
+   end_route
+end_platform
+
+platform red-sam-site RED_SAM_SITE
+   side red
+   position 24:30:00n 121:00:00e altitude 0 m agl
+end_platform
+
+################################################################################
+# 6) 仿真控制
+################################################################################
+
+end_time 600 sec
